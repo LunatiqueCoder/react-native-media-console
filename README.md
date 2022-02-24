@@ -6,7 +6,7 @@ This repository is forked from [react-native-video-controls](https://github.com/
 #### TODO
 - [ ] TypeScript support
 - [ ] Revamp with React Hooks instead of class components
-- [ ] Use react-native-reanimated instead of Animated API from React Native.
+- [ ] Use [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) instead of Animated API from React Native.
 - [ ] etc.
 
 # react-native-video-controller
