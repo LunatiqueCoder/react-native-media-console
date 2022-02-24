@@ -1,6 +1,6 @@
 {
-  "name": "react-native-video-controls",
-  "version": "2.8.1",
+  "name": "react-native-video-controller",
+  "version": "0.0.1",
   "description": "A set of GUI controls for the react-native-video component",
   "license": "MIT",
   "main": "VideoPlayer.js",
@@ -14,20 +14,21 @@
     "lint": "eslint .",
     "test": "echo \"No test specified\" && exit 1"
   },
-  "author": "Nubix (https://github.com/itsnubix)",
+  "author": "Ovidiu Cristescu (https://github.com/criszz77)",
   "repository": {
     "type": "git",
-    "url": "git@github.com:itsnubix/react-native-video-controls.git"
+    "url": "git@github.com:criszz77/react-native-video-controller.git"
   },
   "dependencies": {
-    "lodash": "^4.16.4"
+    "lodash": "^4.17.21"
   },
   "peerDependencies": {
     "react-native": ">=0.46.0",
     "react-native-video": ">=2.0.0"
   },
   "devDependencies": {
-    "@react-native-community/eslint-config": "^0.0.5",
-    "eslint": "^6.5.1"
+    "@react-native-community/eslint-config": "^2.0.0",
+    "eslint": "^7.14.0",
+    "typescript": "^4.4.4"
   }
 }
