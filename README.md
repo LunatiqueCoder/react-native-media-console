@@ -1,4 +1,15 @@
-# react-native-video-controls
+⚠️ WORK IN PROGRESS ⚠️
+
+This repository is forked from [react-native-video-controls](https://github.com/itsnubix/react-native-video-controls).
+
+
+#### TODO
+- [ ] TypeScript support
+- [ ] Revamp with React Hooks instead of class components
+- [ ] Use react-native-reanimated instead of Animated API from React Native.
+- [ ] etc.
+
+# react-native-video-controller
 
 [![ci][1]][2]
 
@@ -16,7 +27,7 @@ By default, tapping the screen anywhere will show the player controls. After 10s
 
 ## Installation
 
-Run `npm install --save react-native-video react-native-video-controls`
+Run `npm install --save react-native-video react-native-video-controller`
 
 Then run `react-native link react-native-video`
 
@@ -30,7 +41,7 @@ For basic operation the `<VideoPlayer>` component requires a video source and a 
 
 ```javascript
 // At the top where our imports are...
-import VideoPlayer from 'react-native-video-controls';
+import VideoPlayer from 'react-native-video-controller';
 
 // in the component's render() function
 <VideoPlayer
