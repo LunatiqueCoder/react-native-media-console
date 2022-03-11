@@ -1,13 +1,5 @@
-⚠️ WORK IN PROGRESS ⚠️
 
 This repository is forked from [react-native-video-controls](https://github.com/itsnubix/react-native-video-controls).
-
-
-#### TODO
-- [X] TypeScript support
-- [X] Revamp with React Hooks instead of class components
-- [ ] Use [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) instead of Animated API from React Native.
-- [ ] etc.
 
 # react-native-media-console
 
