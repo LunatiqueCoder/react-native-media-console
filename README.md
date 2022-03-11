@@ -4,12 +4,12 @@ This repository is forked from [react-native-video-controls](https://github.com/
 
 
 #### TODO
-- [ ] TypeScript support
-- [ ] Revamp with React Hooks instead of class components
+- [X] TypeScript support
+- [X] Revamp with React Hooks instead of class components
 - [ ] Use [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) instead of Animated API from React Native.
 - [ ] etc.
 
-# react-native-video-controller
+# react-native-media-console
 
 [![ci][1]][2]
 
@@ -27,11 +27,11 @@ By default, tapping the screen anywhere will show the player controls. After 10s
 
 ## Installation
 
-Run `npm install --save react-native-video react-native-video-controller`
+Run `yarn add --save react-native-video react-native-media-console`
 
-Then run `react-native link react-native-video`
+Then follow installation instructions from [react-native-video](https://github.com/react-native-video/react-native-video).
 
-If you're using RN < 39 run `npm install --save react-native-video-controls@1.0.1`. Note this version includes `react-native-video` as a normal dependency instead of a peer-dependency.
+We're supporting only RN < 39.
 
 ## Usage
 
@@ -41,12 +41,12 @@ For basic operation the `<VideoPlayer>` component requires a video source and a 
 
 ```javascript
 // At the top where our imports are...
-import VideoPlayer from 'react-native-video-controller';
+import {VideoPlayer} from 'react-native-media-console';
 
 // in the component's render() function
 <VideoPlayer
   source={{uri: 'https://vjs.zencdn.net/v/oceans.mp4'}}
-  navigator={this.props.navigator}
+  navigator={props.navigator}
 />;
 ```
 
@@ -68,23 +68,18 @@ In addition, the `<VideoPlayer />` also takes these props:
 
 | Prop                         | Type         | Default | Description                                                                                                                                                      |
 | ---------------------------- | ------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| toggleResizeModeOnFullscreen | Boolean      | true    | If true, clicking the fullscreen button will toggle the `<Video />` component between cover/contain, set to false if you want to customize fullscreen behaviour  |
+| toggleResizeModeOnFullscreen | Boolean      | false    | If true, clicking the fullscreen button will toggle the `<Video />` component between cover/contain, set to false if you want to customize fullscreen behaviour  |
 | controlAnimationTiming       | Integer      | 500     | The amountof time (in milliseconds) to animate the controls in and out.                                                                                          |
 | doubleTapTime                | Integer      | 130     | Tapping twice within this amount of time in milliseconds is considered a double tap. Single taps will not be actioned until this time has expired.               |
-| controlTimeout               | Integer      | 15000   | Hide controls after X amount of time in milliseconds                                                                                                             |
-| scrubbing                    | Integer      | 0       | If > 0, enable live scrubbing when moving the seek bar. The provided value is the minimum time step of the scrubbing in milliseconds.                            |
-| showOnStart                  | Boolean      | true    | Show or hide the controls on first render                                                                                                                        |
-| videoStyle                   | StyleSheet   | null    | React Native StyleSheet object that is appended to the `<Video>` component                                                                                       |
+| controlTimeoutDelay               | Integer      | 15000   | Hide controls after X amount of time in milliseconds |                           |
+| showOnStart                  | Boolean      | false    | Show or hide the controls on first render |
+| videoStyle                   | StyleSheet   | null    | React Native StyleSheet object that is appended to the `<Video>` component   |                            
 | navigator                    | Navigator    | null    | When using the default React Native navigator and do not override the `onBack` function, you'll need to pass the navigator to the VideoPlayer for it to function |
-| seekColor                    | String(#HEX) | '#FFF'  | Fill/handle colour of the seekbar                                                                                                                                |
-| style                        | StyleSheet   | null    | React Native StyleSheet object that is appended to the video's parent `<View>`                                                                                   |
-| tapAnywhereToPause           | Boolean      | false   | If true, single tapping anywhere on the video (other than a control) toggles between playing and paused.                                                         |
-
-| showTimeRemaining            | Boolean      | true    | If true, show the time remaing, else show the current time in the Player.
-`<View>`
-
+| seekColor                    | String(#HEX) | '#FFF'  | Fill/handle colour of the seekbar                              
+| style                        | StyleSheet   | null    | React Native StyleSheet object that is appended to the video's parent `<View>`
+| tapAnywhereToPause           | Boolean      | false   | If true, single tapping anywhere on the video (other than a control) toggles between playing and paused. 
+| showTimeRemaining            | Boolean      | false    | If true, show the time remaing, else show the current time in the Player.
 | showHours                    | Boolean      | false   | If true, convert time to hours in the Player
-`<View>`
 
 ### Events
 
