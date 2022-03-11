@@ -11,7 +11,7 @@
     "react video player"
   ],
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint ./src",
     "test": "echo \"No test specified\" && exit 1"
   },
   "author": "Ovidiu Cristescu (https://github.com/criszz77)",
