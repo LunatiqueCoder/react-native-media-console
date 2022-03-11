@@ -7,4 +7,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: rm -rf node_modules && yarn install --immutable --immutable-cache --check-cache
+      - run: yarn add typescript
       - run: yarn lint
