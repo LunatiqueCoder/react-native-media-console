@@ -1,9 +1,8 @@
-import {Control} from 'organisms/VideoPlayer/components';
 import {Animated, Image} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import {VideoAnimations} from '../../types';
-import {NullControl} from 'organisms/VideoPlayer/components/NullControl';
+import {Control, NullControl} from '../';
 
 interface PlayPauseProps {
   animations: VideoAnimations;
