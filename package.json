@@ -10,14 +10,18 @@
     "react video controls",
     "react video player"
   ],
-  "scripts": {
-    "lint": "eslint ./src",
-    "test": "echo \"No test specified\" && exit 1"
+  "bugs": {
+    "url": "https://github.com/criszz77/react-native-media-console/issues"
   },
+  "homepage": "https://github.com/criszz77/react-native-media-console",
   "author": "Ovidiu Cristescu (https://github.com/criszz77)",
   "repository": {
     "type": "git",
     "url": "git@github.com:criszz77/react-native-video-controller.git"
+  },
+  "scripts": {
+    "lint": "eslint ./src",
+    "test": "echo \"No test specified\" && exit 1"
   },
   "dependencies": {
     "lodash": "^4.17.21"
