@@ -5,6 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
       - run: rm -rf node_modules && yarn install --immutable --immutable-cache --check-cache
       - run: yarn lint
