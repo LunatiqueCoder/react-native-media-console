@@ -1,7 +1,9 @@
 
 # 🕹 react-native-media-console
-
 [![ci][1]][2]
+![GitHub issues](https://img.shields.io/github/issues/criszz77/react-native-media-console)
+![GitHub](https://img.shields.io/github/license/criszz77/react-native-media-console)
+![GitHub top language](https://img.shields.io/github/languages/top/criszz77/react-native-media-console)
 
 VideoPlayer for the React Native `<Video>` component at [react-native-video](https://github.com/react-native-community/react-native-video).
 
