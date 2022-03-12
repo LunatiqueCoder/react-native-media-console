@@ -13,7 +13,7 @@ export const Loader = ({loading, animations}: LoaderProps) => {
     return (
       <View style={styles.container}>
         <Animated.Image
-          source={require('../../assets/assets/img/loader-icon.png')}
+          source={require('../../assets/img/loader-icon.png')}
           style={[
             styles.icon,
             {

@@ -22,6 +22,7 @@ export interface VideoPlayerProps extends VideoProperties {
   showOnStart?: boolean;
   title?: string;
   showTimeRemaining?: boolean;
+  showDuration: boolean;
   showHours?: boolean;
   onBack?: () => void;
   onEnterFullscreen?: () => void;
@@ -43,4 +44,5 @@ export interface VideoPlayerProps extends VideoProperties {
   disablePlayPause?: boolean;
   navigator?: any;
   videoRef?: RefObject<VideoResource>;
+  rewindTime: number;
 }

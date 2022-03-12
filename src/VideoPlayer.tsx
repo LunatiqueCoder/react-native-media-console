@@ -1,5 +1,5 @@
 import React, {useCallback, useState, useEffect, useRef} from 'react';
-import {TouchableWithoutFeedback, SafeAreaView} from 'react-native';
+import {TouchableWithoutFeedback, View} from 'react-native';
 import Video, {OnLoadData, OnProgressData} from 'react-native-video';
 import {useControlTimeout, useAnimations, usePanResponders} from './hooks';
 import {
@@ -29,6 +29,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     volume = 1,
     title = '',
     rate = 1,
+    showDuration = false,
     showTimeRemaining = false,
     showHours = false,
     onError,
@@ -57,6 +58,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     disablePlayPause = false,
     navigator,
     videoRef,
+    rewindTime = 15,
   } = props;
 
   const mounted = useRef(false);
@@ -358,7 +360,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     <TouchableWithoutFeedback
       onPress={events.onScreenTouch}
       style={[_styles.player.container, styles.containerStyle]}>
-      <SafeAreaView style={[_styles.player.container, styles.containerStyle]}>
+      <View style={[_styles.player.container, styles.containerStyle]}>
         <Video
           {...props}
           {...events}
@@ -391,6 +393,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           togglePlayPause={togglePlayPause}
           resetControlTimeout={resetControlTimeout}
           showControls={showControls}
+          onPressRewind={() => videoRef.current.seek(currentTime - rewindTime)}
+          onPressForward={() => videoRef.current.seek(currentTime + rewindTime)}
         />
         <BottomControls
           animations={animations}
@@ -398,6 +402,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           disableTimer={disableTimer}
           disableSeekbar={disableSeekbar}
           showHours={showHours}
+          showDuration={showDuration}
           paused={_paused}
           showTimeRemaining={_showTimeRemaining}
           currentTime={currentTime}
@@ -413,7 +418,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           disableFullscreen={disableFullscreen}
           toggleFullscreen={toggleFullscreen}
         />
-      </SafeAreaView>
+      </View>
     </TouchableWithoutFeedback>
   );
 };

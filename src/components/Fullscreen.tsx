@@ -14,8 +14,8 @@ export const Fullscreen = ({
   resetControlTimeout,
 }: FullscreenProps) => {
   let source = isFullscreen
-    ? require('../assets/assets/img/shrink.png')
-    : require('../assets/assets/img/expand.png');
+    ? require('../assets/img/shrink.png')
+    : require('../assets/img/expand.png');
   return (
     <Control
       callback={toggleFullscreen}

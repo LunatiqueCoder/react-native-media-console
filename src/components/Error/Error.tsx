@@ -11,7 +11,7 @@ export const Error = ({error}: ErrorProps) => {
     return (
       <View style={styles.container}>
         <Image
-          source={require('../../assets/assets/img/error-icon.png')}
+          source={require('../../assets/img/error-icon.png')}
           style={styles.icon}
         />
         <Text style={styles.text}>Video unavailable</Text>

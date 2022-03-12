@@ -16,6 +16,7 @@ interface BottomControlsProps {
   panHandlers: GestureResponderHandlers;
   disableTimer: boolean;
   disableSeekbar: boolean;
+  showDuration: boolean;
   showHours: boolean;
   paused: boolean;
   showTimeRemaining: boolean;
@@ -40,6 +41,7 @@ export const BottomControls = ({
   disableTimer,
   duration,
   seekColor,
+  showDuration,
   showHours,
   showTimeRemaining,
   currentTime,
@@ -58,6 +60,7 @@ export const BottomControls = ({
   ) : (
     <Timer resetControlTimeout={resetControlTimeout} toggleTimer={toggleTimer}>
       {calculateTime({
+        showDuration,
         showHours,
         showTimeRemaining,
         time: currentTime,
@@ -98,7 +101,7 @@ export const BottomControls = ({
         },
       ]}>
       <ImageBackground
-        source={require('../assets/assets/img/bottom-vignette.png')}
+        source={require('../assets/img/bottom-vignette.png')}
         style={[styles.column]}
         imageStyle={[styles.vignette]}>
         <SafeAreaView style={[styles.row, _styles.bottomControlGroup]}>

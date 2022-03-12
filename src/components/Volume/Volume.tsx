@@ -24,7 +24,7 @@ export const Volume = ({
         {...volumePanHandlers}>
         <Image
           style={styles.icon}
-          source={require('../../assets/assets/img/volume.png')}
+          source={require('../../assets/img/volume.png')}
         />
       </View>
     </View>

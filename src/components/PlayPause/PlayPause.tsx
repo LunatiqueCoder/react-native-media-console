@@ -1,8 +1,8 @@
-import {Animated, Image} from 'react-native';
 import React from 'react';
-import {styles} from './styles';
-import {VideoAnimations} from '../../types';
+import {Animated, Image} from 'react-native';
 import {Control, NullControl} from '../';
+import {VideoAnimations} from '../../types';
+import {styles} from './styles';
 
 interface PlayPauseProps {
   animations: VideoAnimations;
@@ -11,10 +11,14 @@ interface PlayPauseProps {
   togglePlayPause: () => void;
   resetControlTimeout: () => void;
   showControls: boolean;
+  onPressForward: () => void;
+  onPressRewind: () => void;
 }
 
-const play = require('../../assets/assets/img/play2.png');
-const pause = require('../../assets/assets/img/pause2.png');
+const play = require('../../assets/img/play2.png');
+const pause = require('../../assets/img/pause2.png');
+const rewind = require('../../assets/img/rewind.png');
+const forward = require('../../assets/img/forward.png');
 
 export const PlayPause = ({
   animations,
@@ -23,13 +27,15 @@ export const PlayPause = ({
   togglePlayPause,
   resetControlTimeout,
   showControls,
+  onPressForward,
+  onPressRewind,
 }: PlayPauseProps) => {
+  let source = paused ? play : pause;
+
   const animatedStyles = {
     opacity: animations.controlsOpacity,
     zIndex: showControls ? 99999 : 0,
   };
-
-  let source = paused ? play : pause;
 
   if (disablePlayPause) {
     return <NullControl />;
@@ -40,9 +46,20 @@ export const PlayPause = ({
       pointerEvents={'box-none'}
       style={[styles.container, animatedStyles]}>
       <Control
-        callback={togglePlayPause}
+        callback={onPressRewind}
         resetControlTimeout={resetControlTimeout}>
-        <Image source={source} resizeMode={'contain'} style={styles.icon} />
+        <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
+      </Control>
+      <Control
+        callback={togglePlayPause}
+        resetControlTimeout={resetControlTimeout}
+        style={styles.playContainer}>
+        <Image source={source} resizeMode={'contain'} style={styles.play} />
+      </Control>
+      <Control
+        callback={onPressForward}
+        resetControlTimeout={resetControlTimeout}>
+        <Image source={forward} resizeMode={'contain'} style={styles.rewind} />
       </Control>
     </Animated.View>
   );

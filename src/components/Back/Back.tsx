@@ -10,7 +10,7 @@ interface BackProps {
 export const Back = ({onBack}: BackProps) => {
   return (
     <Control callback={onBack}>
-      <Image source={require('../../assets/assets/img/back.png')} />
+      <Image source={require('../../assets/img/back.png')} />
     </Control>
   );
 };

@@ -7,9 +7,19 @@ export const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     left: 0,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 99999,
   },
-  icon: {aspectRatio: 0.5},
+  playContainer: {
+    width: '10%',
+    alignItems: 'center',
+  },
+  play: {
+    aspectRatio: 0.5,
+  },
+  rewind: {
+    aspectRatio: 1,
+  },
 });

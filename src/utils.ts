@@ -11,12 +11,20 @@ export const _onBack = (navigator: any) => {
 };
 
 export const calculateTime = (args: FormatTime) => {
-  const {time: currentTime = 0, duration, showTimeRemaining} = args;
-  const formattedDuration = `/${formatTime({
-    ...args,
-    time: duration,
-    showTimeRemaining: false,
-  })}`;
+  const {
+    time: currentTime = 0,
+    duration,
+    showTimeRemaining,
+    showDuration,
+  } = args;
+
+  const formattedDuration = !showDuration
+    ? ''
+    : `/${formatTime({
+        ...args,
+        time: duration,
+        showTimeRemaining: false,
+      })}`;
 
   if (showTimeRemaining) {
     const time = duration - currentTime;
@@ -29,6 +37,7 @@ export const calculateTime = (args: FormatTime) => {
 interface FormatTime {
   time?: number;
   duration: number;
+  showDuration: boolean;
   showTimeRemaining: boolean;
   showHours: boolean;
 }
