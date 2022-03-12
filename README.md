@@ -5,11 +5,22 @@
 
 VideoPlayer for the React Native `<Video>` component at [react-native-video](https://github.com/react-native-community/react-native-video).
 
+![How it looks](https://user-images.githubusercontent.com/55203625/158028230-088b8ca4-e55f-46a9-8030-37e6299e7bf0.gif)
+
+
 ## ⭐️ Features
 
-This package contains a simple set of GUI controls that work with the [react-native-video](https://github.com/react-native-community/react-native-video) `<Video>` component. This includes a back button, volume bar, fullscreen toggle, play/pause toggle, seekbar, title, error handling and timer toggle that can switch between time remaining and current time when tapped.
-
-![How it looks](https://user-images.githubusercontent.com/55203625/158013784-f22a8a71-5773-4f86-821e-fb26ae3c77ce.gif)
+This package contains a simple set of GUI controls that work with the [react-native-video](https://github.com/react-native-community/react-native-video) `<Video>` component. 
+- [x] Back Button
+- [x] Volume bar
+- [x] Fullscreen button
+- [x] Play/Pause button
+- [x] Rewind/Forward buttons
+- [x] Seekbar
+- [x] Title
+- [x] Error handling
+- [x] Timer 
+- [ ] Rate button
 
 By default the `<VideoPlayer>` accepts a navigator property from React's built-in `<Navigator>` which pops the current scene off the stack when tapped. Alternatively you can provide your own onBack prop to the component to override this functionality. You should also provide your own onEnd prop to the component so it knows what to do when a video ends playback.
 
@@ -28,11 +39,11 @@ We're actively supporting only RN < 45.
 
 The `<VideoPlayer>` component follows the API of the `<Video>` component
 at [react-native-video](https://github.com/react-native-community/react-native-video). It also takes a number of
-additional props which are outlined in the [API](#toolbox-api) section.
+additional props which are outlined in the [API](#-api) section.
 
 For basic operation the `<VideoPlayer>` component requires a video source and a navigator property. The default back
 button functionality in the component relies on using the built-in `<Navigator>` functionality in React Native and pops
-the current scene off the stack. This can be overridden if desired, see the [API](#toolbox-api) for more details.
+the current scene off the stack. This can be overridden if desired, see the [API](#-api) for more details.
 
 ```javascript
 // At the top where our imports are...
@@ -101,7 +112,7 @@ These are the various controls that you can turn on/off as needed. All of these 
 | Control           | Description                |
 | ----------------- | -------------------------- |
 | disableFullscreen | Hide the fullscreen button |
-| disablePlayPause  | Hide the play/pause toggle |
+| disablePlayPause  | Hide the play/pause toggle and the rewind/forward buttons |
 | disableSeekbar    | Hide the seekbar           |
 | disableVolume     | Hide the Volume control    |
 | disableTimer      | Hide the timer             |
