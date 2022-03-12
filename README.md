@@ -17,7 +17,7 @@ By default, tapping the screen anywhere will show the player controls. After 15s
 
 ## ⚙️ Installation
 
-Run `yarn react-native-video react-native-media-console`
+Run `yarn add react-native-video react-native-media-console`
 
 Then follow installation instructions
 from [react-native-video](https://github.com/react-native-video/react-native-video).
