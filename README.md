@@ -1,31 +1,29 @@
 
-This repository is forked from [react-native-video-controls](https://github.com/itsnubix/react-native-video-controls).
-
-# react-native-media-console
+# 🕹 react-native-media-console
 
 [![ci][1]][2]
 
-Controls for the React Native `<Video>` component at [react-native-video](https://github.com/react-native-community/react-native-video). For support with RN 0.45 or lower use version 1.3.1 or lower.
+VideoPlayer for the React Native `<Video>` component at [react-native-video](https://github.com/react-native-community/react-native-video).
 
-## Features
+## ⭐️ Features
 
 This package contains a simple set of GUI controls that work with the [react-native-video](https://github.com/react-native-community/react-native-video) `<Video>` component. This includes a back button, volume bar, fullscreen toggle, play/pause toggle, seekbar, title, error handling and timer toggle that can switch between time remaining and current time when tapped.
 
-![How it looks](https://s3-us-west-2.amazonaws.com/nubix.ca/github/example.gif)
+![How it looks](https://user-images.githubusercontent.com/55203625/158013784-f22a8a71-5773-4f86-821e-fb26ae3c77ce.gif)
 
 By default the `<VideoPlayer>` accepts a navigator property from React's built-in `<Navigator>` which pops the current scene off the stack when tapped. Alternatively you can provide your own onBack prop to the component to override this functionality. You should also provide your own onEnd prop to the component so it knows what to do when a video ends playback.
 
-By default, tapping the screen anywhere will show the player controls. After 10s the controls disappear. Double tapping will toggle fullscreen.
+By default, tapping the screen anywhere will show the player controls. After 15s the controls disappear. Double tapping will toggle fullscreen.
 
-## Installation
+## ⚙️ Installation
 
 Run `yarn add --save react-native-video react-native-media-console`
 
 Then follow installation instructions from [react-native-video](https://github.com/react-native-video/react-native-video).
 
-We're supporting only RN < 39.
+We're actively supporting only RN < 45.
 
-## Usage
+## 🛠 Usage
 
 The `<VideoPlayer>` component follows the API of the `<Video>` component at [react-native-video](https://github.com/react-native-community/react-native-video). It also takes a number of additional props which are outlined in the [API](#api) section.
 
@@ -33,7 +31,7 @@ For basic operation the `<VideoPlayer>` component requires a video source and a 
 
 ```javascript
 // At the top where our imports are...
-import {VideoPlayer} from 'react-native-media-console';
+import VideoPlayer from 'react-native-media-console';
 
 // in the component's render() function
 <VideoPlayer
@@ -48,7 +46,7 @@ To play a local file, use require syntax like so:
 <VideoPlayer source={require('path/to/file')} />
 ```
 
-## API
+## 🧰 API
 
 The `<VideoPlayer>` component can take a number of inputs to customize it as needed. They are outlined below:
 
@@ -102,5 +100,5 @@ These are the various controls that you can turn on/off as needed. All of these 
 | disableTimer      | Hide the timer             |
 | disableBack       | Hide the back button       |
 
-[1]: https://github.com/itsnubix/react-native-video-controls/workflows/ci/badge.svg
-[2]: https://github.com/itsnubix/react-native-video-controls/actions
+[1]: https://github.com/criszz77/react-native-media-console/workflows/ci/badge.svg
+[2]: https://github.com/criszz77/react-native-media-console/actions
