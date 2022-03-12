@@ -11,4 +11,5 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 99999,
   },
+  icon: {aspectRatio: 0.5},
 });

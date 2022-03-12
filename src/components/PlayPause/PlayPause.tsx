@@ -24,6 +24,11 @@ export const PlayPause = ({
   resetControlTimeout,
   showControls,
 }: PlayPauseProps) => {
+  const animatedStyles = {
+    opacity: animations.controlsOpacity,
+    zIndex: showControls ? 99999 : 0,
+  };
+
   let source = paused ? play : pause;
 
   if (disablePlayPause) {
@@ -33,18 +38,11 @@ export const PlayPause = ({
   return (
     <Animated.View
       pointerEvents={'box-none'}
-      style={[
-        styles.container,
-        {opacity: animations.controlsOpacity, zIndex: showControls ? 99999 : 0},
-      ]}>
+      style={[styles.container, animatedStyles]}>
       <Control
         callback={togglePlayPause}
         resetControlTimeout={resetControlTimeout}>
-        <Image
-          source={source}
-          resizeMode={'contain'}
-          style={{aspectRatio: 0.5}}
-        />
+        <Image source={source} resizeMode={'contain'} style={styles.icon} />
       </Control>
     </Animated.View>
   );

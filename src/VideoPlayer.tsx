@@ -9,7 +9,7 @@ import {
   BottomControls,
   PlayPause,
 } from './components';
-import {_onEnd, _onBack} from './utils';
+import {_onBack} from './utils';
 import {_styles} from './styles';
 import {VideoPlayerProps} from './types';
 
@@ -90,18 +90,28 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const [duration, setDuration] = useState(0);
 
   const toggleFullscreen = () => setIsFullscreen((prevState) => !prevState);
-  const togglePlayPause = () => setPaused((prevState) => !prevState);
   const toggleControls = () => setShowControls((prevState) => !prevState);
   const toggleTimer = () => setShowTimeRemaining((prevState) => !prevState);
+  const togglePlayPause = () => {
+    setPaused((prevState) => !prevState);
+  };
 
   const styles = {
     videoStyle,
     containerStyle: style,
   };
 
-  const _onSeek = () => {
+  const _onSeek = (obj) => {
     if (!seeking) {
       setControlTimeout();
+    }
+    setCurrentTime(obj.seekTime);
+  };
+
+  const _onEnd = () => {
+    if (currentTime < duration) {
+      setCurrentTime(duration);
+      setPaused(true);
     }
   };
 
@@ -244,7 +254,6 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     seek: videoRef?.current?.seek,
     clearControlTimeout,
     setVolumePosition,
-    setCurrentTime,
     setSeekerPosition,
     setSeeking,
     setControlTimeout,
@@ -282,6 +291,9 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     if (_paused) {
       typeof events.onPause === 'function' && events.onPause();
     } else {
+      if (currentTime >= duration) {
+        videoRef.current.seek(0);
+      }
       typeof events.onPlay === 'function' && events.onPlay();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -351,7 +363,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           {...props}
           {...events}
           ref={videoRef || _videoRef}
-          // resizeMode={_resizeMode}
+          resizeMode={_resizeMode}
           volume={_volume}
           paused={_paused}
           muted={_muted}

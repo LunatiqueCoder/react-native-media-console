@@ -106,7 +106,9 @@ export const BottomControls = ({
           <Title title={title} />
           {fullscreenControl}
         </SafeAreaView>
-        <SafeAreaView style={{width: '100%'}}>{seekbarControl}</SafeAreaView>
+        <SafeAreaView style={styles.seekBarContainer}>
+          {seekbarControl}
+        </SafeAreaView>
       </ImageBackground>
     </Animated.View>
   );

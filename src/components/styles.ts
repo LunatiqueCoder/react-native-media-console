@@ -23,4 +23,7 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
   },
+  seekBarContainer: {
+    width: '100%',
+  },
 });

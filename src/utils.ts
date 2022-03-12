@@ -1,7 +1,5 @@
 import padStart from 'lodash/padStart';
 
-export const _onEnd = () => {};
-
 export const _onBack = (navigator: any) => {
   if (navigator && navigator.pop) {
     return () => navigator.pop();

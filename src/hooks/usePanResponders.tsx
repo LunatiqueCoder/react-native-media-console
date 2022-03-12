@@ -12,7 +12,6 @@ interface PanRespondersProps {
   seekerWidth: number;
   clearControlTimeout: () => void;
   setVolumePosition: (position: number) => void;
-  setCurrentTime: Dispatch<SetStateAction<number>>;
   setSeekerPosition: (position: number) => void;
   setSeeking: Dispatch<SetStateAction<boolean>>;
   setControlTimeout: () => void;
@@ -30,7 +29,6 @@ export const usePanResponders = ({
   seekerWidth,
   clearControlTimeout,
   setVolumePosition,
-  setCurrentTime,
   setSeekerPosition,
   setSeeking,
   setControlTimeout,
@@ -76,9 +74,7 @@ export const usePanResponders = ({
       }
 
       setSeeking(false);
-      setCurrentTime(time);
       seek(time);
-      setControlTimeout();
     },
   });
 
@@ -86,10 +82,9 @@ export const usePanResponders = ({
     if (seeking) {
       const percent = seekerPosition / seekerWidth;
       const time = duration * percent;
-      setCurrentTime(time);
       seek(time);
     }
-  }, [duration, seek, seekerPosition, seekerWidth, seeking, setCurrentTime]);
+  }, [duration, seek, seekerPosition, seekerWidth, seeking]);
 
   return {volumePanResponder, seekPanResponder};
 };
