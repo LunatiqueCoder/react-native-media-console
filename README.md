@@ -17,9 +17,10 @@ By default, tapping the screen anywhere will show the player controls. After 15s
 
 ## ⚙️ Installation
 
-Run `yarn add react-native-video react-native-media-console`
+Run `yarn react-native-video react-native-media-console`
 
-Then follow installation instructions from [react-native-video](https://github.com/react-native-video/react-native-video).
+Then follow installation instructions
+from [react-native-video](https://github.com/react-native-video/react-native-video).
 
 We're actively supporting only RN < 45.
 
@@ -65,11 +66,11 @@ In addition, the `<VideoPlayer />` also takes these props:
 | showOnStart                  | Boolean      | false    | Show or hide the controls on first render |
 | videoStyle                   | StyleSheet   | null    | React Native StyleSheet object that is appended to the `<Video>` component   |                            
 | navigator                    | Navigator    | null    | When using the default React Native navigator and do not override the `onBack` function, you'll need to pass the navigator to the VideoPlayer for it to function |
-| seekColor                    | String(#HEX) | '#FFF'  | Fill/handle colour of the seekbar                              
-| style                        | StyleSheet   | null    | React Native StyleSheet object that is appended to the video's parent `<View>`
-| tapAnywhereToPause           | Boolean      | false   | If true, single tapping anywhere on the video (other than a control) toggles between playing and paused. 
-| showTimeRemaining            | Boolean      | false    | If true, show the time remaing, else show the current time in the Player.
-| showHours                    | Boolean      | false   | If true, convert time to hours in the Player
+| seekColor                    | String(#HEX) | '#FFF'  | Fill/handle colour of the seekbar  |                            
+| style                        | StyleSheet   | null    | React Native StyleSheet object that is appended to the video's parent `<View>` |
+| tapAnywhereToPause           | Boolean      | false   | If true, single tapping anywhere on the video (other than a control) toggles between playing and paused. |
+| showTimeRemaining            | Boolean      | false    | If true, show the time remaing, else show the current time in the Player. |
+| showHours                    | Boolean      | false   | If true, convert time to hours in the Player |
 
 ### Events
 
