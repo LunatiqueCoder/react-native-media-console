@@ -1,6 +1,10 @@
 import React, {useCallback, useState, useEffect, useRef} from 'react';
 import {TouchableWithoutFeedback, View} from 'react-native';
-import Video, {OnLoadData, OnProgressData} from 'react-native-video';
+import Video, {
+  OnLoadData,
+  OnProgressData,
+  OnSeekData,
+} from 'react-native-video';
 import {useControlTimeout, useAnimations, usePanResponders} from './hooks';
 import {
   Error,
@@ -11,7 +15,7 @@ import {
 } from './components';
 import {_onBack} from './utils';
 import {_styles} from './styles';
-import {VideoPlayerProps} from './types';
+import type {VideoPlayerProps} from './types';
 
 const volumeWidth = 150;
 const iconOffset = 0;
@@ -68,17 +72,17 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   ).current;
   const tapActionTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [_resizeMode, setResizeMode] = useState(resizeMode);
-  const [_paused, setPaused] = useState(paused);
-  const [_muted, setMuted] = useState(muted);
-  const [_volume, setVolume] = useState(volume);
-  const [_isFullscreen, setIsFullscreen] = useState(
+  const [_paused, setPaused] = useState<boolean>(paused);
+  const [_muted, setMuted] = useState<boolean>(muted);
+  const [_volume, setVolume] = useState<number>(volume);
+  const [_isFullscreen, setIsFullscreen] = useState<boolean>(
     isFullscreen || resizeMode === 'cover' || false,
   );
   const [_showTimeRemaining, setShowTimeRemaining] =
-    useState(showTimeRemaining);
-  const [volumeTrackWidth, setVolumeTrackWidth] = useState(0);
-  const [volumeFillWidth, setVolumeFillWidth] = useState(0);
-  const [seekerFillWidth, setSeekerFillWidth] = useState(0);
+    useState<boolean>(showTimeRemaining);
+  const [volumeTrackWidth, setVolumeTrackWidth] = useState<number>(0);
+  const [volumeFillWidth, setVolumeFillWidth] = useState<number>(0);
+  const [seekerFillWidth, setSeekerFillWidth] = useState<number>(0);
   const [showControls, setShowControls] = useState(showOnStart);
   const [volumePosition, setVolumePositionState] = useState(0);
   const [seekerPosition, setSeekerPositionState] = useState(0);
@@ -103,7 +107,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     containerStyle: style,
   };
 
-  const _onSeek = (obj) => {
+  const _onSeek = (obj: OnSeekData) => {
     if (!seeking) {
       setControlTimeout();
     }
@@ -294,7 +298,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
       typeof events.onPause === 'function' && events.onPause();
     } else {
       if (currentTime >= duration) {
-        videoRef.current.seek(0);
+        videoRef?.current?.seek(0);
       }
       typeof events.onPlay === 'function' && events.onPlay();
     }
@@ -393,8 +397,12 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           togglePlayPause={togglePlayPause}
           resetControlTimeout={resetControlTimeout}
           showControls={showControls}
-          onPressRewind={() => videoRef.current.seek(currentTime - rewindTime)}
-          onPressForward={() => videoRef.current.seek(currentTime + rewindTime)}
+          onPressRewind={() =>
+            videoRef?.current?.seek(currentTime - rewindTime)
+          }
+          onPressForward={() =>
+            videoRef?.current?.seek(currentTime + rewindTime)
+          }
         />
         <BottomControls
           animations={animations}

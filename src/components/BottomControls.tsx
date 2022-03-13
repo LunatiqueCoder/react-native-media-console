@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {NullControl, Seekbar, Timer, Title, Fullscreen} from './index';
 import {calculateTime} from '../utils';
-import {VideoAnimations} from '../types';
+import type {VideoAnimations} from '../types';
 import {styles} from './styles';
 
 interface BottomControlsProps {

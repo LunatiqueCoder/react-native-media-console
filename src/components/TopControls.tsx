@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {Back, NullControl, Volume} from './index';
 import {styles} from './styles';
-import {VideoAnimations} from '../types';
+import type {VideoAnimations} from '../types';
 
 interface TopControlProps {
   panHandlers: GestureResponderHandlers;

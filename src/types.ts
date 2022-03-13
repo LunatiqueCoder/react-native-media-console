@@ -1,5 +1,7 @@
-import {Animated, RefObject} from 'react-native';
-import VideoResource, {VideoProperties} from 'react-native-video';
+import type {RefObject} from 'react';
+import type {Animated} from 'react-native';
+import type VideoResource from 'react-native-video';
+import type {VideoProperties} from 'react-native-video';
 
 export interface VideoAnimations {
   bottomControl: {marginBottom: Animated.Value};

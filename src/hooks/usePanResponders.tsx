@@ -8,7 +8,7 @@ interface PanRespondersProps {
   loading: boolean;
   seeking: boolean;
   seekerPosition: number;
-  seek: (time: number, tolerance?: number) => void;
+  seek?: (time: number, tolerance?: number) => void;
   seekerWidth: number;
   clearControlTimeout: () => void;
   setVolumePosition: (position: number) => void;
@@ -40,7 +40,7 @@ export const usePanResponders = ({
     onPanResponderGrant: () => {
       clearControlTimeout();
     },
-    onPanResponderMove: (evt, gestureState) => {
+    onPanResponderMove: (_evt, gestureState) => {
       const position = volumeOffset + gestureState.dx;
       setVolumePosition(position);
     },
@@ -58,7 +58,7 @@ export const usePanResponders = ({
       const position = evt.nativeEvent.locationX;
       setSeekerPosition(position);
     },
-    onPanResponderMove: (evt, gestureState) => {
+    onPanResponderMove: (_evt, gestureState) => {
       const position = seekerOffset + gestureState.dx;
       setSeekerPosition(position);
       setSeeking(true);
@@ -74,7 +74,7 @@ export const usePanResponders = ({
       }
 
       setSeeking(false);
-      seek(time);
+      seek && seek(time);
     },
   });
 
@@ -82,7 +82,7 @@ export const usePanResponders = ({
     if (seeking) {
       const percent = seekerPosition / seekerWidth;
       const time = duration * percent;
-      seek(time);
+      seek && seek(time);
     }
   }, [duration, seek, seekerPosition, seekerWidth, seeking]);
 

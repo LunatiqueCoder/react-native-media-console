@@ -3,7 +3,7 @@
   "version": "1.0.7",
   "description": "A media player for the react-native-video component",
   "license": "MIT",
-  "main": "src",
+  "main": "lib/commonjs/index.js",
   "keywords": [
     "react-native",
     "react-native-video",
@@ -15,13 +15,12 @@
   },
   "homepage": "https://github.com/criszz77/react-native-media-console",
   "author": "Ovidiu Cristescu (https://github.com/criszz77)",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:criszz77/react-native-video-controller.git"
-  },
+  "repository": "git@github.com:criszz77/react-native-video-controller.git",
   "scripts": {
     "lint": "eslint ./src",
-    "test": "echo \"No test specified\" && exit 1"
+    "test": "echo \"No test specified\" && exit 1",
+    "prepare": "bob build",
+    "release": "release-it"
   },
   "dependencies": {
     "lodash": "^4.17.21"
@@ -32,12 +31,42 @@
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^3.0.1",
+    "@types/lodash": "^4.14.179",
+    "@types/react-native-video": "^5.0.12",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
     "eslint": "^7.14.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.3",
     "prettier": "^2.5.1",
+    "react": "^17.0.2",
+    "react-native": "^0.67.3",
+    "react-native-builder-bob": "^0.18.2",
+    "react-native-video": "^5.2.0",
+    "release-it": "^14.12.5",
     "typescript": "^4.6.2"
-  }
+  },
+  "react-native": "src/index.ts",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "files": [
+    "./src",
+    "./lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "react-native-builder-bob": {
+    "source": "./src",
+    "output": "./lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "./lib/"
+  ]
 }

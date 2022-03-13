@@ -1,7 +1,7 @@
 import React from 'react';
 import {Animated, Image} from 'react-native';
 import {Control, NullControl} from '../';
-import {VideoAnimations} from '../../types';
+import type {VideoAnimations} from '../../types';
 import {styles} from './styles';
 
 interface PlayPauseProps {

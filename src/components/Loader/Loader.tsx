@@ -1,7 +1,7 @@
 import React from 'react';
 import {Animated, View} from 'react-native';
 import {styles} from './styles';
-import {VideoAnimations} from '../../types';
+import type {VideoAnimations} from '../../types';
 
 interface LoaderProps {
   loading: boolean;
