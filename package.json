@@ -1,6 +1,6 @@
 {
   "name": "react-native-media-console",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A media player for the react-native-video component",
   "license": "MIT",
   "source": "src/index",
@@ -69,6 +69,18 @@
       "module",
       "typescript"
     ]
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    }
   },
   "eslintIgnore": [
     "node_modules/",
