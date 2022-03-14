@@ -36,13 +36,18 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     showDuration = false,
     showTimeRemaining = false,
     showHours = false,
+    onSeek,
     onError,
     onBack,
     onEnd,
-    onEnterFullscreen = () => {},
-    onExitFullscreen = () => {},
-    onHideControls = () => {},
-    onShowControls = () => {},
+    onEnterFullscreen = () => {
+    },
+    onExitFullscreen = () => {
+    },
+    onHideControls = () => {
+    },
+    onShowControls = () => {
+    },
     onPause,
     onPlay,
     onLoad,
@@ -112,6 +117,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
       setControlTimeout();
     }
     setCurrentTime(obj.seekTime);
+
+    if (typeof onSeek === 'function') {
+      onSeek(obj);
+    }
   };
 
   const _onEnd = () => {
@@ -315,7 +324,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   }, [currentTime, duration, seekerWidth, seeking, setSeekerPosition]);
 
   useEffect(() => {
-    if (showControls) {
+    if (showControls && !loading) {
       showControlAnimation();
       setControlTimeout();
       typeof events.onShowControls === 'function' && events.onShowControls();
@@ -325,7 +334,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
       typeof events.onHideControls === 'function' && events.onHideControls();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showControls]);
+  }, [showControls, loading]);
 
   useEffect(() => {
     const newVolume = volumePosition / volumeWidth;
