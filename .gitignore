@@ -23,11 +23,10 @@ DerivedData
 local.properties
 *.iml
 
-# node.js - including lock files, templates don't ship with lock files
+# node.js
 #
-package-lock.json
 yarn-error.log
-yarn.lock
+node_modules/
 
 # BUCK
 buck-out/
