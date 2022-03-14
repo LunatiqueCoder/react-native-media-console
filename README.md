@@ -1,5 +1,3 @@
-🚧 Work in progress 🚧
-
 # 🕹 react-native-media-console
 [![ci][1]][2]
 [![GitHub issues](https://img.shields.io/github/issues/criszz77/react-native-media-console)](https://github.com/criszz77/react-native-media-console/issues)
