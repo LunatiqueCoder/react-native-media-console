@@ -40,14 +40,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     onError,
     onBack,
     onEnd,
-    onEnterFullscreen = () => {
-    },
-    onExitFullscreen = () => {
-    },
-    onHideControls = () => {
-    },
-    onShowControls = () => {
-    },
+    onEnterFullscreen = () => {},
+    onExitFullscreen = () => {},
+    onHideControls = () => {},
+    onShowControls = () => {},
     onPause,
     onPlay,
     onLoad,
