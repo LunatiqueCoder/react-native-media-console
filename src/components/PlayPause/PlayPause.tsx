@@ -15,8 +15,8 @@ interface PlayPauseProps {
   onPressRewind: () => void;
 }
 
-const play = require('../../assets/img/play2.png');
-const pause = require('../../assets/img/pause2.png');
+const play = require('../../assets/img/play.png');
+const pause = require('../../assets/img/pause.png');
 const rewind = require('../../assets/img/rewind.png');
 const forward = require('../../assets/img/forward.png');
 

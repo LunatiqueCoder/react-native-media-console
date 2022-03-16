@@ -1,4 +1,4 @@
-import padStart from 'lodash/padStart';
+// import padStart from 'lodash/padStart';
 
 export const _onBack = (navigator: any) => {
   if (navigator && navigator.pop) {
@@ -52,19 +52,25 @@ const formatTime = ({
   time = Math.min(Math.max(time, 0), duration);
 
   if (!showHours) {
-    const formattedMinutes = padStart(Math.floor(time / 60).toFixed(0), 2, '0');
-    const formattedSeconds = padStart(Math.floor(time % 60).toFixed(0), 2, '0');
+    const formattedMinutes = Math.floor(time / 60)
+      .toFixed(0)
+      .padStart(2, '0');
+    const formattedSeconds = Math.floor(time % 60)
+      .toFixed(0)
+      .padStart(2, '0');
 
     return `${symbol}${formattedMinutes}:${formattedSeconds}`;
   }
 
-  const formattedHours = padStart(Math.floor(time / 3600).toFixed(0), 2, '0');
-  const formattedMinutes = padStart(
-    (Math.floor(time / 60) % 60).toFixed(0),
-    2,
-    '0',
-  );
-  const formattedSeconds = padStart(Math.floor(time % 60).toFixed(0), 2, '0');
+  const formattedHours = Math.floor(time / 3600)
+    .toFixed(0)
+    .padStart(2, '0');
+  const formattedMinutes = (Math.floor(time / 60) % 60)
+    .toFixed(0)
+    .padStart(2, 'a]');
+  const formattedSeconds = Math.floor(time % 60)
+    .toFixed(0)
+    .padStart(2, '0');
 
   return `${symbol}${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 };

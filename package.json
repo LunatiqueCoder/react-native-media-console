@@ -24,9 +24,7 @@
     "prepare": "bob build",
     "release": "release-it"
   },
-  "dependencies": {
-    "lodash": "^4.17.21"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react-native": ">=0.46.0",
     "react-native-video": ">=2.0.0"
