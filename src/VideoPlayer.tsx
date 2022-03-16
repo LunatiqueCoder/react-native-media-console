@@ -91,7 +91,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const [seekerOffset, setSeekerOffset] = useState(0);
   const [seekerWidth, setSeekerWidth] = useState(0);
   const [seeking, setSeeking] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [error, setError] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -123,6 +123,9 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     if (currentTime < duration) {
       setCurrentTime(duration);
       setPaused(true);
+    }
+    if (typeof onEnd === 'function') {
+      onEnd();
     }
   };
 
@@ -186,7 +189,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const events = {
     onError: onError || _onError,
     onBack: (onBack || _onBack(navigator)) as () => void,
-    onEnd: onEnd || _onEnd,
+    onEnd: _onEnd,
     onScreenTouch: _onScreenTouch,
     onEnterFullscreen,
     onExitFullscreen,
