@@ -20,7 +20,7 @@ export const Volume = ({
       <View style={[styles.fill, {width: volumeFillWidth}]} />
       <View style={[styles.track, {width: volumeTrackWidth}]} />
       <View
-        style={[styles.handle, {left: volumePosition}]}
+        style={[styles.handle, {left: volumePosition - 15}]}
         {...volumePanHandlers}>
         <Image
           style={styles.icon}

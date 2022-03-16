@@ -16,10 +16,6 @@ export const styles = StyleSheet.create({
     width: '10%',
     alignItems: 'center',
   },
-  play: {
-    aspectRatio: 0.5,
-  },
-  rewind: {
-    aspectRatio: 1,
-  },
+  play: {},
+  rewind: {},
 });
