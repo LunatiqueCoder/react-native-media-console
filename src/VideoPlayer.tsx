@@ -62,7 +62,6 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     disableSeekbar = false,
     disablePlayPause = false,
     navigator,
-    videoRef,
     rewindTime = 15,
   } = props;
 
@@ -95,6 +94,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [error, setError] = useState(false);
   const [duration, setDuration] = useState(0);
+
+  const videoRef = props.videoRef || _videoRef;
 
   const toggleFullscreen = () => setIsFullscreen((prevState) => !prevState);
   const toggleControls = () => setShowControls((prevState) => !prevState);
