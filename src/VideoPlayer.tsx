@@ -321,7 +321,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
       setSeekerPosition(position);
     }
-  }, [currentTime, duration, seekerWidth, seeking, setSeekerPosition]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentTime, duration, seekerWidth, setSeekerPosition]);
 
   useEffect(() => {
     if (showControls && !loading) {
