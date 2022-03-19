@@ -1,6 +1,6 @@
 {
   "name": "react-native-media-console",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "A media player for the react-native-video component",
   "license": "MIT",
   "source": "src/index",
