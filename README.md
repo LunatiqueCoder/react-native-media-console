@@ -9,8 +9,7 @@
 
 VideoPlayer for the React Native `<Video>` component at [react-native-video](https://github.com/react-native-community/react-native-video).
 
-![How it looks](https://user-images.githubusercontent.com/55203625/158028230-088b8ca4-e55f-46a9-8030-37e6299e7bf0.gif)
-
+[![demogif](https://user-images.githubusercontent.com/55203625/159137837-4e34a8be-1cbb-48ae-9d67-99ce4922e660.gif)](https://user-images.githubusercontent.com/55203625/159138065-cf3554b6-3f8b-4cab-bf94-0f3fc0b57333.gif)
 
 ## ⭐️ Features
 
