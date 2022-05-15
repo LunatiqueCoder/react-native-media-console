@@ -52,7 +52,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     controlTimeoutDelay = 15000,
     tapAnywhereToPause = false,
     videoStyle = {},
-    style = {},
+    containerStyle = {},
     seekColor = '',
     source,
     disableBack = false,
@@ -106,7 +106,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
   const styles = {
     videoStyle,
-    containerStyle: style,
+    containerStyle: containerStyle,
   };
 
   const _onSeek = (obj: OnSeekData) => {
@@ -387,55 +387,57 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           style={[_styles.player.video, styles.videoStyle]}
           source={source}
         />
-        <Error error={error} />
-        <Loader loading={loading} animations={animations} />
-        <TopControls
-          panHandlers={volumePanResponder.panHandlers}
-          animations={animations}
-          disableBack={disableBack}
-          disableVolume={disableVolume}
-          volumeFillWidth={volumeFillWidth}
-          volumeTrackWidth={volumeTrackWidth}
-          volumePosition={volumePosition}
-          onBack={events.onBack}
-          resetControlTimeout={resetControlTimeout}
-        />
-        <PlayPause
-          animations={animations}
-          disablePlayPause={disablePlayPause}
-          paused={_paused}
-          togglePlayPause={togglePlayPause}
-          resetControlTimeout={resetControlTimeout}
-          showControls={showControls}
-          onPressRewind={() =>
-            videoRef?.current?.seek(currentTime - rewindTime)
-          }
-          onPressForward={() =>
-            videoRef?.current?.seek(currentTime + rewindTime)
-          }
-        />
-        <BottomControls
-          animations={animations}
-          panHandlers={seekPanResponder.panHandlers}
-          disableTimer={disableTimer}
-          disableSeekbar={disableSeekbar}
-          showHours={showHours}
-          showDuration={showDuration}
-          paused={_paused}
-          showTimeRemaining={_showTimeRemaining}
-          currentTime={currentTime}
-          duration={duration}
-          seekColor={seekColor}
-          title={title}
-          toggleTimer={toggleTimer}
-          resetControlTimeout={resetControlTimeout}
-          seekerFillWidth={seekerFillWidth}
-          seekerPosition={seekerPosition}
-          setSeekerWidth={setSeekerWidth}
-          isFullscreen={isFullscreen}
-          disableFullscreen={disableFullscreen}
-          toggleFullscreen={toggleFullscreen}
-        />
+        loading ? <Loader animations={animations} />:
+        <>
+          <Error error={error} />
+          <TopControls
+            panHandlers={volumePanResponder.panHandlers}
+            animations={animations}
+            disableBack={disableBack}
+            disableVolume={disableVolume}
+            volumeFillWidth={volumeFillWidth}
+            volumeTrackWidth={volumeTrackWidth}
+            volumePosition={volumePosition}
+            onBack={events.onBack}
+            resetControlTimeout={resetControlTimeout}
+          />
+          <PlayPause
+            animations={animations}
+            disablePlayPause={disablePlayPause}
+            paused={_paused}
+            togglePlayPause={togglePlayPause}
+            resetControlTimeout={resetControlTimeout}
+            showControls={showControls}
+            onPressRewind={() =>
+              videoRef?.current?.seek(currentTime - rewindTime)
+            }
+            onPressForward={() =>
+              videoRef?.current?.seek(currentTime + rewindTime)
+            }
+          />
+          <BottomControls
+            animations={animations}
+            panHandlers={seekPanResponder.panHandlers}
+            disableTimer={disableTimer}
+            disableSeekbar={disableSeekbar}
+            showHours={showHours}
+            showDuration={showDuration}
+            paused={_paused}
+            showTimeRemaining={_showTimeRemaining}
+            currentTime={currentTime}
+            duration={duration}
+            seekColor={seekColor}
+            title={title}
+            toggleTimer={toggleTimer}
+            resetControlTimeout={resetControlTimeout}
+            seekerFillWidth={seekerFillWidth}
+            seekerPosition={seekerPosition}
+            setSeekerWidth={setSeekerWidth}
+            isFullscreen={isFullscreen}
+            disableFullscreen={disableFullscreen}
+            toggleFullscreen={toggleFullscreen}
+          />
+        </>
       </View>
     </TouchableWithoutFeedback>
   );
