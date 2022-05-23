@@ -276,6 +276,12 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   });
 
   useEffect(() => {
+    if (currentTime >= duration) {
+      videoRef?.current?.seek(0);
+    }
+  }, [currentTime, duration, videoRef]);
+
+  useEffect(() => {
     if (toggleResizeModeOnFullscreen) {
       setResizeMode(_isFullscreen ? 'cover' : 'contain');
     }
@@ -306,9 +312,6 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     if (_paused) {
       typeof events.onPause === 'function' && events.onPause();
     } else {
-      if (currentTime >= duration) {
-        videoRef?.current?.seek(0);
-      }
       typeof events.onPlay === 'function' && events.onPlay();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
