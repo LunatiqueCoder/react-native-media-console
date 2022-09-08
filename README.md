@@ -38,8 +38,6 @@ If you are using TypeScript, you will also need to run `yarn add @types/react-na
 Then follow installation instructions
 from [react-native-video](https://github.com/react-native-video/react-native-video).
 
-We're actively supporting only RN < 45.
-
 ## 🛠 Usage
 
 The `<VideoPlayer>` component follows the API of the `<Video>` component
