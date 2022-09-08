@@ -67,7 +67,7 @@ const formatTime = ({
     .padStart(2, '0');
   const formattedMinutes = (Math.floor(time / 60) % 60)
     .toFixed(0)
-    .padStart(2, 'a]');
+    .padStart(2, '0');
   const formattedSeconds = Math.floor(time % 60)
     .toFixed(0)
     .padStart(2, '0');
