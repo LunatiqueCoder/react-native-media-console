@@ -125,7 +125,10 @@ These are the various controls that you can turn on/off as needed. All of these 
 
 ## 🪲 Debugging
 
+### Android:
+
 - Seek doesn't work correctly on Android: https://github.com/react-native-video/react-native-video/issues/2230#issuecomment-892982288
+- Could not find com.yqritc:android-scalablevideoview:1.0.4: https://github.com/react-native-video/react-native-video/issues/2454#issuecomment-913709132
 
 [1]: https://github.com/criszz77/react-native-media-console/workflows/ci/badge.svg
 [2]: https://github.com/criszz77/react-native-media-console/actions
