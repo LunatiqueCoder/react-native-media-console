@@ -1,5 +1,5 @@
 import type {RefObject} from 'react';
-import type {Animated, ViewStyle} from 'react-native';
+import type {Animated, ViewStyle,StyleProp} from 'react-native';
 import type VideoResource from 'react-native-video';
 import type {VideoProperties} from 'react-native-video';
 
@@ -140,7 +140,7 @@ export interface VideoPlayerProps extends VideoProperties {
    * Container styles
    *
    */
-   containerStyle?: StyleProps<ViewStyle>;
+   containerStyle?: StyleProp<ViewStyle>;
 
   /**
    * Fill/handle colour of the seekbar
