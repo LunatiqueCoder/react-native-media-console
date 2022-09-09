@@ -134,13 +134,13 @@ export interface VideoPlayerProps extends VideoProperties {
    * StyleSheet passed to the <Video /> component
    *
    */
-  videoStyle?: ViewStyle;
+   videoStyle?: StyleProp<ViewStyle>;
 
   /**
    * Container styles
    *
    */
-  containerStyle?: ViewStyle;
+   containerStyle?: StyleProps<ViewStyle>;
 
   /**
    * Fill/handle colour of the seekbar
