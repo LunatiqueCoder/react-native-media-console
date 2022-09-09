@@ -1,5 +1,5 @@
 import React from 'react';
-import {Animated, Image} from 'react-native';
+import {Animated, Image, Platform} from 'react-native';
 import {Control, NullControl} from '../';
 import type {VideoAnimations} from '../../types';
 import {styles} from './styles';
@@ -14,6 +14,8 @@ interface PlayPauseProps {
   onPressForward: () => void;
   onPressRewind: () => void;
 }
+
+const tvProps = {hasTVPreferredFocus: true};
 
 const play = require('../../assets/img/play.png');
 const pause = require('../../assets/img/pause.png');
@@ -53,7 +55,8 @@ export const PlayPause = ({
       <Control
         callback={togglePlayPause}
         resetControlTimeout={resetControlTimeout}
-        style={styles.playContainer}>
+        style={styles.playContainer}
+        {...(Platform.isTV ? tvProps : {})}>
         <Image source={source} resizeMode={'contain'} style={styles.play} />
       </Control>
       <Control

@@ -1,15 +1,20 @@
 import React, {ReactNode} from 'react';
-import {TouchableHighlight} from 'react-native';
+import {TouchableHighlight, ViewProps} from 'react-native';
 import {styles} from './styles';
 
-interface ControlProps {
+interface ControlProps extends ViewProps {
   children: ReactNode;
   callback?: () => void;
   style?: any;
   resetControlTimeout?: () => void;
 }
 
-export const Control = ({children, callback, style = {}}: ControlProps) => {
+export const Control = ({
+  children,
+  callback,
+  style = {},
+  ...props
+}: ControlProps) => {
   return (
     <TouchableHighlight
       underlayColor="transparent"
@@ -17,7 +22,8 @@ export const Control = ({children, callback, style = {}}: ControlProps) => {
       onPress={() => {
         callback && callback();
       }}
-      style={[styles.control, style]}>
+      style={[styles.control, style]}
+      {...props}>
       {children}
     </TouchableHighlight>
   );
