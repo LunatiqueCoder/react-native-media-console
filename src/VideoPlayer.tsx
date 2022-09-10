@@ -13,7 +13,7 @@ import {
   BottomControls,
   PlayPause,
 } from './components';
-import {PlatformSupport} from './components/PlatformSupport';
+import {PlatformSupport} from './OSSupport';
 import {_onBack} from './utils';
 import {_styles} from './styles';
 import type {VideoPlayerProps} from './types';
