@@ -1,5 +1,5 @@
-import React, {useCallback, useState, useEffect, useRef} from 'react';
-import {View} from 'react-native';
+import React, {useCallback, useState, useEffect, useRef, useMemo} from 'react';
+import {View, Platform} from 'react-native';
 import Video, {
   OnLoadData,
   OnProgressData,
@@ -97,6 +97,11 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const [duration, setDuration] = useState(0);
 
   const videoRef = props.videoRef || _videoRef;
+
+  const disableControlsWhileHiddenForTV = useMemo(
+    () => Platform.isTV && !showControls,
+    [showControls],
+  );
 
   const toggleFullscreen = () => setIsFullscreen((prevState) => !prevState);
   const toggleControls = () => setShowControls((prevState) => !prevState);
@@ -407,6 +412,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               volumePosition={volumePosition}
               onBack={events.onBack}
               resetControlTimeout={resetControlTimeout}
+              disableControlsWhileHiddenForTV={disableControlsWhileHiddenForTV}
             />
             <PlayPause
               animations={animations}
@@ -421,6 +427,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               onPressForward={() =>
                 videoRef?.current?.seek(currentTime + rewindTime)
               }
+              disableControlsWhileHiddenForTV={disableControlsWhileHiddenForTV}
             />
             <BottomControls
               animations={animations}
@@ -443,6 +450,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               isFullscreen={isFullscreen}
               disableFullscreen={disableFullscreen}
               toggleFullscreen={toggleFullscreen}
+              disableControlsWhileHiddenForTV={disableControlsWhileHiddenForTV}
             />
           </>
         )}

@@ -5,11 +5,12 @@ import {Control} from '../Control';
 interface BackProps {
   onBack: () => void;
   resetControlTimeout?: () => void;
+  disableControlsWhileHiddenForTV: boolean;
 }
 
-export const Back = ({onBack}: BackProps) => {
+export const Back = ({onBack, disableControlsWhileHiddenForTV}: BackProps) => {
   return (
-    <Control callback={onBack}>
+    <Control callback={onBack} disabled={disableControlsWhileHiddenForTV}>
       <Image source={require('../../assets/img/back.png')} />
     </Control>
   );

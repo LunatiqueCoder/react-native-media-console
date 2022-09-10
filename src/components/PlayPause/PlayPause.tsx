@@ -1,12 +1,15 @@
-import React from 'react';
-import {Animated, Image, Platform} from 'react-native';
+import React, {createRef} from 'react';
+import {Animated, Image, Platform, TouchableHighlight} from 'react-native';
 import {Control} from '../Control';
 import {NullControl} from '../NullControl';
 import type {VideoAnimations} from '../../types';
 import {styles} from './styles';
 
+export const playPauseRef = createRef<TouchableHighlight>();
+
 interface PlayPauseProps {
   animations: VideoAnimations;
+  disableControlsWhileHiddenForTV: boolean;
   disablePlayPause: boolean;
   paused: boolean;
   togglePlayPause: () => void;
@@ -16,14 +19,13 @@ interface PlayPauseProps {
   onPressRewind: () => void;
 }
 
-const tvProps = {hasTVPreferredFocus: true};
-
 const play = require('../../assets/img/play.png');
 const pause = require('../../assets/img/pause.png');
 const rewind = require('../../assets/img/rewind.png');
 const forward = require('../../assets/img/forward.png');
 
 export const PlayPause = ({
+  disableControlsWhileHiddenForTV,
   animations,
   disablePlayPause,
   paused,
@@ -49,18 +51,22 @@ export const PlayPause = ({
       pointerEvents={'box-none'}
       style={[styles.container, animatedStyles]}>
       <Control
+        disabled={disableControlsWhileHiddenForTV}
         callback={onPressRewind}
         resetControlTimeout={resetControlTimeout}>
         <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
       </Control>
       <Control
+        disabled={disableControlsWhileHiddenForTV}
         callback={togglePlayPause}
         resetControlTimeout={resetControlTimeout}
         style={styles.playContainer}
-        {...(Platform.isTV ? tvProps : {})}>
+        controlRef={playPauseRef}
+        {...(Platform.isTV ? {hasTVPreferredFocus: showControls} : {})}>
         <Image source={source} resizeMode={'contain'} style={styles.play} />
       </Control>
       <Control
+        disabled={disableControlsWhileHiddenForTV}
         callback={onPressForward}
         resetControlTimeout={resetControlTimeout}>
         <Image source={forward} resizeMode={'contain'} style={styles.rewind} />

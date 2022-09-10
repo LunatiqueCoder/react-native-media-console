@@ -14,6 +14,7 @@ import {styles} from './styles';
 import type {VideoAnimations} from '../types';
 
 interface TopControlProps {
+  disableControlsWhileHiddenForTV: boolean;
   panHandlers: GestureResponderHandlers;
   animations: VideoAnimations;
   disableBack: boolean;
@@ -27,6 +28,7 @@ interface TopControlProps {
 
 export const TopControls = memo(
   ({
+    disableControlsWhileHiddenForTV,
     panHandlers,
     animations,
     disableBack,
@@ -40,7 +42,11 @@ export const TopControls = memo(
     const backControl = disableBack ? (
       <NullControl />
     ) : (
-      <Back onBack={onBack} resetControlTimeout={resetControlTimeout} />
+      <Back
+        disableControlsWhileHiddenForTV={disableControlsWhileHiddenForTV}
+        onBack={onBack}
+        resetControlTimeout={resetControlTimeout}
+      />
     );
 
     const volumeControl = disableVolume ? (
