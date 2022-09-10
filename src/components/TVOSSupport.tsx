@@ -1,4 +1,3 @@
-import 'react-native/tvos-types.d';
 import {useTVEventHandler} from 'react-native';
 
 interface OSSupport {
