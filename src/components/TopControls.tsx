@@ -7,7 +7,9 @@ import {
   View,
   GestureResponderHandlers,
 } from 'react-native';
-import {Back, NullControl, Volume} from './index';
+import {Volume} from './Volume';
+import {Back} from './Back';
+import {NullControl} from './NullControl';
 import {styles} from './styles';
 import type {VideoAnimations} from '../types';
 

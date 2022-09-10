@@ -1,6 +1,7 @@
 import React from 'react';
 import {Animated, Image, Platform} from 'react-native';
-import {Control, NullControl} from '../';
+import {Control} from '../Control';
+import {NullControl} from '../NullControl';
 import type {VideoAnimations} from '../../types';
 import {styles} from './styles';
 

@@ -1,6 +1,6 @@
+import React from 'react';
 import {Text, View} from 'react-native';
 import {styles} from './styles';
-import React from 'react';
 
 interface TitleProps {
   title: string;

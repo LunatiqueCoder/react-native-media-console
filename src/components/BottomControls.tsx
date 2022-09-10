@@ -6,7 +6,11 @@ import {
   StyleSheet,
   GestureResponderHandlers,
 } from 'react-native';
-import {NullControl, Seekbar, Timer, Title, Fullscreen} from './index';
+import {Timer} from './Timer';
+import {Title} from './Title';
+import {NullControl} from './NullControl';
+import {Fullscreen} from './Fullscreen';
+import {Seekbar} from './Seekbar';
 import {calculateTime} from '../utils';
 import type {VideoAnimations} from '../types';
 import {styles} from './styles';
