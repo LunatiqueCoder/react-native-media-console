@@ -16,7 +16,7 @@ import type {VideoAnimations} from '../types';
 import {styles} from './styles';
 
 interface BottomControlsProps {
-  disableControlsWhileHiddenForTV: boolean;
+  showControls: boolean;
   animations: VideoAnimations;
   panHandlers: GestureResponderHandlers;
   disableTimer: boolean;
@@ -40,7 +40,7 @@ interface BottomControlsProps {
 }
 
 export const BottomControls = ({
-  disableControlsWhileHiddenForTV,
+  showControls,
   animations,
   panHandlers,
   disableSeekbar,
@@ -67,7 +67,7 @@ export const BottomControls = ({
     <Timer
       resetControlTimeout={resetControlTimeout}
       toggleTimer={toggleTimer}
-      disableControlsWhileHiddenForTV={disableControlsWhileHiddenForTV}>
+      showControls={showControls}>
       {calculateTime({
         showDuration,
         showHours,
@@ -97,7 +97,7 @@ export const BottomControls = ({
       isFullscreen={isFullscreen}
       toggleFullscreen={toggleFullscreen}
       resetControlTimeout={resetControlTimeout}
-      disableControlsWhileHiddenForTV={disableControlsWhileHiddenForTV}
+      showControls={showControls}
     />
   );
 

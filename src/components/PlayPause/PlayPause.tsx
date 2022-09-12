@@ -9,7 +9,6 @@ export const playPauseRef = createRef<TouchableHighlight>();
 
 interface PlayPauseProps {
   animations: VideoAnimations;
-  disableControlsWhileHiddenForTV: boolean;
   disablePlayPause: boolean;
   paused: boolean;
   togglePlayPause: () => void;
@@ -25,7 +24,6 @@ const rewind = require('../../assets/img/rewind.png');
 const forward = require('../../assets/img/forward.png');
 
 export const PlayPause = ({
-  disableControlsWhileHiddenForTV,
   animations,
   disablePlayPause,
   paused,
@@ -51,13 +49,13 @@ export const PlayPause = ({
       pointerEvents={'box-none'}
       style={[styles.container, animatedStyles]}>
       <Control
-        disabled={disableControlsWhileHiddenForTV}
+        disabled={!showControls}
         callback={onPressRewind}
         resetControlTimeout={resetControlTimeout}>
         <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
       </Control>
       <Control
-        disabled={disableControlsWhileHiddenForTV}
+        disabled={!showControls}
         callback={togglePlayPause}
         resetControlTimeout={resetControlTimeout}
         style={styles.playContainer}
@@ -66,7 +64,7 @@ export const PlayPause = ({
         <Image source={source} resizeMode={'contain'} style={styles.play} />
       </Control>
       <Control
-        disabled={disableControlsWhileHiddenForTV}
+        disabled={!showControls}
         callback={onPressForward}
         resetControlTimeout={resetControlTimeout}>
         <Image source={forward} resizeMode={'contain'} style={styles.rewind} />

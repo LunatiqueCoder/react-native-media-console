@@ -7,21 +7,21 @@ interface TimerProps {
   toggleTimer: () => void;
   resetControlTimeout: () => void;
   children: ReactNode;
-  disableControlsWhileHiddenForTV: boolean;
+  showControls: boolean;
 }
 
 export const Timer = ({
   children,
   toggleTimer,
   resetControlTimeout,
-  disableControlsWhileHiddenForTV,
+  showControls,
 }: TimerProps) => {
   return (
     <Control
       callback={toggleTimer}
       resetControlTimeout={resetControlTimeout}
       style={styles.timer}
-      disabled={disableControlsWhileHiddenForTV}>
+      disabled={!showControls}>
       <Text style={styles.timerText}>{children}</Text>
     </Control>
   );
