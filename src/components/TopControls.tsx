@@ -7,11 +7,14 @@ import {
   View,
   GestureResponderHandlers,
 } from 'react-native';
-import {Back, NullControl, Volume} from './index';
+import {Volume} from './Volume';
+import {Back} from './Back';
+import {NullControl} from './NullControl';
 import {styles} from './styles';
 import type {VideoAnimations} from '../types';
 
 interface TopControlProps {
+  showControls: boolean;
   panHandlers: GestureResponderHandlers;
   animations: VideoAnimations;
   disableBack: boolean;
@@ -25,6 +28,7 @@ interface TopControlProps {
 
 export const TopControls = memo(
   ({
+    showControls,
     panHandlers,
     animations,
     disableBack,
@@ -38,7 +42,11 @@ export const TopControls = memo(
     const backControl = disableBack ? (
       <NullControl />
     ) : (
-      <Back onBack={onBack} resetControlTimeout={resetControlTimeout} />
+      <Back
+        showControls={showControls}
+        onBack={onBack}
+        resetControlTimeout={resetControlTimeout}
+      />
     );
 
     const volumeControl = disableVolume ? (

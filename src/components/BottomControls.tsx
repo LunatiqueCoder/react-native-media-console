@@ -6,12 +6,17 @@ import {
   StyleSheet,
   GestureResponderHandlers,
 } from 'react-native';
-import {NullControl, Seekbar, Timer, Title, Fullscreen} from './index';
+import {Timer} from './Timer';
+import {Title} from './Title';
+import {NullControl} from './NullControl';
+import {Fullscreen} from './Fullscreen';
+import {Seekbar} from './Seekbar';
 import {calculateTime} from '../utils';
 import type {VideoAnimations} from '../types';
 import {styles} from './styles';
 
 interface BottomControlsProps {
+  showControls: boolean;
   animations: VideoAnimations;
   panHandlers: GestureResponderHandlers;
   disableTimer: boolean;
@@ -35,6 +40,7 @@ interface BottomControlsProps {
 }
 
 export const BottomControls = ({
+  showControls,
   animations,
   panHandlers,
   disableSeekbar,
@@ -58,7 +64,10 @@ export const BottomControls = ({
   const timerControl = disableTimer ? (
     <NullControl />
   ) : (
-    <Timer resetControlTimeout={resetControlTimeout} toggleTimer={toggleTimer}>
+    <Timer
+      resetControlTimeout={resetControlTimeout}
+      toggleTimer={toggleTimer}
+      showControls={showControls}>
       {calculateTime({
         showDuration,
         showHours,
@@ -88,6 +97,7 @@ export const BottomControls = ({
       isFullscreen={isFullscreen}
       toggleFullscreen={toggleFullscreen}
       resetControlTimeout={resetControlTimeout}
+      showControls={showControls}
     />
   );
 

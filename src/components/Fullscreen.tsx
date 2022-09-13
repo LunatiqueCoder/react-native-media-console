@@ -6,12 +6,14 @@ interface FullscreenProps {
   isFullscreen: boolean;
   toggleFullscreen: () => void;
   resetControlTimeout: () => void;
+  showControls: boolean;
 }
 
 export const Fullscreen = ({
   isFullscreen,
   toggleFullscreen,
   resetControlTimeout,
+  showControls,
 }: FullscreenProps) => {
   let source = isFullscreen
     ? require('../assets/img/shrink.png')
@@ -20,7 +22,8 @@ export const Fullscreen = ({
     <Control
       callback={toggleFullscreen}
       resetControlTimeout={resetControlTimeout}
-      style={styles.fullscreen}>
+      style={styles.fullscreen}
+      disabled={!showControls}>
       <Image source={source} />
     </Control>
   );

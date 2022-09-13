@@ -1,8 +1,11 @@
-import React from 'react';
-import {Animated, Image} from 'react-native';
-import {Control, NullControl} from '../';
+import React, {createRef} from 'react';
+import {Animated, Image, Platform, TouchableHighlight} from 'react-native';
+import {Control} from '../Control';
+import {NullControl} from '../NullControl';
 import type {VideoAnimations} from '../../types';
 import {styles} from './styles';
+
+export const playPauseRef = createRef<TouchableHighlight>();
 
 interface PlayPauseProps {
   animations: VideoAnimations;
@@ -46,17 +49,22 @@ export const PlayPause = ({
       pointerEvents={'box-none'}
       style={[styles.container, animatedStyles]}>
       <Control
+        disabled={!showControls}
         callback={onPressRewind}
         resetControlTimeout={resetControlTimeout}>
         <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
       </Control>
       <Control
+        disabled={!showControls}
         callback={togglePlayPause}
         resetControlTimeout={resetControlTimeout}
-        style={styles.playContainer}>
+        style={styles.playContainer}
+        controlRef={playPauseRef}
+        {...(Platform.isTV ? {hasTVPreferredFocus: showControls} : {})}>
         <Image source={source} resizeMode={'contain'} style={styles.play} />
       </Control>
       <Control
+        disabled={!showControls}
         callback={onPressForward}
         resetControlTimeout={resetControlTimeout}>
         <Image source={forward} resizeMode={'contain'} style={styles.rewind} />

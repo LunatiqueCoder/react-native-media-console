@@ -1,4 +1,6 @@
 # 🕹 react-native-media-console
+[<img src="https://img.shields.io/badge/-React Native-282C34?style=flat-square&logo=react&logoColor=61DAFB"/>](https://reactnative.dev/)
+[![platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20tvOS-brightgreen.svg?style=flat-square&colorB=191A17)](https://github.com/react-native-tvos/react-native-tvos)
 [![ci][1]][2]
 [![GitHub issues](https://img.shields.io/github/issues/criszz77/react-native-media-console)](https://github.com/criszz77/react-native-media-console/issues)
 [![GitHub](https://img.shields.io/github/license/criszz77/react-native-media-console)](https://github.com/criszz77/react-native-media-console/blob/master/LICENSE)
@@ -7,7 +9,7 @@
 [![Maintenance](https://img.shields.io/maintenance/yes/2022)](https://github.com/criszz77/react-native-media-console/graphs/contributors)
 [![npm](https://img.shields.io/npm/v/react-native-media-console)](https://www.npmjs.com/package/react-native-media-console)
 
-VideoPlayer for the React Native `<Video>` component at [react-native-video](https://github.com/react-native-community/react-native-video).
+VideoPlayer for the React Native `<Video/>` component at [react-native-video](https://github.com/react-native-community/react-native-video).
 
 [![demogif](https://user-images.githubusercontent.com/55203625/159137837-4e34a8be-1cbb-48ae-9d67-99ce4922e660.gif)](https://user-images.githubusercontent.com/55203625/159138065-cf3554b6-3f8b-4cab-bf94-0f3fc0b57333.gif)
 

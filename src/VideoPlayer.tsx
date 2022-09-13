@@ -1,5 +1,5 @@
 import React, {useCallback, useState, useEffect, useRef} from 'react';
-import {TouchableWithoutFeedback, View} from 'react-native';
+import {View} from 'react-native';
 import Video, {
   OnLoadData,
   OnProgressData,
@@ -13,6 +13,7 @@ import {
   BottomControls,
   PlayPause,
 } from './components';
+import {PlatformSupport} from './OSSupport';
 import {_onBack} from './utils';
 import {_styles} from './styles';
 import type {VideoPlayerProps} from './types';
@@ -374,9 +375,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   }, []);
 
   return (
-    <TouchableWithoutFeedback
-      onPress={events.onScreenTouch}
-      style={[_styles.player.container, styles.containerStyle]}>
+    <PlatformSupport
+      showControls={showControls}
+      containerStyles={styles.containerStyle}
+      onScreenTouch={events.onScreenTouch}>
       <View style={[_styles.player.container, styles.containerStyle]}>
         <Video
           {...props}
@@ -405,6 +407,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               volumePosition={volumePosition}
               onBack={events.onBack}
               resetControlTimeout={resetControlTimeout}
+              showControls={showControls}
             />
             <PlayPause
               animations={animations}
@@ -441,10 +444,11 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               isFullscreen={isFullscreen}
               disableFullscreen={disableFullscreen}
               toggleFullscreen={toggleFullscreen}
+              showControls={showControls}
             />
           </>
         )}
       </View>
-    </TouchableWithoutFeedback>
+    </PlatformSupport>
   );
 };

@@ -7,18 +7,21 @@ interface TimerProps {
   toggleTimer: () => void;
   resetControlTimeout: () => void;
   children: ReactNode;
+  showControls: boolean;
 }
 
 export const Timer = ({
   children,
   toggleTimer,
   resetControlTimeout,
+  showControls,
 }: TimerProps) => {
   return (
     <Control
       callback={toggleTimer}
       resetControlTimeout={resetControlTimeout}
-      style={styles.timer}>
+      style={styles.timer}
+      disabled={!showControls}>
       <Text style={styles.timerText}>{children}</Text>
     </Control>
   );
