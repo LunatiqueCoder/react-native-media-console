@@ -1,13 +1,11 @@
 # 🕹 react-native-media-console
-[<img src="https://img.shields.io/badge/-React Native-282C34?style=flat-square&logo=react&logoColor=61DAFB"/>](https://reactnative.dev/)
 [![platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20tvOS-brightgreen.svg?style=flat-square&colorB=191A17)](https://github.com/react-native-tvos/react-native-tvos)
-[![ci][1]][2]
 [![GitHub issues](https://img.shields.io/github/issues/criszz77/react-native-media-console)](https://github.com/criszz77/react-native-media-console/issues)
 [![GitHub](https://img.shields.io/github/license/criszz77/react-native-media-console)](https://github.com/criszz77/react-native-media-console/blob/master/LICENSE)
 [![GitHub top language](https://img.shields.io/github/languages/top/criszz77/react-native-media-console)](https://github.com/criszz77/react-native-media-console/search?l=typescript)
-[![GitHub version](https://badge.fury.io/gh/criszz77%2Freact-native-media-console.svg)](https://badge.fury.io/gh/criszz77%2Freact-native-media-console)
 [![Maintenance](https://img.shields.io/maintenance/yes/2022)](https://github.com/criszz77/react-native-media-console/graphs/contributors)
 [![npm](https://img.shields.io/npm/v/react-native-media-console)](https://www.npmjs.com/package/react-native-media-console)
+<!-- [![ci][1]][2] -->
 
 VideoPlayer for the React Native `<Video/>` component at [react-native-video](https://github.com/react-native-community/react-native-video).
 
