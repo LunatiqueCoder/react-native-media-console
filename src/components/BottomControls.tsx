@@ -2,10 +2,11 @@ import React, {Dispatch, SetStateAction} from 'react';
 import {
   Animated,
   ImageBackground,
-  SafeAreaView,
+  View,
   StyleSheet,
   GestureResponderHandlers,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {Timer} from './Timer';
 import {Title} from './Title';
 import {NullControl} from './NullControl';
@@ -114,12 +115,12 @@ export const BottomControls = ({
         source={require('../assets/img/bottom-vignette.png')}
         style={[styles.column]}
         imageStyle={[styles.vignette]}>
-        <SafeAreaView style={[styles.row, _styles.bottomControlGroup]}>
+        <View style={[styles.row, _styles.bottomControlGroup]}>
           {timerControl}
           <Title title={title} />
           {fullscreenControl}
-        </SafeAreaView>
-        <SafeAreaView style={styles.seekBarContainer}>
+        </View>
+        <SafeAreaView style={styles.seekBarContainer} edges={['bottom']}>
           {seekbarControl}
         </SafeAreaView>
       </ImageBackground>
