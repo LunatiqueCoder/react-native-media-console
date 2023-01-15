@@ -135,6 +135,11 @@ These are the various controls that you can turn on/off as needed. All of these 
 > 📃 This project is released under the [MIT License](LICENSE). \
 > 💻 By contributing, you agree that your contributions will be licensed under its MIT License.
 
+
+## 🏆 Sponsors
+
+[<img style="max-width:15%;width:15%" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.png" alt="JetBrains Black Box Logo logo.">][18]
+
 [1]: https://github.com/criszz77/react-native-media-console/workflows/ci/badge.svg
 [2]: https://github.com/criszz77/react-native-media-console/actions
 [3]: https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20tvOS-brightgreen.svg?style=flat-square&colorB=191A17
@@ -152,3 +157,5 @@ These are the various controls that you can turn on/off as needed. All of these 
 [15]: https://github.com/react-native-video/react-native-video
 [16]: https://user-images.githubusercontent.com/55203625/159137837-4e34a8be-1cbb-48ae-9d67-99ce4922e660.gif
 [17]: (https://user-images.githubusercontent.com/55203625/159138065-cf3554b6-3f8b-4cab-bf94-0f3fc0b57333.gif
+[18]: https://www.jetbrains.com/
+
