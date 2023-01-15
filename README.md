@@ -90,7 +90,7 @@ In addition, the `<VideoPlayer />` also takes these props:
 | showHours                    | Boolean      | false | If true, convert time to hours in the Player                                                                                                                    |
 | tapAnywhereToPause           | Boolean      | false | If true, single tapping anywhere on the video (other than a control) toggles between playing and paused.                                                        |
 | toggleResizeModeOnFullscreen | Boolean      | false | If true, clicking the fullscreen button will toggle the `<Video />` component between cover/contain, set to false if you want to customize fullscreen behaviour |
-| containerStyles              | ViewStyle    |       | StyleSheet passed to the container of the <Video /> component                                                                                                   |
+| containerStyle               | ViewStyle    |       | StyleSheet passed to the container of the <Video /> component                                                                                                   |
 | videoStyle                   | ViewStyle    |       | StyleSheet passed to the <Video /> component                                                                                                                    |
 | videoRef                     | Video        | undefined  | Pass ref to the `<Video/>` component                                                                                                                            |
 
