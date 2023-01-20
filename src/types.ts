@@ -56,7 +56,7 @@ export interface VideoPlayerProps extends VideoProperties {
   showOnStart?: boolean;
 
   /**
-   * Show or hide the controls on end
+   * Show or hide the controls on end of video
    *
    * @default false
    */

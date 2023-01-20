@@ -126,8 +126,12 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     if (currentTime < duration) {
       setCurrentTime(duration);
       setPaused(true);
-      if(showOnEnd) setShowControls(true)
+
+      if (showOnEnd) {
+        setShowControls(true);
+      }
     }
+
     if (typeof onEnd === 'function') {
       onEnd();
     }
