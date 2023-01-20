@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/criszz77/react-native-media-console",
   "author": "Ovidiu Cristescu (https://github.com/criszz77)",
-  "repository": "git@github.com:criszz77/react-native-video-controller.git",
+  "repository": "git@github.com:criszz77/react-native-media-console.git",
   "scripts": {
     "lint": "eslint ./src",
     "test": "echo \"No test specified\" && exit 1",
