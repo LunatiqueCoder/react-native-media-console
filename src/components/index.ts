@@ -11,3 +11,4 @@ export * from './NullControl';
 export * from './BottomControls';
 export * from './TopControls';
 export * from './PlayPause';
+export * from './Overlay';
