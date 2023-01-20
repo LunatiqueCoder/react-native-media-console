@@ -12,6 +12,7 @@ import {
   TopControls,
   BottomControls,
   PlayPause,
+  Overlay
 } from './components';
 import {PlatformSupport} from './OSSupport';
 import {_onBack} from './utils';
@@ -399,6 +400,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
         ) : (
           <>
             <Error error={error} />
+            <Overlay animations={animations} />
             <TopControls
               panHandlers={volumePanResponder.panHandlers}
               animations={animations}
