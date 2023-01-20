@@ -30,6 +30,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     resizeMode = 'contain',
     isFullscreen = false,
     showOnStart = false,
+    showOnEnd = false,
     paused = false,
     muted = false,
     volume = 1,
@@ -126,7 +127,12 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     if (currentTime < duration) {
       setCurrentTime(duration);
       setPaused(true);
+
+      if (showOnEnd) {
+        setShowControls(true);
+      }
     }
+
     if (typeof onEnd === 'function') {
       onEnd();
     }
