@@ -12,7 +12,7 @@ import {
   TopControls,
   BottomControls,
   PlayPause,
-  Overlay
+  Overlay,
 } from './components';
 import {PlatformSupport} from './OSSupport';
 import {_onBack} from './utils';
