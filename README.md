@@ -137,9 +137,16 @@ These are the various controls that you can turn on/off as needed. All of these 
 > 💻 By contributing, you agree that your contributions will be licensed under its MIT License.
 
 
+## Used in production by
+
+
+
 ## 🏆 Sponsors
 
-[<img style="max-width:15%;width:15%" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.png" alt="JetBrains Black Box Logo logo.">][18]
+|   |   |
+|---|---|
+|[<img style="max-width:100px;width:100px" src="https://user-images.githubusercontent.com/55203625/213779255-cdc53736-90c0-4441-b170-59b4804f458b.png" alt="JetBrains Black Box Logo logo.">][18]| [<img style="max-width:100px;width:100px" src="https://user-images.githubusercontent.com/55203625/213772694-0ed2f6bd-1036-4ac4-8e6c-093f83ac01e3.png" alt="JetBrains Black Box Logo logo.">][19] |
+
 
 [1]: https://github.com/criszz77/react-native-media-console/workflows/ci/badge.svg
 [2]: https://github.com/criszz77/react-native-media-console/actions
@@ -159,4 +166,4 @@ These are the various controls that you can turn on/off as needed. All of these 
 [16]: https://user-images.githubusercontent.com/55203625/159137837-4e34a8be-1cbb-48ae-9d67-99ce4922e660.gif
 [17]: (https://user-images.githubusercontent.com/55203625/159138065-cf3554b6-3f8b-4cab-bf94-0f3fc0b57333.gif
 [18]: https://www.jetbrains.com/
-
+[19]: https://englishdiscoveries.page.link/fJc4
