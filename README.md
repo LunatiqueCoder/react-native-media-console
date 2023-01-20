@@ -136,11 +136,6 @@ These are the various controls that you can turn on/off as needed. All of these 
 > 📃 This project is released under the [MIT License](LICENSE). \
 > 💻 By contributing, you agree that your contributions will be licensed under its MIT License.
 
-
-## Used in production by
-
-
-
 ## 🏆 Sponsors
 
 |   |   |
