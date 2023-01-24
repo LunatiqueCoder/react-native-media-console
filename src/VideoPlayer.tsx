@@ -64,6 +64,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     disableTimer = false,
     disableSeekbar = false,
     disablePlayPause = false,
+    disableSeekForwardback = false,
     navigator,
     rewindTime = 15,
   } = props;
@@ -420,6 +421,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
             <PlayPause
               animations={animations}
               disablePlayPause={disablePlayPause}
+              disableSeekForwardback={disableSeekForwardback}
               paused={_paused}
               togglePlayPause={togglePlayPause}
               resetControlTimeout={resetControlTimeout}

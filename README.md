@@ -119,6 +119,7 @@ These are the various controls that you can turn on/off as needed. All of these 
 | ----------------- | -------------------------- |
 | disableFullscreen | Hide the fullscreen button |
 | disablePlayPause  | Hide the play/pause toggle and the rewind/forward buttons |
+| disableSeekForwardback  | Hide the rewind/forward buttons (but not play/pause) |
 | disableSeekbar    | Hide the seekbar           |
 | disableVolume     | Hide the Volume control    |
 | disableTimer      | Hide the timer             |
