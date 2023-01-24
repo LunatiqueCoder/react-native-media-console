@@ -203,7 +203,7 @@ export interface VideoPlayerProps extends VideoProperties {
    *
    * @default false
    */
-  disableSeekForwardback?: boolean;
+  disableSeekButtons?: boolean;
 
   /**
    * When using the default React Native navigator and do not override the `onBack` function,

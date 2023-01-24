@@ -10,7 +10,7 @@ export const playPauseRef = createRef<TouchableHighlight>();
 interface PlayPauseProps {
   animations: VideoAnimations;
   disablePlayPause: boolean;
-  disableSeekForwardback: boolean;
+  disableSeekButtons: boolean;
   paused: boolean;
   togglePlayPause: () => void;
   resetControlTimeout: () => void;
@@ -27,7 +27,7 @@ const forward = require('../../assets/img/forward.png');
 export const PlayPause = ({
   animations,
   disablePlayPause,
-  disableSeekForwardback,
+  disableSeekButtons,
   paused,
   togglePlayPause,
   resetControlTimeout,
@@ -50,7 +50,7 @@ export const PlayPause = ({
     <Animated.View
       pointerEvents={'box-none'}
       style={[styles.container, animatedStyles]}>
-      {!disableSeekForwardback ? (
+      {!disableSeekButtons ? (
         <Control
           disabled={!showControls}
           callback={onPressRewind}
@@ -67,7 +67,7 @@ export const PlayPause = ({
         {...(Platform.isTV ? {hasTVPreferredFocus: showControls} : {})}>
         <Image source={source} resizeMode={'contain'} style={styles.play} />
       </Control>
-      {!disableSeekForwardback ? (
+      {!disableSeekButtons ? (
         <Control
           disabled={!showControls}
           callback={onPressForward}
