@@ -24,14 +24,18 @@
     "prepare": "bob build",
     "release": "release-it"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.1.6",
+    "@types/react-native": "^0.63.17"
+  },
   "peerDependencies": {
     "react-native": ">=0.46.0",
     "react-native-video": ">=2.0.0"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^3.0.1",
-    "@types/react-native-video": "^5.0.12",
+    "@types/react-native-video": "^5.0.14",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
     "eslint": "^7.14.0",
@@ -39,7 +43,7 @@
     "eslint-plugin-react": "^7.29.3",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
-    "react-native": "npm:react-native-tvos@0.68.1-1",
+    "react-native": "npm:react-native-tvos@0.68.2-5",
     "react-native-builder-bob": "^0.18.2",
     "react-native-video": "^5.2.0",
     "release-it": "^15.6.0",
