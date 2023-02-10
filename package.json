@@ -24,11 +24,7 @@
     "prepare": "bob build",
     "release": "release-it"
   },
-  "dependencies": {
-    "@babel/core": "^7.20.12",
-    "@babel/preset-env": "^7.1.6",
-    "@types/react-native": "^0.63.17"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react-native": ">=0.46.0",
     "react-native-video": ">=2.0.0"
