@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
   },
   control: {
     padding: 16,
+    opacity: 0.6,
   },
   text: {
     backgroundColor: 'transparent',
