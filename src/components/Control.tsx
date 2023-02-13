@@ -37,7 +37,7 @@ export const Control = ({
       onPress={() => {
         callback && callback();
       }}
-      style={[styles.control, focused && focusedStyle]}
+      style={[styles.control, style, focused && focusedStyle]}
       {...props}>
       {children}
     </TouchableHighlight>
