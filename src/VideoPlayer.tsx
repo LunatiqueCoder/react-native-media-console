@@ -1,5 +1,5 @@
 import React, {useCallback, useState, useEffect, useRef} from 'react';
-import {View} from 'react-native';
+import {View, useTVEventHandler} from 'react-native';
 import Video, {
   OnLoadData,
   OnProgressData,
@@ -98,6 +98,26 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [error, setError] = useState(false);
   const [duration, setDuration] = useState(0);
+
+  // Seeking variables
+  const [lastEventType, setLastEventType] = useState('');
+  //const [pressCount, setPressCount] = useState(0);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
+  const myTVEventHandler = (evt: any) => {
+    setLastEventType(evt.eventType);
+  };
+
+  // if (Platform.isTV) {
+  //   useTVEventHandler(myTVEventHandler);
+  // };
+
+  useTVEventHandler(myTVEventHandler);
+
+  // // useEffect Listener for select button presses
+  useEffect(() => {
+    console.log('EVENT TYPE: ', lastEventType);
+  }, [lastEventType]);
 
   const videoRef = props.videoRef || _videoRef;
 
@@ -284,6 +304,58 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     onEnd: events.onEnd,
   });
 
+  const handleRewindPress = () => {
+    const x: NodeJS.Timeout = setTimeout(() => {
+      // console.log('we made it to the timer', pressCount);
+
+      // if (pressCount === 4) {
+      //   setPressCount(0);
+      // }
+
+      // let newCount = pressCount + 1;
+      // setPressCount(newCount);
+
+      // setScanSpeed(newCount);
+
+      setScanSpeed();
+    }, 2000);
+
+    setTimeoutId(x);
+
+    return function () {
+      // setPressCount(0);
+      clearTimeout(timeoutId as unknown as number);
+    };
+  };
+
+  const setScanSpeed = () => {
+    console.log('We are calling the scan speed');
+    videoRef?.current?.seek(currentTime - rewindTime * 4);
+  };
+
+  // const setScanSpeed = (count: number) => {
+  //   switch (isNaN(count)) {
+  //     case count === 1:
+  //       console.log('count', count);
+  //       videoRef?.current?.seek(currentTime - rewindTime);
+  //       break;
+  //     case count === 2:
+  //       console.log('time 2', currentTime - rewindTime * 2);
+  //       videoRef?.current?.seek(currentTime - rewindTime * 2);
+  //       break;
+  //     case count === 3:
+  //       console.log('time 3', currentTime - rewindTime * 3);
+  //       videoRef?.current?.seek(currentTime - rewindTime * 3);
+  //       break;
+  //     case count === 4:
+  //       console.log('time 4', currentTime - rewindTime * 4);
+  //       videoRef?.current?.seek(currentTime - rewindTime * 4);
+  //       break;
+  //     default:
+  //       console.log('Howdy.');
+  //   }
+  // };
+
   useEffect(() => {
     if (currentTime >= duration) {
       videoRef?.current?.seek(0);
@@ -426,9 +498,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               togglePlayPause={togglePlayPause}
               resetControlTimeout={resetControlTimeout}
               showControls={showControls}
-              onPressRewind={() =>
-                videoRef?.current?.seek(currentTime - rewindTime)
-              }
+              // onPressRewind={() =>
+              //   videoRef?.current?.seek(currentTime - rewindTime)
+              // }
+              onPressRewind={() => handleRewindPress()}
               onPressForward={() =>
                 videoRef?.current?.seek(currentTime + rewindTime)
               }
