@@ -68,7 +68,7 @@ export interface VideoPlayerProps extends VideoProperties {
    * @default false
    */
   alwaysShowControls?: boolean;
-  
+
   /**
    * Title of the video
    */
