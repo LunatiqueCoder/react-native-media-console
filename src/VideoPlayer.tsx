@@ -427,8 +427,14 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               onPressRewind={() =>
                 videoRef?.current?.seek(currentTime - rewindTime)
               }
-              onPressForward={() =>
-                videoRef?.current?.seek(currentTime + rewindTime)
+              onPressForward={
+                () => {
+                  if (currentTime + rewindTime > duration) {
+                    videoRef?.current?.seek(duration - 0.1);
+                  } else {
+                    videoRef?.current?.seek(currentTime + rewindTime);
+                  }
+                }
               }
             />
             <BottomControls
