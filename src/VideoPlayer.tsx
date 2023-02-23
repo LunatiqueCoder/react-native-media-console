@@ -116,7 +116,6 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     if (!seeking) {
       setControlTimeout();
     }
-    setCurrentTime(obj.seekTime);
 
     if (typeof onSeek === 'function') {
       onSeek(obj);
