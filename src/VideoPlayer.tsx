@@ -31,6 +31,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     isFullscreen = false,
     showOnStart = false,
     showOnEnd = false,
+    alwaysShowControls = false,
     paused = false,
     muted = false,
     volume = 1,
@@ -188,7 +189,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           togglePlayPause();
           resetControlTimeout();
         } else {
-          toggleControls();
+          if(!alwaysShowControls) toggleControls();
         }
         tapActionTimeout.current = null;
       }, doubleTapTime);

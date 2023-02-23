@@ -62,6 +62,13 @@ export interface VideoPlayerProps extends VideoProperties {
    */
   showOnEnd?: boolean;
 
+   /**
+   * Show controls always even when you touch the screen
+   *
+   * @default false
+   */
+  alwaysShowControls?: boolean;
+
   /**
    * Title of the video
    */
