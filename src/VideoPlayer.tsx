@@ -190,7 +190,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           togglePlayPause();
           resetControlTimeout();
         } else {
-          if(!alwaysShowControls) toggleControls();
+          if (!alwaysShowControls) toggleControls();
         }
         tapActionTimeout.current = null;
       }, doubleTapTime);
