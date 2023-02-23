@@ -10,6 +10,7 @@ export const playPauseRef = createRef<TouchableHighlight>();
 interface PlayPauseProps {
   animations: VideoAnimations;
   disablePlayPause: boolean;
+  disableSeekButtons: boolean;
   paused: boolean;
   togglePlayPause: () => void;
   resetControlTimeout: () => void;
@@ -26,6 +27,7 @@ const forward = require('../../assets/img/forward.png');
 export const PlayPause = ({
   animations,
   disablePlayPause,
+  disableSeekButtons,
   paused,
   togglePlayPause,
   resetControlTimeout,
@@ -48,12 +50,14 @@ export const PlayPause = ({
     <Animated.View
       pointerEvents={'box-none'}
       style={[styles.container, animatedStyles]}>
-      <Control
-        disabled={!showControls}
-        callback={onPressRewind}
-        resetControlTimeout={resetControlTimeout}>
-        <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
-      </Control>
+      {!disableSeekButtons ? (
+        <Control
+          disabled={!showControls}
+          callback={onPressRewind}
+          resetControlTimeout={resetControlTimeout}>
+          <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
+        </Control>
+      ) : null}
       <Control
         disabled={!showControls}
         callback={togglePlayPause}
@@ -63,12 +67,18 @@ export const PlayPause = ({
         {...(Platform.isTV ? {hasTVPreferredFocus: showControls} : {})}>
         <Image source={source} resizeMode={'contain'} style={styles.play} />
       </Control>
-      <Control
-        disabled={!showControls}
-        callback={onPressForward}
-        resetControlTimeout={resetControlTimeout}>
-        <Image source={forward} resizeMode={'contain'} style={styles.rewind} />
-      </Control>
+      {!disableSeekButtons ? (
+        <Control
+          disabled={!showControls}
+          callback={onPressForward}
+          resetControlTimeout={resetControlTimeout}>
+          <Image
+            source={forward}
+            resizeMode={'contain'}
+            style={styles.rewind}
+          />
+        </Control>
+      ) : null}
     </Animated.View>
   );
 };
