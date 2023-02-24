@@ -305,6 +305,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     onEnd: events.onEnd,
   });
 
+  // I only have this working for rewind right now
   const handleRewindPress = () => {
     const x: NodeJS.Timeout = setTimeout(() => {
       if (pressCount === 4) {
@@ -335,8 +336,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   // };
 
   // Somehow *continuously* skip ahead when count is 2, by 1% of video length
-  // When count is 3, repeatedly skip by 5% of the video length
-  // When count is 4, repeatedly skip by 10% the video length
+  // When count is 3, repeatedly skip by 3% of the video length
+  // When count is 4, repeatedly skip by 5% the video length
 
   const setScanSpeed = (count: number) => {
     //console.log('time calc', currentTime, count);
