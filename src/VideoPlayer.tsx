@@ -434,8 +434,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
                   videoRef?.current?.seek(duration - 0.1);
                 } else {
                   videoRef?.current?.seek(currentTime + rewindTime);
-                }}
-              }
+                }
+              }}
             />
             <BottomControls
               animations={animations}
