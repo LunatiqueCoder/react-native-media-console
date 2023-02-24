@@ -101,13 +101,14 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
   // Seeking variables
   const [lastEventType, setLastEventType] = useState('');
-  //const [pressCount, setPressCount] = useState(0);
+  const [pressCount, setPressCount] = useState(0);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
   const myTVEventHandler = (evt: any) => {
     setLastEventType(evt.eventType);
   };
 
+  // Will check for platform to instantiate TV Handler
   // if (Platform.isTV) {
   //   useTVEventHandler(myTVEventHandler);
   // };
@@ -306,55 +307,87 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
   const handleRewindPress = () => {
     const x: NodeJS.Timeout = setTimeout(() => {
-      // console.log('we made it to the timer', pressCount);
+      if (pressCount === 4) {
+        setPressCount(0);
+        console.log('count reset', pressCount);
+      } else {
+        let newCount = pressCount + 1;
+        console.log('new count', newCount);
+        setPressCount(newCount);
+      }
 
-      // if (pressCount === 4) {
-      //   setPressCount(0);
-      // }
-
-      // let newCount = pressCount + 1;
-      // setPressCount(newCount);
-
-      // setScanSpeed(newCount);
-
-      setScanSpeed();
-    }, 2000);
+      setScanSpeed(pressCount);
+    }, 500);
 
     setTimeoutId(x);
 
     return function () {
-      // setPressCount(0);
+      setPressCount(0);
+      console.log('return count', pressCount);
       clearTimeout(timeoutId as unknown as number);
     };
   };
 
-  const setScanSpeed = () => {
-    console.log('We are calling the scan speed');
-    videoRef?.current?.seek(currentTime - rewindTime * 4);
-  };
-
   // const setScanSpeed = (count: number) => {
-  //   switch (isNaN(count)) {
-  //     case count === 1:
-  //       console.log('count', count);
-  //       videoRef?.current?.seek(currentTime - rewindTime);
-  //       break;
-  //     case count === 2:
-  //       console.log('time 2', currentTime - rewindTime * 2);
-  //       videoRef?.current?.seek(currentTime - rewindTime * 2);
-  //       break;
-  //     case count === 3:
-  //       console.log('time 3', currentTime - rewindTime * 3);
-  //       videoRef?.current?.seek(currentTime - rewindTime * 3);
-  //       break;
-  //     case count === 4:
-  //       console.log('time 4', currentTime - rewindTime * 4);
-  //       videoRef?.current?.seek(currentTime - rewindTime * 4);
-  //       break;
-  //     default:
-  //       console.log('Howdy.');
-  //   }
+  //   console.log('scan speed + pressCount ', count);
+  //   console.log('equation variable', currentTime, rewindTime * count);
+  //   videoRef?.current?.seek(currentTime - rewindTime * count);
   // };
+
+  // Somehow *continuously* skip ahead when count is 2, by 1% of video length
+  // When count is 3, repeatedly skip by 5% of the video length
+  // When count is 4, repeatedly skip by 10% the video length
+
+  const setScanSpeed = (count: number) => {
+    //console.log('time calc', currentTime, count);
+    switch (count) {
+      case 1:
+        console.log(
+          'count: ' + count,
+          'current time: ' + currentTime,
+          'duration: ' + duration,
+          'time after default seek: ',
+          currentTime - rewindTime,
+        );
+        videoRef?.current?.seek(currentTime - rewindTime);
+        break;
+      case 2:
+        console.log(
+          'count: ' + count,
+          'current time: ' + currentTime,
+          'duration: ' + duration,
+          'time to subtract: ' + duration * 0.01,
+          'time after seek: ',
+          currentTime - duration * 0.01,
+        );
+        videoRef?.current?.seek(currentTime - duration * 0.01);
+        break;
+      case 3:
+        console.log(
+          'count: ' + count,
+          'current time: ' + currentTime,
+          'duration: ' + duration,
+          'time to subtract: ' + duration * 0.03,
+          'time after seek: ',
+          currentTime - duration * 0.03,
+        );
+        videoRef?.current?.seek(currentTime - duration * 0.03);
+        break;
+      case 4:
+        console.log(
+          'count: ' + count,
+          'current time: ' + currentTime,
+          'duration: ' + duration,
+          'time to subtract: ' + duration * 0.05,
+          'time after seek: ',
+          currentTime - duration * 0.05,
+        );
+        videoRef?.current?.seek(currentTime - duration * 0.05);
+        break;
+      default:
+        console.log('Default on switch case.');
+    }
+  };
 
   useEffect(() => {
     if (currentTime >= duration) {
