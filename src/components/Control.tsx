@@ -1,4 +1,4 @@
-import React, {ReactNode, RefObject} from 'react';
+import React, {ReactNode, RefObject, useState} from 'react';
 import {TouchableHighlight, ViewProps} from 'react-native';
 import {styles} from './styles';
 
@@ -19,16 +19,25 @@ export const Control = ({
   style = {},
   ...props
 }: ControlProps) => {
+  const [focused, setFocused] = useState(false);
+
+  const setFocusedState = () => setFocused(true);
+  const cancelFocusedState = () => setFocused(false);
+
+  const focusedStyle = focused ? {opacity: 1} : {};
+
   return (
     <TouchableHighlight
+      onFocus={setFocusedState}
+      onBlur={cancelFocusedState}
       disabled={disabled}
       ref={controlRef}
       underlayColor="transparent"
-      activeOpacity={0.3}
+      activeOpacity={1}
       onPress={() => {
         callback && callback();
       }}
-      style={[styles.control, style]}
+      style={[styles.control, style, focused && focusedStyle]}
       {...props}>
       {children}
     </TouchableHighlight>

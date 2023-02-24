@@ -119,6 +119,7 @@ These are the various controls that you can turn on/off as needed. All of these 
 | ----------------- | -------------------------- |
 | disableFullscreen | Hide the fullscreen button |
 | disablePlayPause  | Hide the play/pause toggle and the rewind/forward buttons |
+| disableSeekButtons  | Hide the rewind/forward buttons (but not play/pause) |
 | disableSeekbar    | Hide the seekbar           |
 | disableVolume     | Hide the Volume control    |
 | disableTimer      | Hide the timer             |
@@ -136,10 +137,12 @@ These are the various controls that you can turn on/off as needed. All of these 
 > 📃 This project is released under the [MIT License](LICENSE). \
 > 💻 By contributing, you agree that your contributions will be licensed under its MIT License.
 
-
 ## 🏆 Sponsors
 
-[<img style="max-width:15%;width:15%" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.png" alt="JetBrains Black Box Logo logo.">][18]
+|                           |                                |
+|---------------------------|--------------------------------|
+| [![jetbrains100][18]][19] | [![englishdislogo100][20]][21] |
+
 
 [1]: https://github.com/criszz77/react-native-media-console/workflows/ci/badge.svg
 [2]: https://github.com/criszz77/react-native-media-console/actions
@@ -157,6 +160,8 @@ These are the various controls that you can turn on/off as needed. All of these 
 [14]: https://www.npmjs.com/package/react-native-media-console
 [15]: https://github.com/react-native-video/react-native-video
 [16]: https://user-images.githubusercontent.com/55203625/159137837-4e34a8be-1cbb-48ae-9d67-99ce4922e660.gif
-[17]: (https://user-images.githubusercontent.com/55203625/159138065-cf3554b6-3f8b-4cab-bf94-0f3fc0b57333.gif
-[18]: https://www.jetbrains.com/
-
+[17]: https://user-images.githubusercontent.com/55203625/159138065-cf3554b6-3f8b-4cab-bf94-0f3fc0b57333.gif
+[18]: https://user-images.githubusercontent.com/55203625/213786907-b95dfb4b-08bf-4449-a055-72edf401da23.png
+[19]: https://www.jetbrains.com/
+[20]: https://user-images.githubusercontent.com/55203625/213786736-1d0226de-f810-4ece-968f-08c81c769948.png
+[21]: https://englishdiscoveries.page.link/fJc4
