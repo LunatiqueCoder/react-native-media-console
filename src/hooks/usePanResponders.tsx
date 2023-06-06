@@ -16,6 +16,8 @@ interface PanRespondersProps {
   setSeeking: Dispatch<SetStateAction<boolean>>;
   setControlTimeout: () => void;
   onEnd: () => void;
+  horizontal?: boolean;
+  inverted?: boolean;
 }
 
 export const usePanResponders = ({
@@ -33,6 +35,8 @@ export const usePanResponders = ({
   setSeeking,
   setControlTimeout,
   onEnd,
+  horizontal = true,
+  inverted = false,
 }: PanRespondersProps) => {
   const volumePanResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -41,7 +45,8 @@ export const usePanResponders = ({
       clearControlTimeout();
     },
     onPanResponderMove: (_evt, gestureState) => {
-      const position = volumeOffset + gestureState.dx;
+      const diff = horizontal ? gestureState.dx : gestureState.dy;
+      const position = volumeOffset + diff * (inverted ? -1 : 1);
       setVolumePosition(position);
     },
     onPanResponderRelease: () => {
@@ -59,7 +64,8 @@ export const usePanResponders = ({
       setSeekerPosition(position);
     },
     onPanResponderMove: (_evt, gestureState) => {
-      const position = seekerOffset + gestureState.dx;
+      const diff = horizontal ? gestureState.dx : gestureState.dy;
+      const position = seekerOffset + diff * (inverted ? -1 : 1);
       setSeekerPosition(position);
       setSeeking(true);
     },

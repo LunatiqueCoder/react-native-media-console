@@ -67,6 +67,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     disableSeekButtons = false,
     navigator,
     rewindTime = 15,
+    pan: {horizontal: horizontalPan, inverted: invertedPan} = {},
   } = props;
 
   const mounted = useRef(false);
@@ -282,6 +283,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     setSeeking,
     setControlTimeout,
     onEnd: events.onEnd,
+    horizontal: horizontalPan,
+    inverted: invertedPan,
   });
 
   useEffect(() => {
