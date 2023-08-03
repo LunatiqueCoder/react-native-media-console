@@ -103,22 +103,13 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const [lastEventType, setLastEventType] = useState('');
   const [pressCount, setPressCount] = useState(0);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const [rewindPressCount, setRewindPressCount] = useState(0);
 
   const myTVEventHandler = (evt: any) => {
     setLastEventType(evt.eventType);
   };
 
-  // Will check for platform to instantiate TV Handler
-  // if (Platform.isTV) {
-  //   useTVEventHandler(myTVEventHandler);
-  // };
-
   useTVEventHandler(myTVEventHandler);
-
-  // // useEffect Listener for select button presses
-  useEffect(() => {
-    console.log('EVENT TYPE: ', lastEventType);
-  }, [lastEventType]);
 
   const videoRef = props.videoRef || _videoRef;
 
@@ -305,8 +296,29 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     onEnd: events.onEnd,
   });
 
-  // I only have this working for rewind right now
   const handleRewindPress = () => {
+    const x: NodeJS.Timeout = setTimeout(() => {
+      if (rewindPressCount === 4) {
+        setRewindPressCount(0);
+        console.log('count reset', rewindPressCount);
+      } else {
+        let newCount = rewindPressCount + 1;
+        console.log('new rewind count', newCount);
+        setRewindPressCount(newCount);
+      }
+    }, 500);
+
+    setTimeoutId(x);
+
+    return function () {
+      setRewindPressCount(0);
+      console.log('return count', rewindPressCount);
+      clearTimeout(timeoutId as unknown as number);
+    };
+  };
+
+  // I only have this working for fast forward right now
+  const handleFastForwardPress = () => {
     const x: NodeJS.Timeout = setTimeout(() => {
       if (pressCount === 4) {
         setPressCount(0);
@@ -316,8 +328,6 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
         console.log('new count', newCount);
         setPressCount(newCount);
       }
-
-      setScanSpeed(pressCount);
     }, 500);
 
     setTimeoutId(x);
@@ -329,66 +339,41 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     };
   };
 
-  // const setScanSpeed = (count: number) => {
-  //   console.log('scan speed + pressCount ', count);
-  //   console.log('equation variable', currentTime, rewindTime * count);
-  //   videoRef?.current?.seek(currentTime - rewindTime * count);
-  // };
+  useEffect(() => {
+    console.log('rewing press count useEffect? ', rewindPressCount);
+    let skipTime = (duration * 0.0015) * rewindPressCount;
+    console.log('skipTime: ', skipTime);
 
-  // Somehow *continuously* skip ahead when count is 2, by 1% of video length
-  // When count is 3, repeatedly skip by 3% of the video length
-  // When count is 4, repeatedly skip by 5% the video length
-
-  const setScanSpeed = (count: number) => {
-    //console.log('time calc', currentTime, count);
-    switch (count) {
-      case 1:
-        console.log(
-          'count: ' + count,
-          'current time: ' + currentTime,
-          'duration: ' + duration,
-          'time after default seek: ',
-          currentTime - rewindTime,
-        );
-        videoRef?.current?.seek(currentTime - rewindTime);
-        break;
-      case 2:
-        console.log(
-          'count: ' + count,
-          'current time: ' + currentTime,
-          'duration: ' + duration,
-          'time to subtract: ' + duration * 0.01,
-          'time after seek: ',
-          currentTime - duration * 0.01,
-        );
-        videoRef?.current?.seek(currentTime - duration * 0.01);
-        break;
-      case 3:
-        console.log(
-          'count: ' + count,
-          'current time: ' + currentTime,
-          'duration: ' + duration,
-          'time to subtract: ' + duration * 0.03,
-          'time after seek: ',
-          currentTime - duration * 0.03,
-        );
-        videoRef?.current?.seek(currentTime - duration * 0.03);
-        break;
-      case 4:
-        console.log(
-          'count: ' + count,
-          'current time: ' + currentTime,
-          'duration: ' + duration,
-          'time to subtract: ' + duration * 0.05,
-          'time after seek: ',
-          currentTime - duration * 0.05,
-        );
-        videoRef?.current?.seek(currentTime - duration * 0.05);
-        break;
-      default:
-        console.log('Default on switch case.');
+    if (rewindPressCount === 1) {
+      videoRef?.current?.seek(currentTime - rewindTime);
+    } else if (rewindPressCount != 0 && rewindPressCount > 1) {
+      videoRef?.current?.seek(currentTime - skipTime);
+    } else {
+      setPaused(false);
     }
-  };
+  }, [rewindPressCount, currentTime])
+
+  useEffect(() => {
+    console.log('press count useEffect? ', pressCount);
+    let skipTime = (duration * 0.0015) * pressCount;
+    console.log('skipTime: ', skipTime);
+
+    if (pressCount === 1) {
+      videoRef?.current?.seek(currentTime + rewindTime);
+    } else if (pressCount != 0 && pressCount > 1) {
+      videoRef?.current?.seek(currentTime + skipTime);
+    } else {
+      setPaused(false);
+    }
+  }, [pressCount, currentTime])
+
+  // useEffect Listener for select button presses
+  useEffect(() => {
+    console.log(
+      'EVENT TYPE AND CURRENT TIME: ',
+      lastEventType,
+    );
+  }, [lastEventType]);
 
   useEffect(() => {
     if (currentTime >= duration) {
@@ -425,8 +410,12 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
   useEffect(() => {
     if (_paused) {
+      setPressCount(0);
+      setRewindPressCount(0);
       typeof events.onPause === 'function' && events.onPause();
     } else {
+      setPressCount(0);
+      setRewindPressCount(0);
       typeof events.onPlay === 'function' && events.onPlay();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -536,9 +525,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               //   videoRef?.current?.seek(currentTime - rewindTime)
               // }
               onPressRewind={() => handleRewindPress()}
-              onPressForward={() =>
-                videoRef?.current?.seek(currentTime + rewindTime)
-              }
+              onPressForward={() => handleFastForwardPress()}
+              // onPressForward={() =>
+              //   videoRef?.current?.seek(currentTime + rewindTime)
+              // }
             />
             <BottomControls
               animations={animations}
