@@ -1,5 +1,5 @@
 import React, {useCallback, useState, useEffect, useRef} from 'react';
-import {View, useTVEventHandler} from 'react-native';
+import {View} from 'react-native';
 import Video, {
   OnLoadData,
   OnProgressData,
@@ -101,16 +101,9 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const [duration, setDuration] = useState(0);
 
   // Seeking variables
-  const [lastEventType, setLastEventType] = useState('');
   const [pressCount, setPressCount] = useState(0);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const [rewindPressCount, setRewindPressCount] = useState(0);
-
-  const myTVEventHandler = (evt: any) => {
-    setLastEventType(evt.eventType);
-  };
-
-  useTVEventHandler(myTVEventHandler);
 
   const videoRef = props.videoRef || _videoRef;
 
@@ -337,7 +330,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   };
 
   useEffect(() => {
-    let skipTime = (duration * 0.0012) * rewindPressCount;
+    let skipTime = duration * 0.0012 * rewindPressCount;
 
     if (currentTime <= duration && rewindPressCount === 1) {
       videoRef?.current?.seek(currentTime - rewindTime);
@@ -346,10 +339,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     } else {
       setPaused(false);
     }
-  }, [rewindPressCount, currentTime])
+  }, [rewindPressCount, currentTime]);
 
   useEffect(() => {
-    let skipTime = (duration * 0.0012) * pressCount;
+    let skipTime = duration * 0.0012 * pressCount;
 
     if (currentTime <= duration && pressCount === 1) {
       videoRef?.current?.seek(currentTime + rewindTime);
@@ -358,7 +351,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     } else {
       setPaused(false);
     }
-  }, [pressCount, currentTime])
+  }, [pressCount, currentTime]);
 
   useEffect(() => {
     if (currentTime >= duration) {
