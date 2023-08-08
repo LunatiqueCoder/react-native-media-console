@@ -300,10 +300,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     const x: NodeJS.Timeout = setTimeout(() => {
       if (rewindPressCount === 4) {
         setRewindPressCount(0);
-        console.log('count reset', rewindPressCount);
       } else {
         let newCount = rewindPressCount + 1;
-        console.log('new rewind count', newCount);
         setRewindPressCount(newCount);
       }
     }, 500);
@@ -312,7 +310,6 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
     return function () {
       setRewindPressCount(0);
-      console.log('return count', rewindPressCount);
       clearTimeout(timeoutId as unknown as number);
     };
   };
@@ -322,10 +319,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     const x: NodeJS.Timeout = setTimeout(() => {
       if (pressCount === 4) {
         setPressCount(0);
-        console.log('count reset', pressCount);
       } else {
         let newCount = pressCount + 1;
-        console.log('new count', newCount);
         setPressCount(newCount);
       }
     }, 500);
@@ -334,19 +329,16 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
     return function () {
       setPressCount(0);
-      console.log('return count', pressCount);
       clearTimeout(timeoutId as unknown as number);
     };
   };
 
   useEffect(() => {
-    console.log('rewing press count useEffect? ', rewindPressCount);
-    let skipTime = (duration * 0.0015) * rewindPressCount;
-    console.log('skipTime: ', skipTime);
+    let skipTime = (duration * 0.0012) * rewindPressCount;
 
-    if (rewindPressCount === 1) {
+    if (currentTime <= duration && rewindPressCount === 1) {
       videoRef?.current?.seek(currentTime - rewindTime);
-    } else if (rewindPressCount != 0 && rewindPressCount > 1) {
+    } else if (currentTime <= duration && rewindPressCount > 1) {
       videoRef?.current?.seek(currentTime - skipTime);
     } else {
       setPaused(false);
@@ -354,26 +346,16 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   }, [rewindPressCount, currentTime])
 
   useEffect(() => {
-    console.log('press count useEffect? ', pressCount);
-    let skipTime = (duration * 0.0015) * pressCount;
-    console.log('skipTime: ', skipTime);
+    let skipTime = (duration * 0.0012) * pressCount;
 
-    if (pressCount === 1) {
+    if (currentTime <= duration && pressCount === 1) {
       videoRef?.current?.seek(currentTime + rewindTime);
-    } else if (pressCount != 0 && pressCount > 1) {
+    } else if (currentTime <= duration && pressCount > 1) {
       videoRef?.current?.seek(currentTime + skipTime);
     } else {
       setPaused(false);
     }
   }, [pressCount, currentTime])
-
-  // useEffect Listener for select button presses
-  useEffect(() => {
-    console.log(
-      'EVENT TYPE AND CURRENT TIME: ',
-      lastEventType,
-    );
-  }, [lastEventType]);
 
   useEffect(() => {
     if (currentTime >= duration) {
@@ -521,14 +503,14 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               togglePlayPause={togglePlayPause}
               resetControlTimeout={resetControlTimeout}
               showControls={showControls}
-              // onPressRewind={() =>
-              //   videoRef?.current?.seek(currentTime - rewindTime)
-              // }
+              onPressSkipBackward={() =>
+                videoRef?.current?.seek(currentTime - rewindTime)
+              }
               onPressRewind={() => handleRewindPress()}
               onPressForward={() => handleFastForwardPress()}
-              // onPressForward={() =>
-              //   videoRef?.current?.seek(currentTime + rewindTime)
-              // }
+              onPressSkipForward={() =>
+                videoRef?.current?.seek(currentTime + rewindTime)
+              }
             />
             <BottomControls
               animations={animations}

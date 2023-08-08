@@ -17,12 +17,16 @@ interface PlayPauseProps {
   showControls: boolean;
   onPressForward: () => void;
   onPressRewind: () => void;
+  onPressSkipForward: () => void;
+  onPressSkipBackward: () => void;
 }
 
 const play = require('../../assets/img/play.png');
 const pause = require('../../assets/img/pause.png');
 const rewind = require('../../assets/img/rewind.png');
 const forward = require('../../assets/img/forward.png');
+const skipForward = require('../../assets/img/rotate-right-forward.png');
+const skipBackward = require('../../assets/img/rotate-left-rewind.png');
 
 export const PlayPause = ({
   animations,
@@ -34,6 +38,8 @@ export const PlayPause = ({
   showControls,
   onPressForward,
   onPressRewind,
+  onPressSkipForward,
+  onPressSkipBackward, 
 }: PlayPauseProps) => {
   let source = paused ? play : pause;
 
@@ -58,6 +64,14 @@ export const PlayPause = ({
           <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
         </Control>
       ) : null}
+      {!disableSeekButtons ? (
+        <Control
+          disabled={!showControls}
+          callback={onPressSkipBackward}
+          resetControlTimeout={resetControlTimeout}>
+          <Image source={skipBackward} resizeMode={'contain'} style={styles.rewind} />
+        </Control>
+      ) : null}
       <Control
         disabled={!showControls}
         callback={togglePlayPause}
@@ -70,12 +84,20 @@ export const PlayPause = ({
       {!disableSeekButtons ? (
         <Control
           disabled={!showControls}
+          callback={onPressSkipForward}
+          resetControlTimeout={resetControlTimeout}>
+          <Image source={skipForward} resizeMode={'contain'} style={styles.rewind} />
+        </Control>
+      ) : null}
+      {!disableSeekButtons ? (
+        <Control
+          disabled={!showControls}
           callback={onPressForward}
           resetControlTimeout={resetControlTimeout}>
           <Image
             source={forward}
             resizeMode={'contain'}
-            style={styles.rewind}
+            style={{backgroundColor: 'transparent'}}
           />
         </Control>
       ) : null}
