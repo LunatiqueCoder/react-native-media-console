@@ -17,7 +17,5 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   play: {},
-  rewind: {
-    tintColor: 'white'
-  },
+  rewind: {},
 });

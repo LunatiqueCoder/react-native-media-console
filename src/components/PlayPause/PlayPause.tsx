@@ -25,8 +25,8 @@ const play = require('../../assets/img/play.png');
 const pause = require('../../assets/img/pause.png');
 const rewind = require('../../assets/img/rewind.png');
 const forward = require('../../assets/img/forward.png');
-const skipForward = require('../../assets/img/rotate-right-forward.png');
-const skipBackward = require('../../assets/img/rotate-left-rewind.png');
+const skipForward = require('../../assets/img/right-seek-forward.png');
+const skipBackward = require('../../assets/img/left-seek-rewind.png');
 
 export const PlayPause = ({
   animations,
