@@ -25,8 +25,8 @@ const play = require('../../assets/img/play.png');
 const pause = require('../../assets/img/pause.png');
 const rewind = require('../../assets/img/rewind.png');
 const forward = require('../../assets/img/forward.png');
-const skipForward = require('../../assets/img/right-seek-forward.png');
-const skipBackward = require('../../assets/img/left-seek-rewind.png');
+const skipForward = require('../../assets/img/right-seek-forward-3x.png');
+const skipBackward = require('../../assets/img/left-seek-rewind-3x.png');
 
 export const PlayPause = ({
   animations,
@@ -69,7 +69,7 @@ export const PlayPause = ({
           disabled={!showControls}
           callback={onPressSkipBackward}
           resetControlTimeout={resetControlTimeout}>
-          <Image source={skipBackward} resizeMode={'contain'} style={styles.rewind} />
+          <Image source={skipBackward} resizeMode={'contain'} style={styles.seek} />
         </Control>
       ) : null}
       <Control
@@ -86,7 +86,7 @@ export const PlayPause = ({
           disabled={!showControls}
           callback={onPressSkipForward}
           resetControlTimeout={resetControlTimeout}>
-          <Image source={skipForward} resizeMode={'contain'} style={styles.rewind} />
+          <Image source={skipForward} resizeMode={'contain'} style={styles.seek} />
         </Control>
       ) : null}
       {!disableSeekButtons ? (
@@ -97,7 +97,7 @@ export const PlayPause = ({
           <Image
             source={forward}
             resizeMode={'contain'}
-            style={{backgroundColor: 'transparent'}}
+            style={styles.rewind}
           />
         </Control>
       ) : null}

@@ -17,5 +17,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   play: {},
-  rewind: {},
+  seek: {
+    height: 29, 
+    width: 29,
+  },
+  rewind: {
+    height: 44, 
+    width: 44,
+  },
 });
