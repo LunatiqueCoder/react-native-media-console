@@ -423,6 +423,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   }, [showControls, loading]);
 
   useEffect(() => {
+    setMuted(muted);
+  }, [muted]);
+
+  useEffect(() => {
     const newVolume = volumePosition / volumeWidth;
 
     if (newVolume <= 0) {
