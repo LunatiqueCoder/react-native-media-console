@@ -20,7 +20,7 @@ interface BottomControlsProps {
   animations: VideoAnimations;
   panHandlers: GestureResponderHandlers;
   disableTimer: boolean;
-  disableSeekbar: boolean;
+  disableSeekBar: boolean;
   showDuration: boolean;
   showHours: boolean;
   paused: boolean;
@@ -43,7 +43,7 @@ export const BottomControls = ({
   showControls,
   animations,
   panHandlers,
-  disableSeekbar,
+  disableSeekBar,
   disableTimer,
   duration,
   seekColor,
@@ -78,7 +78,7 @@ export const BottomControls = ({
     </Timer>
   );
 
-  const seekbarControl = disableSeekbar ? (
+  const seekbarControl = disableSeekBar ? (
     <NullControl />
   ) : (
     <Seekbar

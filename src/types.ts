@@ -189,7 +189,7 @@ export interface VideoPlayerProps extends VideoProperties {
    *
    * @default false
    */
-  disableSeekbar?: boolean;
+  disableSeekBar?: boolean;
 
   /**
    * Hide the play/pause toggle and the rewind/forward buttons

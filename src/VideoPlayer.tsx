@@ -62,7 +62,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     disableVolume = false,
     disableFullscreen = false,
     disableTimer = false,
-    disableSeekbar = false,
+    disableSeekBar = false,
     disablePlayPause = false,
     disableSeekButtons = false,
     navigator,
@@ -437,7 +437,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               animations={animations}
               panHandlers={seekPanResponder.panHandlers}
               disableTimer={disableTimer}
-              disableSeekbar={disableSeekbar}
+              disableSeekBar={disableSeekBar}
               showHours={showHours}
               showDuration={showDuration}
               paused={_paused}
