@@ -62,7 +62,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     disableVolume = false,
     disableFullscreen = false,
     disableTimer = false,
-    disableSeekbar = false,
+    disableSeekBar = false,
     disablePlayPause = false,
     disableSeekButtons = false,
     navigator,
@@ -330,6 +330,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   };
 
   useEffect(() => {
+    console.log('props.disableSeekbar? ', props.disableSeekBar);
+  }, [disableSeekBar])
+
+  useEffect(() => {
     let skipTime = duration * 0.0012 * rewindPressCount;
 
     if (currentTime <= duration && rewindPressCount === 1) {
@@ -516,7 +520,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
               animations={animations}
               panHandlers={seekPanResponder.panHandlers}
               disableTimer={disableTimer}
-              disableSeekbar={disableSeekbar}
+              disableSeekBar={disableSeekBar}
               showHours={showHours}
               showDuration={showDuration}
               paused={_paused}
