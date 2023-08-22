@@ -294,7 +294,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
   const handleRewindPress = () => {
     const x: NodeJS.Timeout = setTimeout(() => {
-      if (rewindPressCount === 4) {
+      if (rewindPressCount === 3) {
         setRewindPressCount(0);
       } else {
         let newCount = rewindPressCount + 1;
@@ -313,7 +313,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   // I only have this working for fast forward right now
   const handleFastForwardPress = () => {
     const x: NodeJS.Timeout = setTimeout(() => {
-      if (pressCount === 4) {
+      if (pressCount === 3) {
         setPressCount(0);
       } else {
         let newCount = pressCount + 1;
@@ -331,31 +331,31 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
   useEffect(() => {
     console.log('props.disableSeekbar? ', props.disableSeekBar);
-  }, [disableSeekBar])
+  }, [disableSeekBar]);
 
   useEffect(() => {
-    let skipTime = duration * 0.0012 * rewindPressCount;
+    let skipTime = duration * 0.0013 * rewindPressCount;
 
-    if (currentTime <= duration && rewindPressCount === 1) {
+    if (currentTime < duration && rewindPressCount === 1) {
       videoRef?.current?.seek(currentTime - rewindTime);
-    } else if (currentTime <= duration && rewindPressCount > 1) {
+    } else if (currentTime < duration && rewindPressCount > 1) {
       videoRef?.current?.seek(currentTime - skipTime);
     } else {
       setPaused(false);
     }
-  }, [rewindPressCount, currentTime]);
+  }, [rewindPressCount, currentTime, duration, videoRef]);
 
   useEffect(() => {
-    let skipTime = duration * 0.0012 * pressCount;
+    let skipTime = duration * 0.0013 * pressCount;
 
-    if (currentTime <= duration && pressCount === 1) {
+    if (currentTime < duration && pressCount === 1) {
       videoRef?.current?.seek(currentTime + rewindTime);
-    } else if (currentTime <= duration && pressCount > 1) {
+    } else if (currentTime < duration && pressCount > 1) {
       videoRef?.current?.seek(currentTime + skipTime);
     } else {
       setPaused(false);
     }
-  }, [pressCount, currentTime]);
+  }, [pressCount, currentTime, duration, videoRef]);
 
   useEffect(() => {
     if (currentTime >= duration) {
