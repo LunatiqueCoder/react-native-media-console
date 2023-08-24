@@ -1,9 +1,10 @@
-import { useSharedValue, withTiming, useAnimatedStyle } from 'react-native-reanimated';
+import {
+  useSharedValue,
+  withTiming,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
 
-export const useAnimations = (
-  controlAnimationTiming: number,
-) => {
-
+export const useAnimations = (controlAnimationTiming: number) => {
   const bottomControlMarginBottom = useSharedValue(0);
   const controlsOpacity = useSharedValue(1);
   const topControlMarginTop = useSharedValue(0);
@@ -11,20 +12,18 @@ export const useAnimations = (
   const animations = {
     bottomControl: useAnimatedStyle(() => {
       return {
-        transform: [{ translateY: bottomControlMarginBottom.value }]
-      }
+        transform: [{translateY: bottomControlMarginBottom.value}],
+      };
     }),
     topControl: useAnimatedStyle(() => {
       return {
-        transform: [{ translateY: topControlMarginTop.value }]
-      }
+        transform: [{translateY: topControlMarginTop.value}],
+      };
     }),
-
-
     controlsOpacity: useAnimatedStyle(() => {
       return {
         opacity: controlsOpacity.value,
-      }
+      };
     }),
   };
 
@@ -38,9 +37,6 @@ export const useAnimations = (
     controlsOpacity.value = withTiming(0, {
       duration: controlAnimationTiming,
     });
-
-
-
   };
 
   const showControlAnimation = () => {
@@ -52,12 +48,8 @@ export const useAnimations = (
     });
     controlsOpacity.value = withTiming(1, {
       duration: controlAnimationTiming,
-    })
-
-
+    });
   };
-
-
 
   return {
     animations,

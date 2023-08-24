@@ -102,11 +102,11 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
 
   const videoRef = props.videoRef || _videoRef;
 
-  const toggleFullscreen = () => setIsFullscreen(prevState => !prevState);
-  const toggleControls = () => setShowControls(prevState => !prevState);
-  const toggleTimer = () => setShowTimeRemaining(prevState => !prevState);
+  const toggleFullscreen = () => setIsFullscreen((prevState) => !prevState);
+  const toggleControls = () => setShowControls((prevState) => !prevState);
+  const toggleTimer = () => setShowTimeRemaining((prevState) => !prevState);
   const togglePlayPause = () => {
-    setPaused(prevState => !prevState);
+    setPaused((prevState) => !prevState);
   };
 
   const styles = {

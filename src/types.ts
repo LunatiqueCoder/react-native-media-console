@@ -1,8 +1,8 @@
-import type { RefObject } from 'react';
-import type { ViewStyle, StyleProp } from 'react-native';
-import type { StyleProps } from 'react-native-reanimated'
+import type {RefObject} from 'react';
+import type {ViewStyle, StyleProp} from 'react-native';
+import type {StyleProps} from 'react-native-reanimated';
 import type VideoResource from 'react-native-video';
-import type { VideoProperties } from 'react-native-video';
+import type {VideoProperties} from 'react-native-video';
 
 export interface VideoAnimations {
   bottomControl: StyleProps;
