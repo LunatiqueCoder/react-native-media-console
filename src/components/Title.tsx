@@ -25,7 +25,7 @@ import {StyleSheet} from 'react-native';
 const _styles = StyleSheet.create({
   title: {
     alignItems: 'center',
-    flex: 0.6,
+    flex: 1,
     flexDirection: 'column',
     padding: 0,
   },
