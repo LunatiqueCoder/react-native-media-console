@@ -1,12 +1,12 @@
 import React, {memo} from 'react';
 import {
-  Animated,
   ImageBackground,
   SafeAreaView,
   StyleSheet,
   View,
   GestureResponderHandlers,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
 import {Volume} from './Volume';
 import {Back} from './Back';
 import {NullControl} from './NullControl';
@@ -64,10 +64,8 @@ export const TopControls = memo(
       <Animated.View
         style={[
           _styles.top,
-          {
-            opacity: animations.controlsOpacity,
-            marginTop: animations.topControl.marginTop,
-          },
+          animations.controlsOpacity,
+          animations.topControl,
         ]}>
         <ImageBackground
           source={require('../assets/img/top-vignette.png')}

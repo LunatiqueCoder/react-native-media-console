@@ -1,96 +1,63 @@
-import {useEffect, useRef} from 'react';
-import {Animated, Easing} from 'react-native';
+import { useSharedValue, withTiming, useAnimatedStyle } from 'react-native-reanimated';
 
 export const useAnimations = (
-  loading: boolean,
   controlAnimationTiming: number,
 ) => {
-  const bottomControlMarginBottom = useRef(new Animated.Value(0)).current;
-  const controlsOpacity = useRef(new Animated.Value(1)).current;
-  const topControlMarginTop = useRef(new Animated.Value(0)).current;
-  const videoOpacity = useRef(new Animated.Value(-100)).current;
-  const loaderRotateAnim = useRef(new Animated.Value(0)).current;
+
+  const bottomControlMarginBottom = useSharedValue(0);
+  const controlsOpacity = useSharedValue(1);
+  const topControlMarginTop = useSharedValue(0);
 
   const animations = {
-    bottomControl: {
-      marginBottom: bottomControlMarginBottom,
-    },
-    topControl: {
-      marginTop: topControlMarginTop,
-    },
-    video: {
-      opacity: videoOpacity,
-    },
-    loader: {
-      rotate: loaderRotateAnim,
-      MAX_VALUE: 360,
-    },
-    controlsOpacity,
+    bottomControl: useAnimatedStyle(() => {
+      return {
+        transform: [{ translateY: bottomControlMarginBottom.value }]
+      }
+    }),
+    topControl: useAnimatedStyle(() => {
+      return {
+        transform: [{ translateY: topControlMarginTop.value }]
+      }
+    }),
+
+
+    controlsOpacity: useAnimatedStyle(() => {
+      return {
+        opacity: controlsOpacity.value,
+      }
+    }),
   };
 
   const hideControlAnimation = () => {
-    Animated.parallel([
-      Animated.timing(animations.controlsOpacity, {
-        toValue: 0,
-        duration: controlAnimationTiming,
-        useNativeDriver: false,
-      }),
-      Animated.timing(animations.topControl.marginTop, {
-        toValue: -100,
-        duration: controlAnimationTiming,
-        useNativeDriver: false,
-      }),
-      Animated.timing(animations.bottomControl.marginBottom, {
-        toValue: -100,
-        duration: controlAnimationTiming,
-        useNativeDriver: false,
-      }),
-    ]).start();
+    bottomControlMarginBottom.value = withTiming(100, {
+      duration: controlAnimationTiming,
+    });
+    topControlMarginTop.value = withTiming(-100, {
+      duration: controlAnimationTiming,
+    });
+    controlsOpacity.value = withTiming(0, {
+      duration: controlAnimationTiming,
+    });
+
+
+
   };
 
   const showControlAnimation = () => {
-    Animated.parallel([
-      Animated.timing(animations.controlsOpacity, {
-        toValue: 1,
-        duration: controlAnimationTiming,
-        useNativeDriver: false,
-      }),
-      Animated.timing(animations.topControl.marginTop, {
-        toValue: 0,
-        duration: controlAnimationTiming,
-        useNativeDriver: false,
-      }),
-      Animated.timing(animations.bottomControl.marginBottom, {
-        toValue: 0,
-        duration: controlAnimationTiming,
-        useNativeDriver: false,
-      }),
-    ]).start();
+    bottomControlMarginBottom.value = withTiming(0, {
+      duration: controlAnimationTiming,
+    });
+    topControlMarginTop.value = withTiming(0, {
+      duration: controlAnimationTiming,
+    });
+    controlsOpacity.value = withTiming(1, {
+      duration: controlAnimationTiming,
+    })
+
+
   };
 
-  useEffect(() => {
-    if (loading) {
-      const loadAnimation = () => {
-        if (loading) {
-          Animated.sequence([
-            Animated.timing(animations.loader.rotate, {
-              toValue: animations.loader.MAX_VALUE,
-              duration: 1500,
-              easing: Easing.linear,
-              useNativeDriver: false,
-            }),
-            Animated.timing(animations.loader.rotate, {
-              toValue: 0,
-              duration: 0,
-              easing: Easing.linear,
-              useNativeDriver: false,
-            }),
-          ]).start(loadAnimation);
-        }
-      };
-      loadAnimation();
-    }
-  }, [animations.loader.MAX_VALUE, animations.loader.rotate, loading]);
+
 
   return {
     animations,

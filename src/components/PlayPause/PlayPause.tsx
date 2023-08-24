@@ -1,5 +1,6 @@
 import React, {createRef} from 'react';
-import {Animated, Image, Platform, TouchableHighlight} from 'react-native';
+import {Image, Platform, TouchableHighlight} from 'react-native';
+import Animated from 'react-native-reanimated';
 import {Control} from '../Control';
 import {NullControl} from '../NullControl';
 import type {VideoAnimations} from '../../types';
@@ -38,7 +39,6 @@ export const PlayPause = ({
   let source = paused ? play : pause;
 
   const animatedStyles = {
-    opacity: animations.controlsOpacity,
     zIndex: showControls ? 99999 : 0,
   };
 
@@ -49,7 +49,7 @@ export const PlayPause = ({
   return (
     <Animated.View
       pointerEvents={'box-none'}
-      style={[styles.container, animatedStyles]}>
+      style={[styles.container, animatedStyles, animations.controlsOpacity]}>
       {!disableSeekButtons ? (
         <Control
           disabled={!showControls}

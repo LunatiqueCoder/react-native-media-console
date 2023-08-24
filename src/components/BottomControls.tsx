@@ -1,11 +1,11 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import {
-  Animated,
   ImageBackground,
   SafeAreaView,
   StyleSheet,
   GestureResponderHandlers,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
 import {Timer} from './Timer';
 import {Title} from './Title';
 import {NullControl} from './NullControl';
@@ -105,10 +105,8 @@ export const BottomControls = ({
     <Animated.View
       style={[
         _styles.bottom,
-        {
-          opacity: animations.controlsOpacity,
-          marginBottom: animations.bottomControl.marginBottom,
-        },
+        animations.controlsOpacity,
+        animations.bottomControl,
       ]}>
       <ImageBackground
         source={require('../assets/img/bottom-vignette.png')}

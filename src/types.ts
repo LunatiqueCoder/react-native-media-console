@@ -1,19 +1,13 @@
-import type {RefObject} from 'react';
-import type {Animated, ViewStyle, StyleProp} from 'react-native';
+import type { RefObject } from 'react';
+import type { ViewStyle, StyleProp } from 'react-native';
+import type { StyleProps } from 'react-native-reanimated'
 import type VideoResource from 'react-native-video';
-import type {VideoProperties} from 'react-native-video';
+import type { VideoProperties } from 'react-native-video';
 
 export interface VideoAnimations {
-  bottomControl: {marginBottom: Animated.Value};
-  topControl: {marginTop: Animated.Value};
-  video: {
-    opacity: Animated.Value;
-  };
-  loader: {
-    rotate: Animated.Value;
-    MAX_VALUE: number;
-  };
-  controlsOpacity: Animated.Value;
+  bottomControl: StyleProps;
+  topControl: StyleProps;
+  controlsOpacity: StyleProps;
 }
 
 export interface VideoPlayerProps extends VideoProperties {
