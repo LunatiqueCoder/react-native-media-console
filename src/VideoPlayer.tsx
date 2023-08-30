@@ -128,10 +128,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const _onEnd = () => {
     if (currentTime < duration) {
       setCurrentTime(duration);
-      setPaused(true);
+      setPaused(!props.repeat);
 
       if (showOnEnd) {
-        setShowControls(true);
+        setShowControls(!props.repeat);
       }
     }
 
