@@ -94,6 +94,7 @@ In addition, the `<VideoPlayer />` also takes these props:
 | containerStyle      | ViewStyle    |       | StyleSheet passed to the container of the <Video /> component                                                                                                   |
 | videoStyle          | ViewStyle    |       | StyleSheet passed to the <Video /> component                                                                                                                    |
 | videoRef            | Video        | undefined  | Pass ref to the `<Video/>` component                                                                                                                            |
+| pan            | `{ horizontal: Boolean, inverted: Boolean } `       | `{ horizontal: true, inverted: false } `  | An object allowing fine grained control over the `PanResponder` controlling the volume and seek. Use this if you need to apply rotation transformations to the player.                                                                                                                            |
 
 ### Events
 

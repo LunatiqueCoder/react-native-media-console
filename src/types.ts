@@ -233,4 +233,25 @@ export interface VideoPlayerProps extends VideoProperties {
    * @default 15
    */
   rewindTime?: number;
+
+  /**
+   * Object allowing fine grained control of the pan responder
+   *
+   * @default { horizontal: true, inverted: false }
+   */
+  pan?: {
+    /**
+     * Boolean representing if the player is oriented horizontally or vertically
+     *
+     * @default true
+     */
+    horizontal?: boolean;
+
+    /**
+     * Boolean representing if the player controls pan gesture should be inverted
+     *
+     * @default false
+     */
+    inverted?: boolean;
+  };
 }
