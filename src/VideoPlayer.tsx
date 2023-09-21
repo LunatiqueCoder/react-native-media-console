@@ -67,6 +67,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     disableSeekButtons = false,
     navigator,
     rewindTime = 15,
+    pan: {horizontal: horizontalPan, inverted: invertedPan} = {},
   } = props;
 
   const mounted = useRef(false);
@@ -282,6 +283,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     setSeeking,
     setControlTimeout,
     onEnd: events.onEnd,
+    horizontal: horizontalPan,
+    inverted: invertedPan,
   });
 
   useEffect(() => {
@@ -348,6 +351,10 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showControls, loading]);
+
+  useEffect(() => {
+    setMuted(muted);
+  }, [muted]);
 
   useEffect(() => {
     const newVolume = volumePosition / volumeWidth;
