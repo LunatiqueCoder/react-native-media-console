@@ -6,6 +6,7 @@ interface ControlTimeoutProps {
   mounted: boolean;
   showControls: boolean;
   setShowControls: Dispatch<SetStateAction<boolean>>;
+  alwaysShowControls: boolean;
 }
 
 export const useControlTimeout = ({
@@ -14,6 +15,7 @@ export const useControlTimeout = ({
   mounted,
   showControls,
   setShowControls,
+  alwaysShowControls,
 }: ControlTimeoutProps) => {
   const [_controlTimeout, _setControlTimeout] = useState<boolean>();
   const [_clearTimeout, setClearTimeout] = useState<boolean>();
@@ -31,7 +33,7 @@ export const useControlTimeout = ({
   };
 
   const hideControls = () => {
-    if (mounted && showControls) {
+    if (mounted && showControls && !alwaysShowControls) {
       setShowControls(false);
     }
   };
