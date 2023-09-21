@@ -66,6 +66,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
     disableSeekbar = false,
     disablePlayPause = false,
     disableSeekButtons = false,
+    disableOverlay,
     navigator,
     rewindTime = 15,
     pan: {horizontal: horizontalPan, inverted: invertedPan} = {},
@@ -104,7 +105,8 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   const videoRef = props.videoRef || _videoRef;
 
   const toggleFullscreen = () => setIsFullscreen((prevState) => !prevState);
-  const toggleControls = () => setShowControls((prevState) => !prevState);
+  const toggleControls = () =>
+    setShowControls((prevState) => alwaysShowControls || !prevState);
   const toggleTimer = () => setShowTimeRemaining((prevState) => !prevState);
   const togglePlayPause = () => {
     setPaused((prevState) => !prevState);
@@ -191,9 +193,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           togglePlayPause();
           resetControlTimeout();
         } else {
-          if (!alwaysShowControls) {
-            toggleControls();
-          }
+          toggleControls();
         }
         tapActionTimeout.current = null;
       }, doubleTapTime);
@@ -269,6 +269,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
       mounted: mounted.current,
       showControls,
       setShowControls,
+      alwaysShowControls,
     });
 
   const {volumePanResponder, seekPanResponder} = usePanResponders({
@@ -415,7 +416,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
         ) : (
           <>
             <Error error={error} />
-            <Overlay animations={animations} />
+            {!disableOverlay && <Overlay animations={animations} />}
             <TopControls
               panHandlers={volumePanResponder.panHandlers}
               animations={animations}

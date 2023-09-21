@@ -75,26 +75,27 @@ You can pass any of the props that the `<Video />` component at [react-native-vi
 
 In addition, the `<VideoPlayer />` also takes these props:
 
-| Prop                | Type         | Default | Description                                                                                                                                                     |
-|---------------------|--------------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| controlAnimationTiming | Integer      | 500   | The amount of time (in milliseconds) to animate the controls in and out.                                                                                        |
-| controlTimeoutDelay | Integer      | 15000 | Hide controls after X amount of time in milliseconds                                                                                                            |                           |
-| doubleTapTime       | Integer      | 130   | Tapping twice within this amount of time in milliseconds is considered a double tap. Single taps will not be actioned until this time has expired.              |
-| isFullscreen        | Boolean      | false | The VideoPlayer fullscreen state                                                                                                                                |
-| navigator           | Navigator    | null  | When using the default React Native navigator and do not override the `onBack` function, you'll need to pass the navigator to the VideoPlayer for it to function |
-| rewindTime          | Integer      | 15    | Number of seconds to rewind or forward.                                                                                                                         |
-| seekColor           | String(#HEX) | '#FFF' | Fill/handle colour of the seekbar                                                                                                                               |
-| showDuration        | Boolean      | false | Show duration of the media.                                                                                                                                     |
-| showOnStart         | Boolean      | false | Show or hide the controls on first render                                                                                                                       |
-| showOnEnd    | Boolean      | false | Show or hide the controls on end of video                                                                                                                       |
-| showTimeRemaining   | Boolean      | false | If true, show the time remaing, else show the current time in the Player.                                                                                       |
-| showHours           | Boolean      | false | If true, convert time to hours in the Player                                                                                                                    |
-| tapAnywhereToPause  | Boolean      | false | If true, single tapping anywhere on the video (other than a control) toggles between playing and paused.                                                        |
-| toggleResizeModeOnFullscreen | Boolean      | false | If true, clicking the fullscreen button will toggle the `<Video />` component between cover/contain, set to false if you want to customize fullscreen behaviour |
-| containerStyle      | ViewStyle    |       | StyleSheet passed to the container of the <Video /> component                                                                                                   |
-| videoStyle          | ViewStyle    |       | StyleSheet passed to the <Video /> component                                                                                                                    |
-| videoRef            | Video        | undefined  | Pass ref to the `<Video/>` component                                                                                                                            |
-| pan            | `{ horizontal: Boolean, inverted: Boolean } `       | `{ horizontal: true, inverted: false } `  | An object allowing fine grained control over the `PanResponder` controlling the volume and seek. Use this if you need to apply rotation transformations to the player.                                                                                                                            |
+| Prop                | Type                                          | Default                                  | Description                                                                                                                                                            |
+|---------------------|-----------------------------------------------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| alwaysShowControls | Boolean                                       | false                                    | Always show controls.                                                                                                                                                  |
+| controlAnimationTiming | Integer                                       | 500                                      | The amount of time (in milliseconds) to animate the controls in and out.                                                                                               |
+| controlTimeoutDelay | Integer                                       | 15000                                    | Hide controls after X amount of time in milliseconds                                                                                                                   |                           |
+| doubleTapTime       | Integer                                       | 130                                      | Tapping twice within this amount of time in milliseconds is considered a double tap. Single taps will not be actioned until this time has expired.                     |
+| isFullscreen        | Boolean                                       | false                                    | The VideoPlayer fullscreen state                                                                                                                                       |
+| navigator           | Navigator                                     | null                                     | When using the default React Native navigator and do not override the `onBack` function, you'll need to pass the navigator to the VideoPlayer for it to function       |
+| rewindTime          | Integer                                       | 15                                       | Number of seconds to rewind or forward.                                                                                                                                |
+| seekColor           | String(#HEX)                                  | '#FFF'                                   | Fill/handle colour of the seekbar                                                                                                                                      |
+| showDuration        | Boolean                                       | false                                    | Show duration of the media.                                                                                                                                            |
+| showOnStart         | Boolean                                       | false                                    | Show or hide the controls on first render                                                                                                                              |
+| showOnEnd    | Boolean                                       | false                                    | Show or hide the controls on end of video                                                                                                                              |
+| showTimeRemaining   | Boolean                                       | false                                    | If true, show the time remaing, else show the current time in the Player.                                                                                              |
+| showHours           | Boolean                                       | false                                    | If true, convert time to hours in the Player                                                                                                                           |
+| tapAnywhereToPause  | Boolean                                       | false                                    | If true, single tapping anywhere on the video (other than a control) toggles between playing and paused.                                                               |
+| toggleResizeModeOnFullscreen | Boolean                                       | false                                    | If true, clicking the fullscreen button will toggle the `<Video />` component between cover/contain, set to false if you want to customize fullscreen behaviour        |
+| containerStyle      | ViewStyle                                     |                                          | StyleSheet passed to the container of the <Video /> component                                                                                                          |
+| videoStyle          | ViewStyle                                     |                                          | StyleSheet passed to the <Video /> component                                                                                                                           |
+| videoRef            | Video                                         | undefined                                | Pass ref to the `<Video/>` component                                                                                                                                   |
+| pan            | `{ horizontal: Boolean, inverted: Boolean } ` | `{ horizontal: true, inverted: false } ` | An object allowing fine grained control over the `PanResponder` controlling the volume and seek. Use this if you need to apply rotation transformations to the player. |
 
 ### Events
 
@@ -116,15 +117,16 @@ These are various events that you can hook into and fire functions on in the com
 
 These are the various controls that you can turn on/off as needed. All of these props default to false, override them to disable any controls
 
-| Control           | Description                |
-| ----------------- | -------------------------- |
-| disableFullscreen | Hide the fullscreen button |
-| disablePlayPause  | Hide the play/pause toggle and the rewind/forward buttons |
-| disableSeekButtons  | Hide the rewind/forward buttons (but not play/pause) |
-| disableSeekbar    | Hide the seekbar           |
-| disableVolume     | Hide the Volume control    |
-| disableTimer      | Hide the timer             |
-| disableBack       | Hide the back button       |
+| Control            | Description                |
+|--------------------| -------------------------- |
+| disableFullscreen  | Hide the fullscreen button |
+| disablePlayPause   | Hide the play/pause toggle and the rewind/forward buttons |
+| disableSeekButtons | Hide the rewind/forward buttons (but not play/pause) |
+| disableSeekbar     | Hide the seekbar           |
+| disableVolume      | Hide the Volume control    |
+| disableTimer       | Hide the timer             |
+| disableBack        | Hide the back button       |
+| disableOverlay     | Hide the transparent overlay which is active when the controls are shown. Generally used when you want to disable all the controls.     |
 
 ## 🪲 Debugging
 

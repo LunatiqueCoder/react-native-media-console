@@ -63,7 +63,7 @@ export interface VideoPlayerProps extends VideoProperties {
   showOnEnd?: boolean;
 
   /**
-   * Show controls always even when you touch the screen
+   * Always show controls.
    *
    * @default false
    */
@@ -211,6 +211,13 @@ export interface VideoPlayerProps extends VideoProperties {
    * @default false
    */
   disableSeekButtons?: boolean;
+
+  /**
+   * Hide the transparent overlay which is active when the controls are shown. Generally used when you want to disable all the controls.
+   *
+   * @default false
+   */
+  disableOverlay?: boolean;
 
   /**
    * When using the default React Native navigator and do not override the `onBack` function,
