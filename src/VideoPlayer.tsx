@@ -260,7 +260,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
   };
 
   const {animations, hideControlAnimation, showControlAnimation} =
-    useAnimations(loading, controlAnimationTiming);
+    useAnimations(controlAnimationTiming);
 
   const {clearControlTimeout, resetControlTimeout, setControlTimeout} =
     useControlTimeout({
@@ -412,7 +412,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
           source={source}
         />
         {loading ? (
-          <Loader animations={animations} />
+          <Loader />
         ) : (
           <>
             <Error error={error} />

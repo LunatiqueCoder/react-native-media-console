@@ -1,17 +1,11 @@
 import React from 'react';
-import {Animated, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import Animated from 'react-native-reanimated';
 import type {VideoAnimations} from '../types';
 
 export const Overlay = ({animations}: {animations: VideoAnimations}) => {
   return (
-    <Animated.View
-      style={[
-        _styles.overlay,
-        {
-          opacity: animations.controlsOpacity,
-        },
-      ]}
-    />
+    <Animated.View style={[_styles.overlay, animations.controlsOpacity]} />
   );
 };
 
