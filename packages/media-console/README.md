@@ -15,7 +15,7 @@ VideoPlayer for the React Native `<Video/>` component at [react-native-video][15
 ## ⭐️ Features
 
 This package contains a simple set of GUI controls that work with the [react-native-video][15] `<Video>` component.
-
+- [x] `react-native-reanimated`
 - [x] Back Button
 - [x] Volume bar
 - [x] Fullscreen button
@@ -44,6 +44,8 @@ If you are using TypeScript, you will also need to run `yarn add --dev @types/re
 Then follow installation instructions
 from [react-native-video][15].
 
+If you are using `react-native-reanimated`, then you can use `yard add @react-native-media-console/reanimated`
+
 ## 🛠 Usage
 
 The `<VideoPlayer>` component follows the API of the `<Video>` component
@@ -57,9 +59,12 @@ the current scene off the stack. This can be overridden if desired, see the [API
 ```javascript
 // At the top where our imports are...
 import VideoPlayer from 'react-native-media-console';
+// 👇 if you use react-native-reanimated 
+import {useAnimations} from '@react-native-media-console/reanimated';
 
 // in the component's render() function
 <VideoPlayer
+    useAnimations={useAnimations}
     source={{uri: 'https://vjs.zencdn.net/v/oceans.mp4'}}
     navigator={props.navigator}
 />;
@@ -156,29 +161,29 @@ disable any controls
 |---------------------------|--------------------------------|
 | [![jetbrains100][18]][19] | [![englishdislogo100][20]][21] |
 
-[1]: https://github.com/criszz77/react-native-media-console/workflows/ci/badge.svg
+[1]: https://github.com/LunatiqueCoder/react-native-media-console/workflows/ci/badge.svg
 
-[2]: https://github.com/criszz77/react-native-media-console/actions
+[2]: https://github.com/LunatiqueCoder/react-native-media-console/actions
 
 [3]: https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20tvOS-brightgreen.svg?style=flat-square&colorB=191A17
 
 [4]: https://github.com/react-native-tvos/react-native-tvos
 
-[5]: https://img.shields.io/github/issues/criszz77/react-native-media-console
+[5]: https://img.shields.io/github/issues/LunatiqueCoder/react-native-media-console
 
-[6]: https://github.com/criszz77/react-native-media-console/issues
+[6]: https://github.com/LunatiqueCoder/react-native-media-console/issues
 
-[7]: https://img.shields.io/github/license/criszz77/react-native-media-console
+[7]: https://img.shields.io/github/license/LunatiqueCoder/react-native-media-console
 
-[8]: https://github.com/criszz77/react-native-media-console/blob/master/LICENSE
+[8]: https://github.com/LunatiqueCoder/react-native-media-console/blob/master/LICENSE
 
-[9]: https://img.shields.io/github/languages/top/criszz77/react-native-media-console
+[9]: https://img.shields.io/github/languages/top/LunatiqueCoder/react-native-media-console
 
-[10]: https://github.com/criszz77/react-native-media-console/search?l=typescript
+[10]: https://github.com/LunatiqueCoder/react-native-media-console/search?l=typescript
 
 [11]: https://img.shields.io/maintenance/yes/2023
 
-[12]: https://github.com/criszz77/react-native-media-console/graphs/contributors
+[12]: https://github.com/LunatiqueCoder/react-native-media-console/graphs/contributors
 
 [13]: https://img.shields.io/npm/v/react-native-media-console
 
