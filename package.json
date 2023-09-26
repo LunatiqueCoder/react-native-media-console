@@ -37,7 +37,8 @@
     },
     "npm": false,
     "github": {
-      "release": true
+      "release": true,
+      "requireCleanWorkingDir": false
     },
     "plugins": {
       "@release-it/conventional-changelog": {
