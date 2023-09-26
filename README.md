@@ -11,6 +11,10 @@ VideoPlayer for the React Native `<Video/>` component at [react-native-video][15
 
 [![demogif][16]][17]
 
+## ⚠️ This is the documentation for the `next` version. 
+If you want to see the documentation for the `latest` stable version, head over to 👉 
+[![npm][13]][14]
+
 ## ⭐️ Features
 
 This package contains a simple set of GUI controls that work with the [react-native-video][15] `<Video>` component. 
