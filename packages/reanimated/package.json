@@ -1,15 +1,11 @@
 {
   "name": "@react-native-media-console/reanimated",
-  "private": true,
-  "version": "2.0.7",
+  "version": "2.1.0-0",
   "description": "A media player for the react-native-video component",
   "license": "MIT",
   "source": "src/index",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/index.d.ts",
-  "workspaces": [
-    "packages/*"
-  ],
   "keywords": [
     "react-native",
     "react-native-video",
@@ -33,7 +29,7 @@
     "react-native": ">=0.46.0",
     "react-native-video": ">=2.0.0",
     "react-native-reanimated": "^2.12.0",
-    "react-native-media-console": "^2.0.7"
+    "react-native-media-console": "^2.1.0-0"
   },
   "devDependencies": {
     "@types/react-native-video": "^5.0.14",

@@ -62,7 +62,7 @@ export const useJSAnimations = (
     showControlAnimation,
     hideControlAnimation,
     AnimatedView: Animated.View,
-  };
+  } as unknown as VideoAnimations;
 
   return animations;
 };
