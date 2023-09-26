@@ -58,9 +58,16 @@
     "./lib/"
   ],
   "devDependencies": {
+    "@react-native-community/eslint-config": "^3.2.0",
     "@release-it-plugins/workspaces": "^4.0.0",
     "@release-it/bumper": "^5.1.0",
     "@release-it/conventional-changelog": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.3",
+    "prettier": "^2.5.1",
     "release-it": "^16.2.0",
     "turbo": "^1.10.14"
   }

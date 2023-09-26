@@ -6,9 +6,6 @@
   "source": "src/index",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/index.d.ts",
-  "workspaces": [
-    "packages/*"
-  ],
   "keywords": [
     "react-native",
     "react-native-video",
