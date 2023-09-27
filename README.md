@@ -11,15 +11,20 @@ VideoPlayer for the React Native `<Video/>` component at [react-native-video][15
 
 [![demogif][16]][17]
 
+<br>
+
 ## ⭐️ Features
 
 This monorepo contains the `react-native-media-console` modules:
 
-[`react-native-media-console`][22]
+| Package  | Description |
+| ------------- | ------------- |
+| [`react-native-media-console`][22] | Main package. Here you will also find complete documentation. |
+| [`@react-native-media-console/reanimated`][23]  | Use reanimated animations for `react-native-media-console`  |
+| `@react-native-media-console/icons`  | 🚧 Work In Progress|
 
-[`@react-native-media-console/reanimated`][23]
 
-`@react-native-media-console/icons` - 🚧 WIP
+<br>
 
 
 ## 🏆 Sponsors
