@@ -20,7 +20,7 @@ This monorepo contains the `react-native-media-console` modules:
 | Package  | Description |
 | ------------- | ------------- |
 | [`react-native-media-console`][22] | Main package. Here you will also find complete documentation. |
-| [`@react-native-media-console/reanimated`][23]  | Use reanimated animations for `react-native-media-console`  |
+| [`@react-native-media-console/reanimated`][23]  | Use reanimated animations for the videoplayer |
 | `@react-native-media-console/icons`  | 🚧 Work In Progress|
 
 
