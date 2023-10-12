@@ -301,12 +301,14 @@ const AnimatedVideoPlayer = (
       setResizeMode(_isFullscreen ? 'cover' : 'contain');
     }
 
-    if (_isFullscreen) {
-      typeof events.onEnterFullscreen === 'function' &&
-        events.onEnterFullscreen();
-    } else {
-      typeof events.onExitFullscreen === 'function' &&
-        events.onExitFullscreen();
+    if (mounted.current) {
+      if (_isFullscreen) {
+        typeof events.onEnterFullscreen === 'function' &&
+          events.onEnterFullscreen();
+      } else {
+        typeof events.onExitFullscreen === 'function' &&
+          events.onExitFullscreen();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [_isFullscreen, toggleResizeModeOnFullscreen]);
