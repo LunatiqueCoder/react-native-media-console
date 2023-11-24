@@ -46,7 +46,7 @@ Run `yarn add react-native-video react-native-media-console`
 Then follow installation instructions
 from [react-native-video][15].
 
-If you are using `react-native-reanimated`, then you can use `yard add @react-native-media-console/reanimated`
+If you are using `react-native-reanimated`, then you can use `yarn add @react-native-media-console/reanimated`
 
 ## 🛠 Usage
 
