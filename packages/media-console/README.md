@@ -12,6 +12,10 @@ VideoPlayer for the React Native `<Video/>` component at [react-native-video][15
 
 [![demogif][16]][17]
 
+### ⚠️ **Note:**
+> 
+> We're only supporting the beta version of `react-native-video`. Since it looks stable enough except for the subtitles (which might still be a WIP at the time of writing), we're already using it in production at http://englishdiscoveries.net/
+
 ## ⭐️ Features
 
 This package contains a simple set of GUI controls that work with the [react-native-video][15] `<Video>` component.
@@ -38,8 +42,6 @@ will toggle fullscreen.
 ## ⚙️ Installation
 
 Run `yarn add react-native-video react-native-media-console`
-
-If you are using TypeScript, you will also need to run `yarn add --dev @types/react-native-video`
 
 Then follow installation instructions
 from [react-native-video][15].
