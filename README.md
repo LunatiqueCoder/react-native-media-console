@@ -44,7 +44,7 @@ This monorepo contains the `react-native-media-console` modules:
 [8]: https://github.com/criszz77/react-native-media-console/blob/master/LICENSE
 [9]: https://img.shields.io/github/languages/top/criszz77/react-native-media-console
 [10]: https://github.com/criszz77/react-native-media-console/search?l=typescript
-[11]: https://img.shields.io/maintenance/yes/2023
+[11]: https://img.shields.io/maintenance/yes/2025
 [12]: https://github.com/criszz77/react-native-media-console/graphs/contributors
 [13]: https://img.shields.io/npm/v/react-native-media-console
 [14]: https://www.npmjs.com/package/react-native-media-console
