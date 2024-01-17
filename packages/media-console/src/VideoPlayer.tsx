@@ -470,7 +470,6 @@ const AnimatedVideoPlayer = (
               setSeekerWidth={setSeekerWidth}
               isFullscreen={isFullscreen}
               isCaption={isCaption}
-              //showSubtitles
               disableFullscreen={disableFullscreen}
               disableCaption={disableCaption}
               toggleFullscreen={toggleFullscreen}
