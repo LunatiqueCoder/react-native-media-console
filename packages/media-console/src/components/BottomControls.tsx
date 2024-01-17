@@ -13,6 +13,7 @@ import {Seekbar} from './Seekbar';
 import {calculateTime} from '../utils';
 import type {VideoAnimations} from '../types';
 import {styles} from './styles';
+import {Caption} from './Caption';
 
 interface BottomControlsProps {
   showControls: boolean;
@@ -34,8 +35,11 @@ interface BottomControlsProps {
   seekerPosition: number;
   setSeekerWidth: Dispatch<SetStateAction<number>>;
   isFullscreen: boolean;
+  isCaption: boolean;
   disableFullscreen: boolean;
+  disableCaption: boolean;
   toggleFullscreen: () => void;
+  toggleCaption: () => void;
 }
 
 export const BottomControls = ({
@@ -57,8 +61,11 @@ export const BottomControls = ({
   seekerPosition,
   setSeekerWidth,
   isFullscreen,
+  isCaption,
   disableFullscreen,
+  disableCaption,
   toggleFullscreen,
+  toggleCaption,
 }: BottomControlsProps) => {
   const timerControl = disableTimer ? (
     <NullControl />
@@ -100,6 +107,16 @@ export const BottomControls = ({
     />
   );
 
+  const captionControl = disableCaption ? (
+    <NullControl />
+  ) : (
+    <Caption
+      isCaption={isCaption}
+      toggleCaption={toggleCaption}
+      showControls={showControls}
+    />
+  );
+
   return (
     <AnimatedView
       style={[
@@ -114,6 +131,9 @@ export const BottomControls = ({
         <SafeAreaView style={[styles.row, _styles.bottomControlGroup]}>
           {timerControl}
           <Title title={title} />
+          <SafeAreaView style={_styles.captionContainer}>
+            {captionControl}
+          </SafeAreaView>
           {fullscreenControl}
         </SafeAreaView>
         <SafeAreaView style={styles.seekBarContainer}>
@@ -136,6 +156,10 @@ const _styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginLeft: 12,
     marginRight: 12,
+    marginBottom: 0,
+  },
+  captionContainer: {
+    marginLeft: 'auto',
     marginBottom: 0,
   },
 });
