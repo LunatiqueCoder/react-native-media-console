@@ -3,21 +3,20 @@ import {Image, StyleSheet} from 'react-native';
 import {Control} from './Control';
 
 interface CaptionProps {
-  isCaption: boolean;
+  isCaptionEnabled: boolean;
   toggleCaption: () => void;
   showControls: boolean;
 }
 
 export const Caption = ({
-  isCaption,
+  isCaptionEnabled,
   toggleCaption,
-
   showControls,
 }: CaptionProps) => {
   return (
     <Control
       callback={toggleCaption}
-      style={[styles.caption, isCaption && styles.captionActive]}
+      style={[styles.caption, isCaptionEnabled && styles.captionActive]}
       disabled={!showControls}>
       <Image source={require('../assets/img/caption.png')} />
     </Control>

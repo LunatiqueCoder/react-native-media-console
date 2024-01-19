@@ -188,7 +188,7 @@ export interface VideoPlayerProps extends ReactVideoProps {
   disableFullscreen?: boolean;
 
   /**
-   * Show the caption button
+   * Hide the caption button
    *
    * @default false
    */

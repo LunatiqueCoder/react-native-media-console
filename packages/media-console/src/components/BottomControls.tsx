@@ -35,7 +35,7 @@ interface BottomControlsProps {
   seekerPosition: number;
   setSeekerWidth: Dispatch<SetStateAction<number>>;
   isFullscreen: boolean;
-  isCaption: boolean;
+  isCaptionEnabled: boolean;
   disableFullscreen: boolean;
   disableCaption: boolean;
   toggleFullscreen: () => void;
@@ -61,7 +61,7 @@ export const BottomControls = ({
   seekerPosition,
   setSeekerWidth,
   isFullscreen,
-  isCaption,
+  isCaptionEnabled,
   disableFullscreen,
   disableCaption,
   toggleFullscreen,
@@ -111,7 +111,7 @@ export const BottomControls = ({
     <NullControl />
   ) : (
     <Caption
-      isCaption={isCaption}
+      isCaptionEnabled={isCaptionEnabled}
       toggleCaption={toggleCaption}
       showControls={showControls}
     />

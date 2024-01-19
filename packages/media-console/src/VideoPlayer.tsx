@@ -107,12 +107,12 @@ const AnimatedVideoPlayer = (
   const [currentTime, setCurrentTime] = useState(0);
   const [error, setError] = useState(false);
   const [duration, setDuration] = useState(0);
-  const [isCaption, setIsCaption] = useState<boolean>(false);
+  const [isCaptionEnabled, setIsCaptionEnabled] = useState<boolean>(false);
 
   const videoRef = props.videoRef || _videoRef;
 
   const toggleFullscreen = () => setIsFullscreen((prevState) => !prevState);
-  const toggleCaption = () => setIsCaption((prevState) => !prevState);
+  const toggleCaption = () => setIsCaptionEnabled((prevState) => !prevState);
   const toggleControls = () =>
     setShowControls((prevState) => alwaysShowControls || !prevState);
   const toggleTimer = () => setShowTimeRemaining((prevState) => !prevState);
@@ -407,7 +407,9 @@ const AnimatedVideoPlayer = (
         <Video
           {...props}
           {...events}
-          selectedTextTrack={isCaption ? props.selectedTextTrack : undefined}
+          selectedTextTrack={
+            isCaptionEnabled ? props.selectedTextTrack : undefined
+          }
           ref={videoRef || _videoRef}
           resizeMode={_resizeMode}
           volume={_volume}
@@ -469,7 +471,7 @@ const AnimatedVideoPlayer = (
               seekerPosition={seekerPosition}
               setSeekerWidth={setSeekerWidth}
               isFullscreen={isFullscreen}
-              isCaption={isCaption}
+              isCaptionEnabled={isCaptionEnabled}
               disableFullscreen={disableFullscreen}
               disableCaption={disableCaption}
               toggleFullscreen={toggleFullscreen}
