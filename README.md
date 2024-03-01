@@ -57,3 +57,10 @@ This monorepo contains the `react-native-media-console` modules:
 [21]: https://englishdiscoveries.page.link/fJc4
 [22]: https://github.com/LunatiqueCoder/react-native-media-console/tree/master/packages/media-console
 [23]: https://github.com/LunatiqueCoder/react-native-media-console/tree/master/packages/reanimated
+
+## Installation
+
+Make sure to install `react-native-video@6.0.0-beta.0` along with `react-native-media-console`. You can install them via npm:
+
+```bash
+npm install react-native-video@6.0.0-beta.0 react-native-media-console
