@@ -395,6 +395,38 @@ const AnimatedVideoPlayer = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
+  let timeoutId: ReturnType<typeof setTimeout> | null = null;
+  
+  let accumulatedRewindTime = 0; 
+  const rewind = () => {
+    if (currentTime === 0) return;
+    if(timeoutId) clearTimeout(timeoutId);
+    accumulatedRewindTime += rewindTime
+
+    timeoutId = setTimeout(() => {
+        videoRef?.current?.seek(currentTime - accumulatedRewindTime);
+
+        accumulatedRewindTime = 0;
+
+        timeoutId = null;
+    }, 700);
+  }
+
+  let accumulatedForwardTime = 0;
+  const forward = () => {
+    if (currentTime === 0) return;
+    if(timeoutId) clearTimeout(timeoutId);
+    accumulatedForwardTime += rewindTime
+    timeoutId = setTimeout(() => {
+        videoRef?.current?.seek(currentTime + accumulatedForwardTime);
+
+        accumulatedForwardTime = 0;
+
+        timeoutId = null;
+    }, 700);
+  }
+
   return (
     <PlatformSupport
       showControls={showControls}
@@ -439,12 +471,8 @@ const AnimatedVideoPlayer = (
               togglePlayPause={togglePlayPause}
               resetControlTimeout={resetControlTimeout}
               showControls={showControls}
-              onPressRewind={() =>
-                videoRef?.current?.seek(currentTime - rewindTime)
-              }
-              onPressForward={() =>
-                videoRef?.current?.seek(currentTime + rewindTime)
-              }
+              onPressRewind={rewind}
+              onPressForward={forward}
             />
             <BottomControls
               animations={animations}
