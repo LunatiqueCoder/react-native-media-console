@@ -75,6 +75,7 @@ const AnimatedVideoPlayer = (
     navigator,
     rewindTime = 15,
     pan: {horizontal: horizontalPan, inverted: invertedPan} = {},
+    testID,
   } = props;
 
   const mounted = useRef(false);
@@ -304,12 +305,14 @@ const AnimatedVideoPlayer = (
       setResizeMode(_isFullscreen ? ResizeMode.COVER : ResizeMode.CONTAIN);
     }
 
-    if (_isFullscreen) {
-      typeof events.onEnterFullscreen === 'function' &&
-        events.onEnterFullscreen();
-    } else {
-      typeof events.onExitFullscreen === 'function' &&
-        events.onExitFullscreen();
+    if (mounted.current) {
+      if (_isFullscreen) {
+        typeof events.onEnterFullscreen === 'function' &&
+          events.onEnterFullscreen();
+      } else {
+        typeof events.onExitFullscreen === 'function' &&
+          events.onExitFullscreen();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [_isFullscreen, toggleResizeModeOnFullscreen]);
@@ -320,10 +323,6 @@ const AnimatedVideoPlayer = (
 
   useEffect(() => {
     setPaused(paused);
-    mounted.current = true;
-    return () => {
-      mounted.current = false;
-    };
   }, [paused]);
 
   useEffect(() => {
@@ -431,7 +430,8 @@ const AnimatedVideoPlayer = (
     <PlatformSupport
       showControls={showControls}
       containerStyles={styles.containerStyle}
-      onScreenTouch={events.onScreenTouch}>
+      onScreenTouch={events.onScreenTouch}
+      testID={testID}>
       <View style={[_styles.player.container, styles.containerStyle]}>
         <Video
           {...props}
