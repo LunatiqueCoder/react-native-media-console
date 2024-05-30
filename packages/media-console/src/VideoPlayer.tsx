@@ -323,10 +323,6 @@ const AnimatedVideoPlayer = (
 
   useEffect(() => {
     setPaused(paused);
-    mounted.current = true;
-    return () => {
-      mounted.current = false;
-    };
   }, [paused]);
 
   useEffect(() => {
