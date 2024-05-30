@@ -1,5 +1,5 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react';
-import { View } from 'react-native';
+import React, {useCallback, useState, useEffect, useRef} from 'react';
+import {View} from 'react-native';
 import Video, {
   OnLoadData,
   OnLoadStartData,
@@ -8,7 +8,7 @@ import Video, {
   ResizeMode,
   VideoRef,
 } from 'react-native-video';
-import { useControlTimeout, useJSAnimations, usePanResponders } from './hooks';
+import {useControlTimeout, useJSAnimations, usePanResponders} from './hooks';
 import {
   Error,
   Loader,
@@ -17,10 +17,10 @@ import {
   PlayPause,
   Overlay,
 } from './components';
-import { PlatformSupport } from './OSSupport';
-import { _onBack } from './utils';
-import { _styles } from './styles';
-import type { VideoPlayerProps, WithRequiredProperty } from './types';
+import {PlatformSupport} from './OSSupport';
+import {_onBack} from './utils';
+import {_styles} from './styles';
+import type {VideoPlayerProps, WithRequiredProperty} from './types';
 
 const volumeWidth = 150;
 const iconOffset = 0;
@@ -49,10 +49,10 @@ const AnimatedVideoPlayer = (
     onError,
     onBack,
     onEnd,
-    onEnterFullscreen = () => { },
-    onExitFullscreen = () => { },
-    onHideControls = () => { },
-    onShowControls = () => { },
+    onEnterFullscreen = () => {},
+    onExitFullscreen = () => {},
+    onHideControls = () => {},
+    onShowControls = () => {},
     onPause,
     onPlay,
     onLoad,
@@ -74,14 +74,14 @@ const AnimatedVideoPlayer = (
     disableOverlay,
     navigator,
     rewindTime = 15,
-    pan: { horizontal: horizontalPan, inverted: invertedPan } = {},
-    testID
+    pan: {horizontal: horizontalPan, inverted: invertedPan} = {},
+    testID,
   } = props;
 
   const mounted = useRef(false);
   const _videoRef = useRef<VideoRef>(null);
   const controlTimeout = useRef<ReturnType<typeof setTimeout>>(
-    setTimeout(() => { }),
+    setTimeout(() => {}),
   ).current;
   const tapActionTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [_resizeMode, setResizeMode] = useState<ResizeMode>(resizeMode);
@@ -265,7 +265,7 @@ const AnimatedVideoPlayer = (
     }
   };
 
-  const { clearControlTimeout, resetControlTimeout, setControlTimeout } =
+  const {clearControlTimeout, resetControlTimeout, setControlTimeout} =
     useControlTimeout({
       controlTimeout,
       controlTimeoutDelay,
@@ -275,7 +275,7 @@ const AnimatedVideoPlayer = (
       alwaysShowControls,
     });
 
-  const { volumePanResponder, seekPanResponder } = usePanResponders({
+  const {volumePanResponder, seekPanResponder} = usePanResponders({
     duration,
     seekerOffset,
     volumeOffset,
