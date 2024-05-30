@@ -1,8 +1,8 @@
+import type {RefObject} from 'react';
 import type {ViewStyle, StyleProp, Animated} from 'react-native';
 import type Reanimated from 'react-native-reanimated';
 import type {StyleProps} from 'react-native-reanimated';
-import type {ReactVideoProps, VideoRef} from 'react-native-video';
-import {RefObject} from 'react';
+import type {VideoRef, ReactVideoProps} from 'react-native-video';
 
 export type WithRequiredProperty<Type, Key extends keyof Type> = Type & {
   [Property in Key]-?: Type[Property];
