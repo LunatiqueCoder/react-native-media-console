@@ -27,16 +27,15 @@
   "dependencies": {},
   "peerDependencies": {
     "react-native": ">=0.46.0",
-    "react-native-video": ">=2.0.0",
+    "react-native-video": ">=6.0.0",
     "react-native-reanimated": "^2.12.0"
   },
   "devDependencies": {
-    "@types/react-native-video": "^5.0.14",
-    "react": "^17.0.2",
-    "react-native": "npm:react-native-tvos@0.68.2-5",
+    "react": "18.3.1",
+    "react-native": "npm:react-native-tvos@0.74.1-0",
     "react-native-builder-bob": "^0.18.2",
-    "react-native-video": "^5.2.0",
-    "react-native-reanimated": "^2.12.0",
+    "react-native-video": "6.1.2",
+    "react-native-reanimated": "3.11.0",
     "release-it": "^15.6.0",
     "typescript": "^4.6.2"
   },

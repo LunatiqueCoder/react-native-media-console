@@ -2,7 +2,8 @@ import type {RefObject} from 'react';
 import type {ViewStyle, StyleProp, Animated} from 'react-native';
 import type Reanimated from 'react-native-reanimated';
 import type {StyleProps} from 'react-native-reanimated';
-import type {VideoRef, ReactVideoProps} from 'react-native-video';
+import Video from 'react-native-video';
+import type {VideoProperties} from 'react-native-video';
 
 export type WithRequiredProperty<Type, Key extends keyof Type> = Type & {
   [Property in Key]-?: Type[Property];
@@ -17,7 +18,7 @@ export type VideoAnimations = {
   controlsOpacity: StyleProps;
 };
 
-export interface VideoPlayerProps extends ReactVideoProps {
+export interface VideoPlayerProps extends VideoProperties {
   animations?: VideoAnimations;
   useAnimations?: (controlAnimationTiming: number) => VideoAnimations;
   /**
@@ -235,7 +236,7 @@ export interface VideoPlayerProps extends ReactVideoProps {
    *
    * @default false
    */
-  videoRef?: RefObject<VideoRef>;
+  videoRef?: RefObject<Video>;
 
   /**
    * Number of seconds to rewind or forward.
