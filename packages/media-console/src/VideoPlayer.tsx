@@ -2,8 +2,11 @@ import React, {useCallback, useState, useEffect, useRef} from 'react';
 import {View} from 'react-native';
 import Video, {
   OnLoadData,
+  OnLoadStartData,
   OnProgressData,
   OnSeekData,
+  ResizeMode,
+  VideoRef,
 } from 'react-native-video';
 import {useControlTimeout, useJSAnimations, usePanResponders} from './hooks';
 import {
@@ -29,7 +32,7 @@ const AnimatedVideoPlayer = (
     animations,
     toggleResizeModeOnFullscreen,
     doubleTapTime = 130,
-    resizeMode = 'contain',
+    resizeMode = ResizeMode.CONTAIN,
     isFullscreen = false,
     showOnStart = false,
     showOnEnd = false,
@@ -75,12 +78,12 @@ const AnimatedVideoPlayer = (
   } = props;
 
   const mounted = useRef(false);
-  const _videoRef = useRef<Video>(null);
+  const _videoRef = useRef<VideoRef>(null);
   const controlTimeout = useRef<ReturnType<typeof setTimeout>>(
     setTimeout(() => {}),
   ).current;
   const tapActionTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [_resizeMode, setResizeMode] = useState(resizeMode);
+  const [_resizeMode, setResizeMode] = useState<ResizeMode>(resizeMode);
   const [_paused, setPaused] = useState<boolean>(paused);
   const [_muted, setMuted] = useState<boolean>(muted);
   const [_volume, setVolume] = useState<number>(volume);
@@ -150,11 +153,11 @@ const AnimatedVideoPlayer = (
     setLoading(false);
   };
 
-  function _onLoadStart() {
+  function _onLoadStart(e: OnLoadStartData) {
     setLoading(true);
 
     if (typeof onLoadStart === 'function') {
-      onLoadStart();
+      onLoadStart(e);
     }
   }
 
@@ -298,7 +301,7 @@ const AnimatedVideoPlayer = (
 
   useEffect(() => {
     if (toggleResizeModeOnFullscreen) {
-      setResizeMode(_isFullscreen ? 'cover' : 'contain');
+      setResizeMode(_isFullscreen ? ResizeMode.COVER : ResizeMode.CONTAIN);
     }
 
     if (mounted.current) {
