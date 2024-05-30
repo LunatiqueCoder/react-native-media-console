@@ -75,6 +75,7 @@ const AnimatedVideoPlayer = (
     navigator,
     rewindTime = 15,
     pan: {horizontal: horizontalPan, inverted: invertedPan} = {},
+    testID,
   } = props;
 
   const mounted = useRef(false);
@@ -399,7 +400,8 @@ const AnimatedVideoPlayer = (
     <PlatformSupport
       showControls={showControls}
       containerStyles={styles.containerStyle}
-      onScreenTouch={events.onScreenTouch}>
+      onScreenTouch={events.onScreenTouch}
+      testID={testID}>
       <View style={[_styles.player.container, styles.containerStyle]}>
         <Video
           {...props}
