@@ -13,6 +13,7 @@ interface OSSupport {
   containerStyles: StyleProp<ViewStyle>;
   onScreenTouch: () => void;
   showControls: boolean;
+  testID?: string;
 }
 
 export const PlatformSupport = ({
@@ -20,6 +21,7 @@ export const PlatformSupport = ({
   onScreenTouch,
   containerStyles,
   showControls,
+  testID,
 }: OSSupport) => {
   if (Platform.isTV) {
     return (
@@ -35,6 +37,7 @@ export const PlatformSupport = ({
 
   return (
     <TouchableWithoutFeedback
+      testID={testID}
       onPress={onScreenTouch}
       style={[_styles.player.container, containerStyles]}>
       {children}
