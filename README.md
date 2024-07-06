@@ -15,7 +15,7 @@ VideoPlayer for the React Native `<Video/>` component at [react-native-video][15
 
 ## ⭐️ Features
 
-This monorepo contains the `react-native-media-console` modules:
+This monorepo contains the `react-native-media-console` modules (`./packages/*`) and examples (`./examples/*`):
 
 | Package  | Description |
 | ------------- | ------------- |
@@ -23,6 +23,11 @@ This monorepo contains the `react-native-media-console` modules:
 | [`@react-native-media-console/reanimated`][23]  | Use reanimated animations for the videoplayer |
 | `@react-native-media-console/icons`  | 🚧 Work In Progress|
 
+<br>
+
+| Example app  | Description |
+| ------------- | ------------- |
+| [`Expo Video TV app`][24]       | Multi platform app to demonstrate how `react-native-media-console` works <br> and also used for testing and contributing. |
 
 <br>
 
@@ -57,3 +62,4 @@ This monorepo contains the `react-native-media-console` modules:
 [21]: https://englishdiscoveries.page.link/fJc4
 [22]: https://github.com/LunatiqueCoder/react-native-media-console/tree/master/packages/media-console
 [23]: https://github.com/LunatiqueCoder/react-native-media-console/tree/master/packages/reanimated
+[24]: https://github.com/LunatiqueCoder/react-native-media-console/tree/master/examples/MyTVProject
