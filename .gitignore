@@ -16,6 +16,13 @@ DerivedData
 *.ipa
 *.xcuserstate
 
+#MacOS
+.DS_Store
+
+# Turborepo cache
+.turbo
+
+
 # Android/IntelliJ
 #
 .idea
