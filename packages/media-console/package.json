@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/LunatiqueCoder/react-native-media-console/issues"
   },
-  "homepage": "https://github.com/LunatiqueCoder/react-native-media-console",
+  "homepage": "https://github.com/LunatiqueCoder/react-native-media-console/tree/master/packages/media-console",
   "author": "Ovidiu Cristescu (https://github.com/LunatiqueCoder)",
   "repository": "git@github.com:LunatiqueCoder/react-native-media-console.git",
   "scripts": {
