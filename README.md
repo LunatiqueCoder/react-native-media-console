@@ -31,6 +31,11 @@ This monorepo contains the `react-native-media-console` modules (`./packages/*`)
 
 <br>
 
+## Contributing
+
+Issues, pull request, and discussion are all welcome. See the [Contribution Guidelines](CONTRIBUTING.md) for details, and please reach out to [the author](https://github.com/LunatiqueCoder) if you would like to participate more significantly.
+
+<br>
 
 ## 🏆 Sponsors
 
