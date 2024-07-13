@@ -271,4 +271,8 @@ export interface VideoPlayerProps extends ReactVideoProps {
      */
     inverted?: boolean;
   };
+  /**
+   * testID selector for testing
+   */
+  testID?: string;
 }

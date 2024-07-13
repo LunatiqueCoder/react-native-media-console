@@ -48,6 +48,10 @@ from [react-native-video][15].
 
 If you are using `react-native-reanimated`, then you can use `yarn add @react-native-media-console/reanimated`
 
+> **🚧 WARNING**
+>
+> You need react-native-video > 6.0.0 in order to use this library.
+
 ## 🛠 Usage
 
 The `<VideoPlayer>` component follows the API of the `<Video>` component
@@ -183,7 +187,7 @@ disable any controls
 
 [10]: https://github.com/LunatiqueCoder/react-native-media-console/search?l=typescript
 
-[11]: https://img.shields.io/maintenance/yes/2023
+[11]: https://img.shields.io/maintenance/yes/2025
 
 [12]: https://github.com/LunatiqueCoder/react-native-media-console/graphs/contributors
 
