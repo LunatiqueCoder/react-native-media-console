@@ -7,10 +7,20 @@
   "source": "src/index",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/index.d.ts",
-  "workspaces": [
-    "examples/*",
-    "packages/*"
-  ],
+  "workspaces":  [
+      "examples/*",
+      "packages/*"
+    ],
+  "resolutions": {
+    "react-native": "npm:react-native-tvos@~0.74.2-0"
+  },
+  "expo": {
+    "install": {
+      "exclude": [
+        "react-native"
+      ]
+    }
+  },
   "keywords": [
     "react-native",
     "react-native-video",

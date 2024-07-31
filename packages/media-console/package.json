@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/LunatiqueCoder/react-native-media-console/issues"
   },
-  "homepage": "https://github.com/LunatiqueCoder/react-native-media-console",
+  "homepage": "https://github.com/LunatiqueCoder/react-native-media-console/tree/master/packages/media-console",
   "author": "Ovidiu Cristescu (https://github.com/LunatiqueCoder)",
   "repository": "git@github.com:LunatiqueCoder/react-native-media-console.git",
   "scripts": {
@@ -28,12 +28,12 @@
     "react-native": ">=0.46.0"
   },
   "devDependencies": {
-    "react": "^17.0.2",
-    "react-native": "npm:react-native-tvos@0.68.2-5",
+    "react": "^18.2.0",
+    "react-native": "npm:react-native-tvos@~0.74.2-0",
     "react-native-builder-bob": "^0.18.2",
-    "react-native-reanimated": "^2.12.0",
-    "react-native-video": "6.0.0-beta.0",
-    "typescript": "^4.6.2"
+    "react-native-reanimated": "~3.10.1",
+    "react-native-video": "6.4.2",
+    "typescript": "~5.3.3"
   },
   "react-native": "src/index.ts",
   "module": "lib/module/index.js",

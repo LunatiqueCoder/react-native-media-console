@@ -84,7 +84,8 @@ const AnimatedVideoPlayer = (
     setTimeout(() => {}),
   ).current;
   const tapActionTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [_resizeMode, setResizeMode] = useState<ResizeMode>(resizeMode);
+  const [_resizeMode, setResizeMode] =
+    useState<VideoPlayerProps['resizeMode']>(resizeMode);
   const [_paused, setPaused] = useState<boolean>(paused);
   const [_muted, setMuted] = useState<boolean>(muted);
   const [_volume, setVolume] = useState<number>(volume);
@@ -464,7 +465,7 @@ const AnimatedVideoPlayer = (
               seekerFillWidth={seekerFillWidth}
               seekerPosition={seekerPosition}
               setSeekerWidth={setSeekerWidth}
-              isFullscreen={isFullscreen}
+              isFullscreen={_isFullscreen}
               disableFullscreen={disableFullscreen}
               toggleFullscreen={toggleFullscreen}
               showControls={showControls}
