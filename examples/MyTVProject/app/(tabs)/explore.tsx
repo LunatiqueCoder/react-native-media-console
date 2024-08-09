@@ -20,7 +20,8 @@ export default function ExploreScreen() {
           name="code-slash"
           style={styles.headerImage}
         />
-      }>
+      }
+    >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>

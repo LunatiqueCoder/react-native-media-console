@@ -57,7 +57,8 @@ export default function ParallaxScrollView({
             styles.header,
             {backgroundColor: headerBackgroundColor[colorScheme]},
             headerAnimatedStyle,
-          ]}>
+          ]}
+        >
           {headerImage}
         </Animated.View>
         <ThemedView style={styles.content}>{children}</ThemedView>
