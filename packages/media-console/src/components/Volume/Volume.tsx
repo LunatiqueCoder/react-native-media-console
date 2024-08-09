@@ -21,7 +21,8 @@ export const Volume = ({
       <View style={[styles.track, {width: volumeTrackWidth}]} />
       <View
         style={[styles.handle, {left: volumePosition - 15}]}
-        {...volumePanHandlers}>
+        {...volumePanHandlers}
+      >
         <Image
           style={styles.icon}
           source={require('../../assets/img/volume.png')}

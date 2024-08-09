@@ -18,10 +18,11 @@ export const Timer = ({
 }: TimerProps) => {
   return (
     <Control
-      callback={toggleTimer}
+      onPress={toggleTimer}
       resetControlTimeout={resetControlTimeout}
       style={styles.timer}
-      disabled={!showControls}>
+      disabled={!showControls}
+    >
       <Text style={styles.timerText}>{children}</Text>
     </Control>
   );

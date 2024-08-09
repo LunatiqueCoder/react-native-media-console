@@ -18,7 +18,8 @@ export function Collapsible({
       <TouchableOpacity
         style={styles.heading}
         onPress={() => setIsOpen((value) => !value)}
-        activeOpacity={0.6}>
+        activeOpacity={0.6}
+      >
         <Ionicons
           name={isOpen ? 'chevron-down' : 'chevron-forward-outline'}
           size={18}

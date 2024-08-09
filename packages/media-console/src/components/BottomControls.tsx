@@ -66,7 +66,8 @@ export const BottomControls = ({
     <Timer
       resetControlTimeout={resetControlTimeout}
       toggleTimer={toggleTimer}
-      showControls={showControls}>
+      showControls={showControls}
+    >
       {calculateTime({
         showDuration,
         showHours,
@@ -106,11 +107,13 @@ export const BottomControls = ({
         _styles.bottom,
         animations.controlsOpacity,
         animations.bottomControl,
-      ]}>
+      ]}
+    >
       <ImageBackground
         source={require('../assets/img/bottom-vignette.png')}
         style={[styles.column]}
-        imageStyle={[styles.vignette]}>
+        imageStyle={[styles.vignette]}
+      >
         <SafeAreaView style={[styles.row, _styles.bottomControlGroup]}>
           {timerControl}
           <Title title={title} />

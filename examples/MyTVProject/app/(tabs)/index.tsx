@@ -17,7 +17,8 @@ export default function HomeScreen() {
           source={require('@/assets/images/partial-react-logo.png')}
           style={styles.reactLogo}
         />
-      }>
+      }
+    >
       <View style={{height: 300}}>
         <VideoPlayer source={{uri: 'https://vjs.zencdn.net/v/oceans.mp4'}} />
       </View>

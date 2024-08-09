@@ -39,7 +39,8 @@ export const PlatformSupport = ({
     <TouchableWithoutFeedback
       testID={testID}
       onPress={onScreenTouch}
-      style={[_styles.player.container, containerStyles]}>
+      style={[_styles.player.container, containerStyles]}
+    >
       {children}
     </TouchableWithoutFeedback>
   );

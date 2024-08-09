@@ -20,7 +20,8 @@ export default function FocusDemoScreen() {
           name="tv-outline"
           style={styles.headerImage}
         />
-      }>
+      }
+    >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">TV event handling demo</ThemedText>
       </ThemedView>

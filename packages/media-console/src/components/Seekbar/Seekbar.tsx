@@ -22,7 +22,8 @@ export const Seekbar = ({
       <View
         style={styles.track}
         onLayout={(event) => setSeekerWidth(event.nativeEvent.layout.width)}
-        pointerEvents={'none'}>
+        pointerEvents={'none'}
+      >
         <View
           style={[
             styles.fill,
@@ -36,7 +37,8 @@ export const Seekbar = ({
       </View>
       <View
         style={[styles.handle, {left: seekerPosition}]}
-        pointerEvents={'none'}>
+        pointerEvents={'none'}
+      >
         <View
           style={[styles.circle, {backgroundColor: seekColor || '#FFF'}]}
           pointerEvents={'none'}

@@ -48,29 +48,33 @@ export const PlayPause = ({
   return (
     <AnimatedView
       pointerEvents={'box-none'}
-      style={[styles.container, animatedStyles, animations.controlsOpacity]}>
+      style={[styles.container, animatedStyles, animations.controlsOpacity]}
+    >
       {!disableSeekButtons ? (
         <Control
           disabled={!showControls}
-          callback={onPressRewind}
-          resetControlTimeout={resetControlTimeout}>
+          onPress={onPressRewind}
+          resetControlTimeout={resetControlTimeout}
+        >
           <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
         </Control>
       ) : null}
       <Control
         disabled={!showControls}
-        callback={togglePlayPause}
+        onPress={togglePlayPause}
         resetControlTimeout={resetControlTimeout}
         style={styles.playContainer}
         controlRef={playPauseRef}
-        {...(Platform.isTV ? {hasTVPreferredFocus: showControls} : {})}>
+        {...(Platform.isTV ? {hasTVPreferredFocus: showControls} : {})}
+      >
         <Image source={source} resizeMode={'contain'} style={styles.play} />
       </Control>
       {!disableSeekButtons ? (
         <Control
           disabled={!showControls}
-          callback={onPressForward}
-          resetControlTimeout={resetControlTimeout}>
+          onPress={onPressForward}
+          resetControlTimeout={resetControlTimeout}
+        >
           <Image
             source={forward}
             resizeMode={'contain'}

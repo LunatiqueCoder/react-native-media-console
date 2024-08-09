@@ -1,45 +1,47 @@
-import React, {ReactNode, RefObject, useState} from 'react';
-import {TouchableHighlight, ViewProps} from 'react-native';
+import React, {ReactNode, RefObject} from 'react';
+import {
+  TouchableHighlight,
+  Pressable,
+  PressableProps,
+  ViewStyle,
+  StyleProp,
+} from 'react-native';
 import {styles} from './styles';
 
-interface ControlProps extends ViewProps {
+const focusedStyle = {opacity: 1};
+const pressedStyle = {opacity: 0.25};
+
+interface ControlProps extends PressableProps {
   children: ReactNode;
-  callback?: () => void;
   controlRef?: RefObject<TouchableHighlight>;
-  disabled?: boolean;
-  style?: any;
   resetControlTimeout?: () => void;
+  style?: StyleProp<ViewStyle>;
 }
 
 export const Control = ({
   children,
-  callback,
   controlRef,
-  disabled,
-  style = {},
+  onPress,
+  resetControlTimeout,
+  style,
   ...props
 }: ControlProps) => {
-  const [focused, setFocused] = useState(false);
-
-  const setFocusedState = () => setFocused(true);
-  const cancelFocusedState = () => setFocused(false);
-
-  const focusedStyle = focused ? {opacity: 1} : {};
-
   return (
-    <TouchableHighlight
-      onFocus={setFocusedState}
-      onBlur={cancelFocusedState}
-      disabled={disabled}
+    <Pressable
       ref={controlRef}
-      underlayColor="transparent"
-      activeOpacity={1}
-      onPress={() => {
-        callback && callback();
+      onPress={(evt) => {
+        onPress?.(evt);
+        resetControlTimeout?.();
       }}
-      style={[styles.control, style, focused && focusedStyle]}
-      {...props}>
+      style={({focused, pressed}) => [
+        styles.control,
+        style,
+        focused && focusedStyle,
+        pressed && pressedStyle,
+      ]}
+      {...props}
+    >
       {children}
-    </TouchableHighlight>
+    </Pressable>
   );
 };

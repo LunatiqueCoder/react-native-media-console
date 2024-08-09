@@ -20,10 +20,11 @@ export const Fullscreen = ({
     : require('../assets/img/expand.png');
   return (
     <Control
-      callback={toggleFullscreen}
+      onPress={toggleFullscreen}
       resetControlTimeout={resetControlTimeout}
       style={styles.fullscreen}
-      disabled={!showControls}>
+      disabled={!showControls}
+    >
       <Image source={source} />
     </Control>
   );

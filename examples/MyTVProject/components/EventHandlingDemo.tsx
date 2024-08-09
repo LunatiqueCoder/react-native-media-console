@@ -104,7 +104,8 @@ const PressableButton = (props: {
       }
       style={({pressed, focused}) =>
         pressed || focused ? styles.pressableFocused : styles.pressable
-      }>
+      }
+    >
       {({focused}) => {
         return (
           <ThemedText style={styles.pressableText}>
@@ -135,7 +136,8 @@ const TouchableOpacityButton = (props: {
             event.eventKeyAction === 0 ? 'start' : 'end'
           }`,
         )
-      }>
+      }
+    >
       <Text style={styles.pressableText}>{props.title}</Text>
     </TouchableOpacity>
   );
@@ -161,7 +163,8 @@ const TouchableHighlightButton = (props: {
             event.eventKeyAction === 0 ? 'start' : 'end'
           }`,
         )
-      }>
+      }
+    >
       <Text style={styles.pressableText}>{props.title}</Text>
     </TouchableHighlight>
   );
@@ -185,7 +188,8 @@ const TouchableNativeFeedbackButton = (props: {
             event.eventKeyAction === 0 ? 'start' : 'end'
           }`,
         )
-      }>
+      }
+    >
       <View style={styles.pressable}>
         <Text style={styles.pressableText}>{props.title}</Text>
       </View>

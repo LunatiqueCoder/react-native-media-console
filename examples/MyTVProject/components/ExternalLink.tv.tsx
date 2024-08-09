@@ -13,7 +13,8 @@ export function ExternalLink({href, ...rest}: Props) {
       }
       style={({pressed, focused}) => ({
         opacity: pressed || focused ? 0.6 : 1.0,
-      })}>
+      })}
+    >
       {rest.children}
     </Pressable>
   );
