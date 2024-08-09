@@ -10,7 +10,7 @@ interface BackProps {
 
 export const Back = ({onBack, showControls}: BackProps) => {
   return (
-    <Control callback={onBack} disabled={!showControls}>
+    <Control onPress={onBack} disabled={!showControls}>
       <Image source={require('../../assets/img/back.png')} />
     </Control>
   );
