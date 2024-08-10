@@ -1,7 +1,8 @@
 import {Dispatch, SetStateAction, useEffect} from 'react';
 import {PanResponder} from 'react-native';
+import {VideoPlayerProps} from '../types';
 
-interface PanRespondersProps {
+interface PanRespondersProps extends Pick<VideoPlayerProps, 'pan'> {
   duration: number;
   seekerOffset: number;
   volumeOffset: number;
@@ -16,8 +17,6 @@ interface PanRespondersProps {
   setSeeking: Dispatch<SetStateAction<boolean>>;
   setControlTimeout: () => void;
   onEnd: () => void;
-  horizontal?: boolean;
-  inverted?: boolean;
 }
 
 export const usePanResponders = ({
@@ -35,14 +34,19 @@ export const usePanResponders = ({
   setSeeking,
   setControlTimeout,
   onEnd,
-  horizontal = true,
-  inverted = false,
+  pan: {horizontal = true, inverted = false, parentList} = {},
 }: PanRespondersProps) => {
+  const enableParentScroll = () =>
+    parentList?.ref?.current?.setNativeProps({
+      scrollEnabled: parentList?.scrollEnabled,
+    });
+
   const volumePanResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onMoveShouldSetPanResponder: () => true,
     onPanResponderGrant: () => {
       clearControlTimeout();
+      parentList?.ref?.current?.setNativeProps({scrollEnabled: false});
     },
     onPanResponderMove: (_evt, gestureState) => {
       const diff = horizontal ? gestureState.dx : gestureState.dy;
@@ -52,6 +56,8 @@ export const usePanResponders = ({
     onPanResponderRelease: () => {
       setControlTimeout();
     },
+    onPanResponderEnd: enableParentScroll,
+    onPanResponderTerminationRequest: () => false, // https://stackoverflow.com/a/76875305/14056591
   });
 
   const seekPanResponder = PanResponder.create({
@@ -62,6 +68,7 @@ export const usePanResponders = ({
       clearControlTimeout();
       const position = evt.nativeEvent.locationX;
       setSeekerPosition(position);
+      parentList?.ref?.current?.setNativeProps({scrollEnabled: false});
     },
     onPanResponderMove: (_evt, gestureState) => {
       const diff = horizontal ? gestureState.dx : gestureState.dy;
@@ -74,14 +81,14 @@ export const usePanResponders = ({
       const time = duration * percent;
 
       if (time >= duration && !loading) {
-        if (typeof onEnd === 'function') {
-          onEnd();
-        }
+        onEnd?.();
       }
 
       setSeeking(false);
       seek && seek(time);
     },
+    onPanResponderEnd: enableParentScroll,
+    onPanResponderTerminationRequest: () => false, // https://stackoverflow.com/a/76875305/14056591
   });
 
   useEffect(() => {
