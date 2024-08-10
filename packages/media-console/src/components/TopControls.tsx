@@ -64,7 +64,8 @@ export const TopControls = memo(
         <ImageBackground
           source={require('../assets/img/top-vignette.png')}
           style={[styles.column]}
-          imageStyle={[styles.vignette]}>
+          imageStyle={[styles.vignette]}
+        >
           <SafeAreaView style={_styles.topControlGroup}>
             {backControl}
             <View style={_styles.pullRight}>{volumeControl}</View>
