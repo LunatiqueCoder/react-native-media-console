@@ -18,5 +18,4 @@ export const styles = StyleSheet.create({
   play: {
     alignItems: 'center',
   },
-  rewind: {},
 });

@@ -56,7 +56,7 @@ export const PlayPause = ({
           onPress={onPressRewind}
           resetControlTimeout={resetControlTimeout}
         >
-          <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
+          <Image source={rewind} resizeMode={'contain'} />
         </Control>
       ) : null}
 
@@ -82,11 +82,7 @@ export const PlayPause = ({
           onPress={onPressForward}
           resetControlTimeout={resetControlTimeout}
         >
-          <Image
-            source={forward}
-            resizeMode={'contain'}
-            style={styles.rewind}
-          />
+          <Image source={forward} resizeMode={'contain'} />
         </Control>
       ) : null}
     </AnimatedView>
