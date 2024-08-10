@@ -1,5 +1,5 @@
 import React, {createRef} from 'react';
-import {Image, Platform, TouchableHighlight} from 'react-native';
+import {View, Image, Platform, TouchableHighlight} from 'react-native';
 import {Control} from '../Control';
 import {NullControl} from '../NullControl';
 import type {VideoAnimations} from '../../types';
@@ -59,16 +59,23 @@ export const PlayPause = ({
           <Image source={rewind} resizeMode={'contain'} style={styles.rewind} />
         </Control>
       ) : null}
-      <Control
-        disabled={!showControls}
-        onPress={togglePlayPause}
-        resetControlTimeout={resetControlTimeout}
-        style={styles.playContainer}
-        controlRef={playPauseRef}
-        {...(Platform.isTV ? {hasTVPreferredFocus: showControls} : {})}
-      >
-        <Image source={source} resizeMode={'contain'} style={styles.play} />
-      </Control>
+
+      {/*
+       * Useless <View />, I know. But it fixes this bug:
+       * https://github.com/LunatiqueCoder/react-native-media-console/issues/107
+       */}
+      <View style={styles.playContainer}>
+        <Control
+          disabled={!showControls}
+          onPress={togglePlayPause}
+          resetControlTimeout={resetControlTimeout}
+          style={styles.play}
+          controlRef={playPauseRef}
+          {...(Platform.isTV ? {hasTVPreferredFocus: showControls} : {})}
+        >
+          <Image source={source} resizeMode={'contain'} />
+        </Control>
+      </View>
       {!disableSeekButtons ? (
         <Control
           disabled={!showControls}
