@@ -276,15 +276,15 @@ export interface VideoPlayerProps extends ReactVideoProps {
     parentList?: {
       /**
        * Internally, `ref?.current?.setNativeProps({scrollEnabled: boolean});` is used in order
-       * to fix this issue:
+       * to make the video player work seamlessly within FlatLists or ScrollViews:
        * @link https://github.com/LunatiqueCoder/react-native-media-console/issues/104
        */
       ref: RefObject<FlatList | ScrollView>;
       /**
-       * Used to keep a consistency when using `ref?.current?.setNativeProps({scrollEnabled: boolean});`.
+       * Used to keep the state consistency when using `ref?.current?.setNativeProps({scrollEnabled: boolean});`.
        * @see ref
        */
-      scrollEnabled: boolean;
+      scrollEnabled?: boolean;
     };
   };
   /**
