@@ -1,5 +1,11 @@
 import type {RefObject} from 'react';
-import type {ViewStyle, StyleProp, Animated} from 'react-native';
+import {
+  ViewStyle,
+  StyleProp,
+  Animated,
+  FlatList,
+  ScrollView,
+} from 'react-native';
 import type Reanimated from 'react-native-reanimated';
 import type {StyleProps} from 'react-native-reanimated';
 import type {VideoRef, ReactVideoProps} from 'react-native-video';
@@ -245,7 +251,7 @@ export interface VideoPlayerProps extends ReactVideoProps {
   rewindTime?: number;
 
   /**
-   * Object allowing fine grained control of the pan responder
+   * Object allowing fine-grained control of the pan responder
    *
    * @default { horizontal: true, inverted: false }
    */
@@ -256,13 +262,30 @@ export interface VideoPlayerProps extends ReactVideoProps {
      * @default true
      */
     horizontal?: boolean;
-
     /**
      * Boolean representing if the player controls pan gesture should be inverted
      *
      * @default false
      */
     inverted?: boolean;
+    /**
+     * Options to make the video player work seamlessly within FlatLists or ScrollViews.
+     *
+     * @link https://github.com/LunatiqueCoder/react-native-media-console/issues/104
+     */
+    parentList?: {
+      /**
+       * Internally, `ref?.current?.setNativeProps({scrollEnabled: boolean});` is used in order
+       * to make the video player work seamlessly within FlatLists or ScrollViews:
+       * @link https://github.com/LunatiqueCoder/react-native-media-console/issues/104
+       */
+      ref: RefObject<FlatList | ScrollView>;
+      /**
+       * Used to keep the state consistency when using `ref?.current?.setNativeProps({scrollEnabled: boolean});`.
+       * @see ref
+       */
+      scrollEnabled?: boolean;
+    };
   };
   /**
    * testID selector for testing
