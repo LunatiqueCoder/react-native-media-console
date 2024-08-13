@@ -36,7 +36,7 @@ export const usePanResponders = ({
   onEnd,
   pan: {horizontal = true, inverted = false, parentList} = {},
 }: PanRespondersProps) => {
-  const {ref, scrollEnabled} = parentList || {};
+  const {ref, scrollEnabled = true} = parentList || {};
 
   const enableParentScroll = () =>
     ref?.current?.setNativeProps({scrollEnabled});
