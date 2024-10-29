@@ -74,7 +74,7 @@ const AnimatedVideoPlayer = (
     disableOverlay,
     navigator,
     rewindTime = 15,
-    pan: {horizontal: horizontalPan, inverted: invertedPan} = {},
+    pan,
     testID,
   } = props;
 
@@ -291,8 +291,7 @@ const AnimatedVideoPlayer = (
     setSeeking,
     setControlTimeout,
     onEnd: events.onEnd,
-    horizontal: horizontalPan,
-    inverted: invertedPan,
+    pan,
   });
 
   useEffect(() => {
