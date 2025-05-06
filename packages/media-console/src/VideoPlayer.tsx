@@ -327,6 +327,10 @@ const AnimatedVideoPlayer = (
   }, [paused]);
 
   useEffect(() => {
+    setResizeMode(resizeMode);
+  }, [resizeMode]);
+
+  useEffect(() => {
     if (_paused) {
       typeof events.onPause === 'function' && events.onPause();
     } else {
