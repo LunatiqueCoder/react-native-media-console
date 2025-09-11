@@ -2,3 +2,7 @@ node_modules
 npm-debug.log
 .DS_Store
 examples
+.babelrc
+.turbo
+yarn-error.log
+yarn.lock
