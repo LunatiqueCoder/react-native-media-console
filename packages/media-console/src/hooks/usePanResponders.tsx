@@ -1,7 +1,8 @@
 import {Dispatch, SetStateAction, useEffect} from 'react';
 import {PanResponder} from 'react-native';
+import {VideoPlayerProps} from '../types';
 
-interface PanRespondersProps {
+interface PanRespondersProps extends Pick<VideoPlayerProps, 'pan'> {
   duration: number;
   seekerOffset: number;
   volumeOffset: number;
@@ -16,8 +17,6 @@ interface PanRespondersProps {
   setSeeking: Dispatch<SetStateAction<boolean>>;
   setControlTimeout: () => void;
   onEnd: () => void;
-  horizontal?: boolean;
-  inverted?: boolean;
 }
 
 export const usePanResponders = ({
@@ -35,14 +34,31 @@ export const usePanResponders = ({
   setSeeking,
   setControlTimeout,
   onEnd,
-  horizontal = true,
-  inverted = false,
+  pan: {horizontal = true, inverted = false, parentList} = {},
 }: PanRespondersProps) => {
+  const {ref, scrollEnabled = true} = parentList || {};
+
+  const enableParentScroll = () =>
+    ref?.current?.setNativeProps({scrollEnabled});
+
+  const disableParentScroll = () =>
+    ref?.current?.setNativeProps({scrollEnabled: false});
+
+  /**
+   * Options to make the video player work seamlessly within FlatLists or ScrollViews.
+   * @link https://github.com/LunatiqueCoder/react-native-media-console/issues/104
+   */
+  const parentScrollPanOptions = {
+    onPanResponderEnd: enableParentScroll,
+    onPanResponderTerminationRequest: () => false, // https://stackoverflow.com/a/76875305/14056591
+  };
+
   const volumePanResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onMoveShouldSetPanResponder: () => true,
     onPanResponderGrant: () => {
       clearControlTimeout();
+      disableParentScroll();
     },
     onPanResponderMove: (_evt, gestureState) => {
       const diff = horizontal ? gestureState.dx : gestureState.dy;
@@ -52,6 +68,7 @@ export const usePanResponders = ({
     onPanResponderRelease: () => {
       setControlTimeout();
     },
+    ...parentScrollPanOptions,
   });
 
   const seekPanResponder = PanResponder.create({
@@ -62,6 +79,7 @@ export const usePanResponders = ({
       clearControlTimeout();
       const position = evt.nativeEvent.locationX;
       setSeekerPosition(position);
+      disableParentScroll();
     },
     onPanResponderMove: (_evt, gestureState) => {
       const diff = horizontal ? gestureState.dx : gestureState.dy;
@@ -74,14 +92,13 @@ export const usePanResponders = ({
       const time = duration * percent;
 
       if (time >= duration && !loading) {
-        if (typeof onEnd === 'function') {
-          onEnd();
-        }
+        onEnd?.();
       }
 
       setSeeking(false);
       seek && seek(time);
     },
+    ...parentScrollPanOptions,
   });
 
   useEffect(() => {
