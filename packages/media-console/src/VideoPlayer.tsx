@@ -76,6 +76,7 @@ const AnimatedVideoPlayer = (
     rewindTime = 15,
     pan: {horizontal: horizontalPan, inverted: invertedPan} = {},
     testID,
+    headerButtons,
   } = props;
 
   const mounted = useRef(false);
@@ -432,6 +433,7 @@ const AnimatedVideoPlayer = (
               onBack={events.onBack}
               resetControlTimeout={resetControlTimeout}
               showControls={showControls}
+              headerButtons={headerButtons}
             />
             <PlayPause
               animations={animations}

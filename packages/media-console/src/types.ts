@@ -30,6 +30,11 @@ export interface VideoPlayerProps extends ReactVideoProps {
   toggleResizeModeOnFullscreen?: boolean;
 
   /**
+   * Custom header buttons to render on the top left of the Video Player
+   */
+  headerButtons?: React.ReactNode;
+
+  /**
    * The amount of time (in milliseconds) to animate the controls in and out.
    *
    * @default 500

@@ -23,6 +23,7 @@ interface TopControlProps {
   volumePosition: number;
   onBack: () => void;
   resetControlTimeout: () => void;
+  headerButtons: React.ReactNode;
 }
 
 export const TopControls = memo(
@@ -37,6 +38,7 @@ export const TopControls = memo(
     volumeTrackWidth,
     onBack,
     resetControlTimeout,
+    headerButtons,
   }: TopControlProps) => {
     const backControl = disableBack ? (
       <NullControl />
@@ -68,6 +70,7 @@ export const TopControls = memo(
         >
           <SafeAreaView style={_styles.topControlGroup}>
             {backControl}
+            {headerButtons}
             <View style={_styles.pullRight}>{volumeControl}</View>
           </SafeAreaView>
         </ImageBackground>
